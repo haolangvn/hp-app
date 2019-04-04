@@ -17,7 +17,7 @@ $config = [
         '@mdm/admin' => '@ext/yii2-admin',
         '@modules/system' => '@ext/system',
         '@modules/users' => '@ext/users',
-        '@vova07/imperavi' => '@ext/yii2-imperavi-widget-master/src'
+//        '@vova07/imperavi' => '@ext/yii2-imperavi-widget-master/src'
     ],
     'bootstrap' => [
         'log',

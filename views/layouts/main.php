@@ -66,19 +66,7 @@ $this->beginPage();
                 <?php endforeach; ?>
             </ol>
         </nav>
-        <!-- /* DELETE ME -->    
-        <div class="row">
-            <div class="col-md-12">
-                <div class="alert alert-success" role="alert">
-                    <?= Yii::t('app', 'kickstarter_success'); ?>
-                    <hr>
-                    <p class="mb-0">
-                        <?= Yii::t('app', 'kickstarter_admin_link', ['link' => Url::toInternal(['admin/default/index']), true]); ?>
-                    </p>
-                </div>
-            </div>
-        </div>
-        <!-- DELETE ME */ -->
+        
         <div class="row">
             <?php if (count(Yii::$app->menu->getLevelContainer(2)) > 0): ?>
             <div class="col-md-3">
@@ -101,10 +89,7 @@ $this->beginPage();
     <footer class="footer">
         <div class="container">
                 <ul>
-                    <li>This website is made with <a href="https://luya.io" target="_blank">LUYA</a></li>
-                    <li><a href="https://github.com/luyadev/luya" target="_blank"><i class="fa fa-github"></i></a></li>
-                    <li><a href="https://twitter.com/luyadev" target="_blank"><i class="fa fa-twitter"></i></a></li>
-                    <li><a href="https://www.youtube.com/channel/UCfGs4sHk-D3swX0mhxv98RA" target="_blank"><i class="fa fa-youtube"></i></a></li>
+                    <li><a href="" target="_blank">FOOTER</a></li>
                 </ul>
         </div>
     </footer>

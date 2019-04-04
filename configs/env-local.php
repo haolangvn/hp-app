@@ -4,7 +4,6 @@
  * This is the base config. It doesn't hold any information about the database and is only used for local development.
  * Use env-local-db.php to configure you database.
  */
-
 /*
  * Enable or disable the debugging, if those values are deleted YII_DEBUG is false and YII_ENV is prod.
  * The YII_ENV value will also be used to load assets based on environment (see assets/ResourcesAsset.php)
@@ -61,6 +60,11 @@ $config = [
             'hiddenBlocks' => [],
             'blockVariations' => [],
         ],
+        'demo' => [
+            'class' => 'app\modules\demo\frontend\Module',
+            'useAppViewPath' => false, // When enabled the views will be looked up in the @app/views folder, otherwise the views shipped with the module will be used.
+        ],
+        'demoadmin' => 'app\modules\demo\admin\Module',
     ],
     'components' => [
         /*
@@ -96,8 +100,8 @@ $config = [
             'class' => 'yii\caching\DummyCache', // use: yii\caching\FileCache
         ],
         /*
-    	 * Translation component. If you don't have translations just remove this component and the folder `messages`.
-    	 */
+         * Translation component. If you don't have translations just remove this component and the folder `messages`.
+         */
         'i18n' => [
             'translations' => [
                 'app*' => [
@@ -108,13 +112,12 @@ $config = [
     ],
 ];
 
-/*
 if (YII_DEBUG) {
     $config['bootstrap'][] = 'debug';
     $config['modules']['debug'] = ['class' => 'yii\debug\Module', 'allowedIPs' => ['*']];
     $config['bootstrap'][] = 'gii';
     $config['modules']['gii'] = ['class' => 'yii\gii\Module', 'allowedIPs' => ['*']];
 }
-*/
+
 
 return \yii\helpers\ArrayHelper::merge($config, require('env-local-db.php'));
