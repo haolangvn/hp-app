@@ -8,7 +8,12 @@
         "luyadev/luya-module-admin" : "^1.2",
         "luyadev/luya-module-cms" : "^1.0",
         "luyadev/luya-bootstrap3" : "^1.0",
-        "luyadev/luya-generic" : "^1.0"
+        "luyadev/luya-generic" : "^1.0",
+		"yii2tech/ar-softdelete": "~1.0",
+        "almasaeed2010/adminlte": "^2.4",
+		"fortawesome/font-awesome": "^4.6",
+        "yiisoft/yii2-jui": "^2.0",
+		"trntv/probe": "^1.0"
     },
     "require-dev": {
         "yiisoft/yii2-gii" : "~2.0.0",

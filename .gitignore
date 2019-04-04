@@ -13,6 +13,7 @@ composer.phar
 /configs/env-local-db.php
 #/configs/env.php
 
+/backend/ext/npm-*
 /backend/runtime
 /backend/web/assets
 
