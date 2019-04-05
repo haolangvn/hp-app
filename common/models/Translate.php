@@ -1,20 +1,11 @@
 <?php
 
-namespace hp\models;
-
-use luya\admin\models\Lang;
-use Yii;
+namespace common\models;
 
 /**
- * This is the model class for table "{{%core_translate}}".
+ * Description of Translate
  *
- * @property int $id
- * @property resource $message
- * @property string $category
- * @property string $language_code
- * @property string $translation
- * @property int $created_at
- * @property int $updated_at
+ * @author HAO
  */
 class Translate extends \common\core\ActiveRecord {
 
@@ -51,14 +42,6 @@ class Translate extends \common\core\ActiveRecord {
             'created_at' => Yii::t('app', 'Created At'),
             'updated_at' => Yii::t('app', 'Updated At'),
         ];
-    }
-
-    public function getLang($exclude = 'en') {
-        return \yii\helpers\ArrayHelper::map(Lang::find()
-                                ->where(['!=', 'short_code', $exclude])
-                                ->andWhere(['is_deleted' => FALSE])
-                                ->asArray()
-                                ->all(), 'short_code', 'name');
     }
 
 }

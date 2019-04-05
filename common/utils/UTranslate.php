@@ -4,6 +4,7 @@ namespace common\utils;
 
 use common\utils\UShort;
 use common\models\Translate;
+use yii\helpers\ArrayHelper;
 
 /**
  * Description of UTranslate
@@ -19,11 +20,12 @@ class UTranslate {
     const TYPE_APP = 'app';
 
     public static function t($category = self::TYPE_LABEL, $string, $param = []) {
-        $messages = UShort::cache()->getOrSet(['TRANSLATION', 
-            'lang' => UShort::app()->language, 'cate' => $category], function() use ($category) {
+        $lang = ArrayHelper::getValue(UShort::app()->composition, 'langShortCode', 'en');
+        $messages = UShort::cache()->getOrSet(['TRANSLATION',
+            'lang' => $lang, 'cate' => $category], function() use ($category, $lang) {
             $translations = Translate::find()->where([
                         'category' => $category,
-                        'language_code' => UShort::app()->language
+                        'language_code' => $lang
                     ])->all();
             $messages = [];
             foreach ($translations as $row) {

@@ -2,9 +2,9 @@
 
 namespace common\behaviors;
 
+use common\utils\UShort;
 use yii\base\Behavior;
 use yii\db\ActiveRecord;
-use common\utils\UShort;
 
 /**
  * Description of BlameableBehavior
@@ -36,7 +36,7 @@ class BlameableBehavior extends Behavior {
     public function beforeInsert($event) {
         foreach ($this->insert as $field) {
             if ($event->sender->hasAttribute($field)) {
-                $event->sender->$field = UShort::user()->id;
+                $event->sender->$field = $this->getUserId();
             }
         }
     }
@@ -49,9 +49,16 @@ class BlameableBehavior extends Behavior {
     public function beforeUpdate($event) {
         foreach ($this->update as $field) {
             if ($event->sender->hasAttribute($field)) {
-                $event->sender->$field = UShort::user()->id;
+                $event->sender->$field = $this->getUserId();
             }
         }
+    }
+
+    protected function getUserId() {
+        if (UShort::app()->has('adminuser') && UShort::app()->adminuser->getIdentity()) {
+            return UShort::app()->adminuser->id;
+        }
+        return 0;
     }
 
 }

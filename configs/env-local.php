@@ -15,11 +15,11 @@ $config = [
     /*
      * For best interoperability it is recommend to use only alphanumeric characters when specifying an application ID.
      */
-    'id' => 'myproject',
+    'id' => 'app-backend',
     /*
      * The name of your site, will be display on the login screen
      */
-    'siteTitle' => 'My Project',
+    'siteTitle' => 'Web Skeleton',
     /*
      * Let the application know which module should be executed by default (if no url is set). This module must be included
      * in the modules section. In the most cases you are using the cms as default handler for your website. But the concept
@@ -30,9 +30,9 @@ $config = [
      * Define the basePath of the project (Yii Configration Setup)
      */
     'basePath' => dirname(__DIR__),
-	'aliases' => [
-		'@common' => dirname(__DIR__) . '/common',
-	],
+    'aliases' => [
+        '@common' => dirname(__DIR__) . '/common',
+    ],
     'modules' => [
         /*
          * If you have other admin modules (e.g. cmsadmin) then you going to need the admin. The Admin module provides
@@ -89,8 +89,8 @@ $config = [
          * default: (array) Contains the default setup for the current language, this must match your language system configuration.
          */
         'composition' => [
-            'hidden' => true, // no languages in your url (most case for pages which are not multi lingual)
-            'default' => ['langShortCode' => 'en'], // the default language for the composition should match your default language shortCode in the language table.
+            'hidden' => false, // no languages in your url (most case for pages which are not multi lingual)
+//            'default' => ['langShortCode' => 'vn'], // the default language for the composition should match your default language shortCode in the language table.
         ],
         /*
          * If cache is enabled LUYA will cache cms blocks and speed up the system in different ways. In the prep config
@@ -112,6 +112,16 @@ $config = [
                 ],
             ],
         ],
+//        'session' => [
+//            // this is the name of the session cookie used for login on the backend
+//            'name' => 'advanced-backend',
+//        ],
+//        'user' => [
+//            'identityClass' => 'luya\admin\models\User',
+//            'enableAutoLogin' => true,
+////            'identityCookie' => ['name' => '_identity-backend', 'httpOnly' => true],
+////            'loginUrl' => ['/users/default/login'],
+//        ],
     ],
 ];
 
@@ -120,7 +130,7 @@ if (YII_DEBUG) {
     $config['modules']['debug'] = ['class' => 'yii\debug\Module', 'allowedIPs' => ['*']];
     $config['bootstrap'][] = 'gii';
     $config['modules']['gii'] = ['class' => 'yii\gii\Module', 'allowedIPs' => ['*']];
-	$config['modules']['gii'] = [
+    $config['modules']['gii'] = [
         'class' => 'yii\gii\Module',
         'generators' => [// HERE
             'crud' => [

@@ -3,7 +3,7 @@
 namespace app\modules\demo\models;
 
 use Yii;
-use luya\admin\ngrest\base\NgRestModel;
+use common\core\NgRestModel;
 
 /**
  * Demo.

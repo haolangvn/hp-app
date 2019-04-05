@@ -12,7 +12,7 @@ use yii\db\ActiveRecord;
  */
 class TimestampBehavior extends Behavior {
 
-    public $insert = ['created_at'];
+    public $insert = ['created_at', 'updated_at'];
 
     /**
      * @var array An array with all fields where the timestamp should be applied to on update.
