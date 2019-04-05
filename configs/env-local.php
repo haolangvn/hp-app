@@ -30,6 +30,9 @@ $config = [
      * Define the basePath of the project (Yii Configration Setup)
      */
     'basePath' => dirname(__DIR__),
+	'aliases' => [
+		'@common' => dirname(__DIR__) . '/common',
+	],
     'modules' => [
         /*
          * If you have other admin modules (e.g. cmsadmin) then you going to need the admin. The Admin module provides
@@ -117,6 +120,17 @@ if (YII_DEBUG) {
     $config['modules']['debug'] = ['class' => 'yii\debug\Module', 'allowedIPs' => ['*']];
     $config['bootstrap'][] = 'gii';
     $config['modules']['gii'] = ['class' => 'yii\gii\Module', 'allowedIPs' => ['*']];
+	$config['modules']['gii'] = [
+        'class' => 'yii\gii\Module',
+        'generators' => [// HERE
+            'crud' => [
+                'class' => 'yii\gii\generators\crud\Generator',
+                'templates' => [
+                    'adminlte' => '@app/backend/ext/gii/templates/crud/simple',
+                ]
+            ]
+        ],
+    ];
 }
 
 

@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use common\utils\UTranslate as UT;
 
 /* @var $this yii\web\View */
 /* @var $model hp\models\Translate */
@@ -14,9 +15,12 @@ use yii\widgets\ActiveForm;
 
         <?php
         echo $form->field($model, 'category')->dropDownList([
-            'label' => 'Label', 'menu' => 'Menu', 'model' => 'Model', 'button' => 'Button'
+            UT::TYPE_APP => UT::TYPE_APP,
+            UT::TYPE_LABEL => UT::TYPE_LABEL,
+            UT::TYPE_MENU => UT::TYPE_MENU,
+            UT::TYPE_BUTTON => UT::TYPE_BUTTON
         ]);
-        echo $form->field($model, 'language_code')->dropDownList($language);
+        echo $form->field($model, 'language_code')->dropDownList($model->getLang());
         echo $form->field($model, 'message')->textInput(['maxlength' => true, 'placeholder' => 'Default English']);
         echo $form->field($model, 'translation')->textInput(['maxlength' => true]);
         ?>

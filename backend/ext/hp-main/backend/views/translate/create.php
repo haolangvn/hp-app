@@ -10,8 +10,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?=
     $this->render('_form', [
-        'model' => $model,
-        'language' => $language
+        'model' => $model
     ])
     ?>
 

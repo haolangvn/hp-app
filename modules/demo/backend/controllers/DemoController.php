@@ -1,103 +1,107 @@
 <?php
 
-namespace hp\backend\controllers;
+namespace app\modules\demo\backend\controllers;
 
 use Yii;
-use hp\models\Translate;
-use hp\models\search\Translate as TranslateSearch;
+use app\modules\demo\models\Demo;
+use yii\data\ActiveDataProvider;
 use common\core\Controller;
-use hp\models\Language;
 use yii\web\NotFoundHttpException;
-use yii\helpers\ArrayHelper;
 
 /**
- * TranslateController implements the CRUD actions for Translate model.
+ * DemoController implements the CRUD actions for Demo model.
  */
-class TranslateController extends Controller {
+class DemoController extends Controller {
 
     /**
-     * Lists all Translate models.
+     * Lists all Demo models.
      * @return mixed
      */
-    public function actionIndex() {
-        $searchModel = new TranslateSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+    public function actionIndex()
+    {
+        $dataProvider = new ActiveDataProvider([
+            'query' => Demo::find(),
+        ]);
 
         return $this->render('index', [
-                    'searchModel' => $searchModel,
-                    'dataProvider' => $dataProvider,
+            'dataProvider' => $dataProvider,
         ]);
     }
 
     /**
-     * Displays a single Translate model.
+     * Displays a single Demo model.
      * @param integer $id
      * @return mixed
      */
-    public function actionView($id) {
+    public function actionView($id)
+    {
         return $this->render('view', [
-                    'model' => $this->findModel($id),
+            'model' => $this->findModel($id),
         ]);
     }
 
     /**
-     * Creates a new Translate model.
+     * Creates a new Demo model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    public function actionCreate() {
-        $model = new Translate();
+    public function actionCreate()
+    {
+        $model = new Demo();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         }
-        
+
         return $this->render('create', [
-                    'model' => $model
+            'model' => $model,
         ]);
     }
 
     /**
-     * Updates an existing Translate model.
+     * Updates an existing Demo model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
      */
-    public function actionUpdate($id) {
+    public function actionUpdate($id)
+    {
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         }
+
         return $this->render('update', [
-                    'model' => $model,
+            'model' => $model,
         ]);
     }
 
     /**
-     * Deletes an existing Translate model.
+     * Deletes an existing Demo model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
      */
-    public function actionDelete($id) {
+    public function actionDelete($id)
+    {
         $this->findModel($id)->delete();
         return $this->redirect(['index']);
     }
 
     /**
-     * Finds the Translate model based on its primary key value.
+     * Finds the Demo model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Translate the loaded model
+     * @return Demo the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($id) {
-        if (($model = Translate::findOne($id)) !== null) {
+    protected function findModel($id)
+    {
+        if (($model = Demo::findOne($id)) !== null) {
             return $model;
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
     }
-
 }

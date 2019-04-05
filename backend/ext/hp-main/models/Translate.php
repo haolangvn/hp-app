@@ -2,6 +2,7 @@
 
 namespace hp\models;
 
+use luya\admin\models\Lang;
 use Yii;
 
 /**
@@ -50,6 +51,14 @@ class Translate extends \common\core\ActiveRecord {
             'created_at' => Yii::t('app', 'Created At'),
             'updated_at' => Yii::t('app', 'Updated At'),
         ];
+    }
+
+    public function getLang($exclude = 'en') {
+        return \yii\helpers\ArrayHelper::map(Lang::find()
+                                ->where(['!=', 'short_code', $exclude])
+                                ->andWhere(['is_deleted' => FALSE])
+                                ->asArray()
+                                ->all(), 'id', 'name');
     }
 
 }

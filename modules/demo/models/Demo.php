@@ -3,7 +3,7 @@
 namespace app\modules\demo\models;
 
 use Yii;
-use luya\admin\ngrest\base\NgRestModel;
+use common\core\NgRestModel;
 
 /**
  * Demo.
@@ -15,34 +15,31 @@ use luya\admin\ngrest\base\NgRestModel;
  * @property text $desc
  * @property integer $created_at
  */
-class Demo extends NgRestModel
-{
-    /**
-     * @inheritdoc
-     */
-    public $i18n = ['name', 'desc'];
+class Demo extends NgRestModel {
 
     /**
      * @inheritdoc
      */
-    public static function tableName()
-    {
+//    public $i18n = ['name', 'desc'];
+
+    /**
+     * @inheritdoc
+     */
+    public static function tableName() {
         return '1_demo';
     }
 
     /**
      * @inheritdoc
      */
-    public static function ngRestApiEndpoint()
-    {
+    public static function ngRestApiEndpoint() {
         return 'api-demo-demo';
     }
 
     /**
      * @inheritdoc
      */
-    public function attributeLabels()
-    {
+    public function attributeLabels() {
         return [
             'id' => Yii::t('app', 'ID'),
             'name' => Yii::t('app', 'Name'),
@@ -54,10 +51,9 @@ class Demo extends NgRestModel
     /**
      * @inheritdoc
      */
-    public function rules()
-    {
+    public function rules() {
         return [
-            [['name', 'desc', 'created_at'], 'required'],
+            [['name', 'desc'], 'required'],
             [['desc'], 'string'],
             [['created_at'], 'integer'],
             [['name'], 'string', 'max' => 225],
@@ -67,8 +63,7 @@ class Demo extends NgRestModel
     /**
      * @inheritdoc
      */
-    public function ngRestAttributeTypes()
-    {
+    public function ngRestAttributeTypes() {
         return [
             'name' => 'text',
             'desc' => 'textarea',
@@ -79,12 +74,12 @@ class Demo extends NgRestModel
     /**
      * @inheritdoc
      */
-    public function ngRestScopes()
-    {
+    public function ngRestScopes() {
         return [
             ['list', ['name', 'desc', 'created_at']],
             [['create', 'update'], ['name', 'desc', 'created_at']],
             ['delete', false],
         ];
     }
+
 }

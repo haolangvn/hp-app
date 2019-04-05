@@ -4,19 +4,20 @@ $params = require(__DIR__ . '/params.php');
 
 $config = [
     'id' => 'app-backend',
-    'name' => 'Minus 417',
-    'timeZone' => 'Etc/GMT+7',
+    'name' => 'Web Skeleton',
+    'timeZone' => 'Asia/Ho_Chi_Minh',
     'language' => 'en', // en, ru
     'basePath' => dirname(__DIR__),
     'vendorPath' => dirname(dirname(__DIR__)) . '/vendor',
     'defaultRoute' => 'main/default/index',
     'aliases' => [
         '@bower' => '@vendor/bower',
-        '@npm'   => '@ext/npm-asset',
+        '@npm' => '@ext/npm-asset',
         '@hp' => '@ext/hp-main',
         '@mdm/admin' => '@ext/yii2-admin',
         '@modules/system' => '@ext/system',
         '@modules/users' => '@ext/users',
+        '@app' => dirname(dirname(__DIR__)),
 //        '@vova07/imperavi' => '@ext/yii2-imperavi-widget-master/src'
     ],
     'bootstrap' => [
@@ -30,13 +31,15 @@ $config = [
         ],
         'main' => 'hp\backend\Module',
         'rbac' => 'mdm\admin\Module',
-        'system' => 'modules\system\Module'
+        'system' => 'modules\system\Module',
+        // modules
+        'demo' => app\modules\demo\backend\Module::class
     ],
     'components' => [
         'request' => [
             'cookieValidationKey' => 'drWx549F9PFLEYpkv6mweYvTWZjMznLv',
             'csrfParam' => '_csrf-backend',
-            //'baseUrl' => '/admin',
+        //'baseUrl' => '/admin',
         ],
         'authManager' => [
             'class' => 'yii\rbac\DbManager',
@@ -112,7 +115,11 @@ $config = [
         ],
         'db' => [
             'tablePrefix' => 'tbl_'
-        ]
+        ],
+//        'formatter' => [
+//            'class' => 'yii\i18n\Formatter',
+//            'defaultTimeZone' => 'Asia/Ho_Chi_Minh',
+//        ],
     ],
     'as access' => [
         'class' => '\mdm\admin\components\AccessControl',

@@ -54,6 +54,10 @@ class UShort {
         return Yii::$app->session;
     }
 
+    public static function formater() {
+        return Yii::$app->formatter;
+    }
+
     public static function getParams($name, $default = '') {
         return isset(Yii::$app->params[$name]) ? Yii::$app->params[$name] : $default;
     }
@@ -61,4 +65,5 @@ class UShort {
     public static function setParams($name, $value) {
         return Yii::$app->params[$name] = $value;
     }
+
 }
