@@ -80,7 +80,7 @@ $config = [
             ],
         ],
         'errorHandler' => [
-            'errorAction' => 'backend/error',
+            'errorAction' => 'main/error/error',
         ],
         'urlManager' => [
             'enablePrettyUrl' => true,

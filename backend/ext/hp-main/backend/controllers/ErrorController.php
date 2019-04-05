@@ -1,21 +1,15 @@
 <?php
 
-namespace app\controllers;
-
-use Yii;
-use yii\web\Controller;
+namespace hp\backend\controllers;
 
 /**
- * Class BackendController
- * @package app\controllers
+ * Description of Error
+ *
+ * @author HAO
  */
-class BackendController extends Controller
-{
-    /**
-     * @return array
-     */
-    public function actions()
-    {
+class ErrorController extends \yii\web\Controller {
+
+    public function actions() {
         return [
             'error' => [
                 'class' => 'yii\web\ErrorAction',
@@ -28,11 +22,11 @@ class BackendController extends Controller
      * @return bool
      * @throws \yii\web\BadRequestHttpException
      */
-    public function beforeAction($action)
-    {
+    public function beforeAction($action) {
         if ($action->id == 'error')
-            $this->layout = 'error.php';
+            $this->layout = '//error.php';
 
         return parent::beforeAction($action);
     }
+
 }
