@@ -2,8 +2,9 @@
 
 namespace hp\backend\controllers;
 
-use alexantr\elfinder\ConnectorAction;
+//use alexantr\elfinder\ConnectorAction;
 use Yii;
+use common\utils\UShort;
 
 class FileController extends \common\core\Controller {
 
@@ -11,40 +12,28 @@ class FileController extends \common\core\Controller {
      * @return array
      */
     public function actions() {
+        $url = UShort::app()->urlManagerFrontend->baseUrl . '/storage/';
         return [
-            'connector' => [
-                'class' => ConnectorAction::class,
-                'options' => [
-                    'disabledCommands' => ['netmount'],
-                    'connectOptions' => [
-                        'filter'
-                    ],
-                    'roots' => [
-                        [
-                            'driver' => 'LocalFileSystem',
-                            'path' => Yii::getAlias('@storage'),
-                            'URL' => Yii::$app->urlManagerFrontend->baseUrl . '/storage/',
-                            'uploadDeny' => [
-                                'text/x-php', 'text/php', 'application/x-php', 'application/php'
-                            ],
-                        ],
-                    ],
-                ],
+            'image-upload' => [
+                'class' => 'vova07\imperavi\actions\UploadFileAction',
+                'url' => $url, // Directory URL address, where files are stored.
+                'path' => Yii::getAlias('@storage'), // Or absolute path to directory where files are stored.
+                'uploadOnlyImage' => true, // For any kind of files uploading.
             ],
             'files-get' => [
                 'class' => 'vova07\imperavi\actions\GetFilesAction',
-                'url' => Yii::getAlias('@web') . '/storage', // Directory URL address, where files are stored.
+                'url' => $url, // Directory URL address, where files are stored.
                 'path' => Yii::getAlias('@storage'), // Or absolute path to directory where files are stored.
             ],
             'file-upload' => [
                 'class' => 'vova07\imperavi\actions\UploadFileAction',
-                'url' => '@web/storage', // Directory URL address, where files are stored.
+                'url' => $url, // Directory URL address, where files are stored.
                 'path' => Yii::getAlias('@storage'), // Or absolute path to directory where files are stored.
                 'uploadOnlyImage' => false, // For any kind of files uploading.
             ],
             'file-delete' => [
                 'class' => 'vova07\imperavi\actions\DeleteFileAction',
-                'url' => '@web/storage', // Directory URL address, where files are stored.
+                'url' => $url, // Directory URL address, where files are stored.
                 'path' => Yii::getAlias('@storage'), // Or absolute path to directory where files are stored.
             ],
         ];

@@ -18,7 +18,7 @@ use yii\widgets\ActiveForm;
 
         <?= $form->field($model, 'value')->textarea(['rows' => 6]) ?>
 
-        <?= $form->field($model, 'type')->dropDownList([ 'richtext' => 'Richtext', 'json' => 'Json', ], ['prompt' => '']) ?>
+        <?= $form->field($model, 'type')->dropDownList(['richtext' => 'Richtext', 'json' => 'Json',], ['prompt' => '']) ?>
 
         <?= $form->field($model, 'created_at')->textInput() ?>
 

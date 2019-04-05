@@ -20,7 +20,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <?= $form->field($model, 'type')->dropDownList(['richtext' => 'Rich Text', 'json' => 'Json']) ?>
 
                 <div class="form-group">
-                    <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+                    <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-icon btn-save btn-success' : 'btn btn-icon btn-save btn-primary']) ?>
                 </div>
 
                 <?php ActiveForm::end(); ?>

@@ -14,6 +14,10 @@ class UShort {
         return Yii::$app->user;
     }
 
+    public static function urlMana() {
+        return Yii::$app->urlManager;
+    }
+
     public static function createUrl($params = []) {
         return Yii::$app->urlManager->createUrl($params);
     }

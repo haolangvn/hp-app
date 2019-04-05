@@ -26,17 +26,6 @@ $this->params['breadcrumbs'][] = $this->title;
 
                 <?php
                 if ($model->type == 'richtext') {
-//                    echo $form->field($model, 'value')->widget(\yii\imperavi\Widget::class, [
-//                        'plugins' => ['fullscreen', 'fontcolor', 'video'],
-//                        'options' => [
-//                            'minHeight' => 200,
-//                            'buttonSource' => true,
-//                            'convertDivs' => false,
-//                            'removeEmptyTags' => true,
-//                            'imageUpload' => UShort::createUrl(['main/file/connector']),
-////                            'imageUpload' => Yii::$app->urlManager->createUrl(['/file/storage/upload-imperavi']),
-//                        ],
-//                    ]);
                     echo $form->field($model, 'value')->widget(\vova07\imperavi\Widget::class, [
                         'settings' => [
                             'minHeight' => 200,
@@ -48,6 +37,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             'fileUpload' => Url::to(['/main/file/file-upload']),
                             'fileDelete' => Url::to(['/main/file/file-delete']),
                             'fileManagerJson' => Url::to(['/main/file/files-get']),
+                            'imageUpload' => Url::to(['/main/file/image-upload']),
                             'clips' => [
                                 ['Lorem ipsum...', 'Lorem...'],
                                 ['red', '<span class="label-red">red</span>'],
@@ -59,20 +49,6 @@ $this->params['breadcrumbs'][] = $this->title;
                             'imagemanager' => 'vova07\imperavi\bundles\ImageManagerAsset',
                         ],
                     ]);
-                    // View.php
-//                    echo \vova07\imperavi\Widget::widget([
-//                        'selector' => '#my-textarea-id',
-//                        'settings' => [
-//                            'lang' => 'ru',
-//                            'minHeight' => 200,
-//                            'fileUpload' => Url::to(['/main/file/file-upload']),
-//                            'fileDelete' => Url::to(['/main/file/file-delete']),
-//                            'fileManagerJson' => Url::to(['/main/file/files-get']),
-//                        ],
-//                        'plugins' => [
-//                            'filemanager' => 'vova07\imperavi\bundles\FileManagerAsset',
-//                        ],
-//                    ]);
                 } else {
                     if ($model->isNewRecord) {
                         echo '<div id="setting">';
@@ -160,7 +136,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 ?>
 
                 <div class="form-group">
-                    <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+                    <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-icon btn-save btn-success' : 'btn btn-save btn-primary']) ?>
                 </div>
 
                 <?php ActiveForm::end(); ?>

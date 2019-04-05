@@ -19,10 +19,12 @@ $this->params['breadcrumbs'][] = $this->title;
                 'confirm' => Yii::t('app', 'Are you sure you want to delete this item?'),
                 'method' => 'post',
             ],
-        ]) ?>
+        ])
+        ?>
     </div>
     <div class="box-body table-responsive no-padding">
-        <?= DetailView::widget([
+        <?=
+        DetailView::widget([
             'model' => $model,
             'attributes' => [
                 'id',
@@ -32,6 +34,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'created_at:datetime',
                 'updated_at:datetime',
             ],
-        ]) ?>
+        ])
+        ?>
     </div>
 </div>

@@ -93,7 +93,7 @@ $config = [
         ],
         'urlManagerFrontend' => [
             'class' => 'yii\web\UrlManager',
-//            'baseUrl' => '',
+            'baseUrl' => '',
             'enablePrettyUrl' => true,
             'showScriptName' => true,
             'enableStrictParsing' => true,

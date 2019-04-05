@@ -11,10 +11,10 @@ use yii\widgets\Pjax;
 $this->title = Yii::t('app', 'Settings');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="setting-index box box-primary">
-        <?php Pjax::begin(); ?>
+<div class="setting-index box box-default">
+    <?php Pjax::begin(); ?>
     <div class="box-header with-border">
-<?= Html::a(Yii::t('app', 'Create'), ['create'], ['class' => 'btn btn-success btn-flat']) ?>
+        <?= Html::a(Yii::t('app', 'Create'), ['create'], ['class' => 'btn btn-icon btn-new btn-success btn-flat']) ?>
     </div>
     <div class="box-body table-responsive">
         <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
@@ -39,5 +39,5 @@ $this->params['breadcrumbs'][] = $this->title;
         ]);
         ?>
     </div>
-<?php Pjax::end(); ?>
+    <?php Pjax::end(); ?>
 </div>
