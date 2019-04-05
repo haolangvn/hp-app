@@ -6,7 +6,7 @@ $config = [
     'id' => 'app-backend',
     'name' => 'Web Skeleton',
     'timeZone' => 'Asia/Ho_Chi_Minh',
-    'language' => 'en', // en, ru
+    'language' => 'vi', // en, ru
     'basePath' => dirname(__DIR__),
     'vendorPath' => dirname(dirname(__DIR__)) . '/vendor',
     'defaultRoute' => 'main/default/index',
@@ -115,6 +115,14 @@ $config = [
         ],
         'db' => [
             'tablePrefix' => 'tbl_'
+        ],
+        'adminLanguage' => [
+            'class' => \luya\admin\components\AdminLanguage::class,
+        ],
+        'composition' => [
+            'class' => luya\web\Composition::class,
+            'hidden' => true, // no languages in your url (most case for pages which are not multi lingual)
+            'default' => ['langShortCode' => 'en'], // the default language for the composition should match your default language shortCode in the language table.
         ],
 //        'formatter' => [
 //            'class' => 'yii\i18n\Formatter',

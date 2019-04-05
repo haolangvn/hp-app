@@ -3,7 +3,7 @@
 namespace app\modules\demo\models;
 
 use Yii;
-use common\core\NgRestModel;
+use luya\admin\ngrest\base\NgRestModel;
 
 /**
  * Demo.
@@ -20,7 +20,7 @@ class Demo extends NgRestModel {
     /**
      * @inheritdoc
      */
-//    public $i18n = ['name', 'desc'];
+    public $i18n = ['name', 'desc'];
 
     /**
      * @inheritdoc
@@ -77,8 +77,8 @@ class Demo extends NgRestModel {
     public function ngRestScopes() {
         return [
             ['list', ['name', 'desc', 'created_at']],
-            [['create', 'update'], ['name', 'desc', 'created_at']],
-            ['delete', false],
+            [['create', 'update'], ['name', 'desc']],
+            ['delete', true],
         ];
     }
 

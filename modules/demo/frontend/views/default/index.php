@@ -23,7 +23,7 @@ use app\modules\demo\models\Demo;
         echo $secondItem->title;
     }
 
-    print_r(luya\admin\models\Lang::find()->where(['is not', 'short_code', null])->asArray()->all());
+    print_r(Demo::find()->asArray()->all());
     ?>
 
 </pre>
