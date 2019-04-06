@@ -58,6 +58,11 @@ class BlameableBehavior extends Behavior {
         if (UShort::app()->has('adminuser') && UShort::app()->adminuser->getIdentity()) {
             return UShort::app()->adminuser->id;
         }
+
+        if (UShort::user()) {
+            return UShort::user()->id;
+        }
+        
         return 0;
     }
 

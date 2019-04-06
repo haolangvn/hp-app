@@ -4,24 +4,39 @@ use mdm\admin\components\MenuHelper;
 use backend\widgets\Menu;
 use common\utils\UTranslate;
 
-$items = MenuHelper::getAssignedMenu(Yii::$app->user->id, null, function ($menu) {
+$m = Yii::$app->controller->module->id;
+$c = Yii::$app->controller->id;
+$items = MenuHelper::getAssignedMenu(Yii::$app->user->id, null, function ($menu) use ($m, $c) {
+            $css = '';
             $active = false;
             $child = ($menu['children']) ? true : false;
-            $con = \yii\helpers\ArrayHelper::getValue(explode('/', $menu['route']), 2);
-            $c = Yii::$app->controller->id;
+            $tmp = explode('/', $menu['route']);
+            $mod = \yii\helpers\ArrayHelper::getValue($tmp, 1);
+            $con = \yii\helpers\ArrayHelper::getValue($tmp, 2);
 
-            if ($c === $con) {
-                $active = true;
+            if ($mod === $m && $con === $c) {
+//                $active = true;
+                $css = 'active ';
             }
 
-            if ($child && !$active) {
-                foreach ($menu['children'] as $n) {
-                    $c2 = \yii\helpers\ArrayHelper::getValue(explode('/', yii\helpers\ArrayHelper::getValue($n['url'], 0)), 2);
-                    if ($c === $c2) {
-                        $active = true;
-                    }
-                }
+            if ($child) {
+                $css .= 'treeview ';
             }
+
+//            if ($child && !$active) {
+//                foreach ($menu['children'] as $n) {
+//                    $tmp = explode('/', yii\helpers\ArrayHelper::getValue($n['url'], 0));
+//                    $mod = \yii\helpers\ArrayHelper::getValue($tmp, 1);
+//                    $con = \yii\helpers\ArrayHelper::getValue($tmp, 2);
+//
+//                    if ($mod === $m && $con === $c) {
+//                        $css = 'treeview active menu-open';
+//                    }
+//                    
+//                    print_r($n['items']);
+//                }
+//            }
+
             $icon = 'fa-circle-o';
             if ($menu['icon']) {
                 $icon = $menu['icon'];
@@ -30,14 +45,16 @@ $items = MenuHelper::getAssignedMenu(Yii::$app->user->id, null, function ($menu)
             return [
                 'label' => UTranslate::t(UTranslate::TYPE_MENU, $menu['name']),
                 'url' => [$menu['route']],
-                'options' => $child ? ['class' => 'treeview'] : [],
+                'options' => ['class' => $css],
                 'items' => $menu['children'],
-                'icon' => '<i class="fa ' . $icon . ' - ' . Yii::$app->controller->id . '"> </i> ',
+                'icon' => '<i class="fa ' . $icon . '"> </i> ',
                 'right-icon' => $child ? '<span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>' : '',
-                'active' => $active
             ];
         });
 
+//common\utils\UArray::dump($items);
+//$tmp = $m . '/' . $c;
+//common\utils\UArray::dump(\luya\helpers\ArrayHelper::);
 
 if (YII_DEBUG) {
 //    $items[] = [

@@ -96,9 +96,14 @@ class UArray {
         return $y;
     }
 
-    public static function dump($array) {
+    public static function dump($array, $name = null) {
         echo '<pre>';
+        if ($name) {
+            echo '<h4>' . $name . '</h4>';
+        }
+        echo '<div style="overflow-y: scroll; max-height: 150px;">';
         print_r($array);
+        echo '</div>';
         echo '</pre>';
     }
 

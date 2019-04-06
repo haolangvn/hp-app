@@ -28,11 +28,11 @@ $this->params['breadcrumbs'][] = $this->title;
                 'id',
                 'name',
                 'desc:ntext',
+                'deadline:datetime',
                 'created_at:datetime',
                 'updated_at:datetime',
                 'created_by',
-                'updated_by'
-                
+                'updated_by',
             ],
         ]) ?>
     </div>

@@ -1,16 +1,16 @@
 <?php
 
-namespace hp\models\search;
+namespace app\modules\demo\models\search;
 
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use hp\models\Setting as SettingModel;
+use app\modules\demo\models\Demo as DemoModel;
 
 /**
- * Setting represents the model behind the search form of `hp\models\Setting`.
+ * Demo represents the model behind the search form of `app\modules\demo\models\Demo`.
  */
-class Setting extends SettingModel
+class Demo extends DemoModel
 {
     /**
      * @inheritdoc
@@ -18,19 +18,22 @@ class Setting extends SettingModel
     public function rules()
     {
         return [
-            [['id', 'name', 'value', 'type'], 'safe'],
-            [['created_at', 'updated_at'], 'integer'],
+            [['id'], 'integer'],
+            [['name', 'desc', 'deadline'], 'safe'],
+            ['deadline', 'default', 'value' => null],
+            // validate the date and overwrite `deadline` with the unix timestamp
+//            ['deadline', 'date', 'timestampAttribute' => 'deadline'],
         ];
     }
 
     /**
      * @inheritdoc
      */
-    public function scenarios()
-    {
-        // bypass scenarios() implementation in the parent class
-        return Model::scenarios();
-    }
+//    public function scenarios()
+//    {
+//        // bypass scenarios() implementation in the parent class
+//        return Model::scenarios();
+//    }
 
     /**
      * Creates data provider instance with search query applied
@@ -41,7 +44,7 @@ class Setting extends SettingModel
      */
     public function search($params)
     {
-        $query = SettingModel::find();
+        $query = DemoModel::find();
 
         // add conditions that should always apply here
 
@@ -54,20 +57,18 @@ class Setting extends SettingModel
 
         if (!$this->validate()) {
             // uncomment the following line if you do not want to return any records when validation fails
-            //$query->where('0=1');
+             $query->where('0=1');
             return $dataProvider;
         }
 
         // grid filtering conditions
         $query->andFilterWhere([
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
+            'id' => $this->id
         ]);
+        $this->addCompareTimeToQuery($query, 'deadline', $this->deadline);
 
-        $query->andFilterWhere(['like', 'id', $this->id])
-            ->andFilterWhere(['like', 'name', $this->name])
-            ->andFilterWhere(['like', 'value', $this->value])
-            ->andFilterWhere(['like', 'type', $this->type]);
+        $query->andFilterWhere(['like', 'name', $this->name])
+            ->andFilterWhere(['like', 'desc', $this->desc]);
 
         return $dataProvider;
     }

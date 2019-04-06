@@ -20,7 +20,7 @@ class Demo extends NgRestModel {
     /**
      * @inheritdoc
      */
-    public $i18n = ['name', 'desc'];
+//    public $i18n = ['name', 'desc'];
 
     /**
      * @inheritdoc
@@ -44,7 +44,7 @@ class Demo extends NgRestModel {
             'id' => Yii::t('app', 'ID'),
             'name' => Yii::t('app', 'Name'),
             'desc' => Yii::t('app', 'Desc'),
-            'created_at' => Yii::t('app', 'Created At'),
+            'deadline' => Yii::t('app', 'Deadline'),
         ];
     }
 
@@ -55,8 +55,11 @@ class Demo extends NgRestModel {
         return [
             [['name', 'desc'], 'required'],
             [['desc'], 'string'],
-            [['created_at'], 'integer'],
             [['name'], 'string', 'max' => 225],
+            // ensure empty values are stored as NULL in the database
+            ['deadline', 'default', 'value' => 0],
+            // validate the date and overwrite `deadline` with the unix timestamp
+            ['deadline', 'datetime', 'timestampAttribute' => 'deadline'],
         ];
     }
 

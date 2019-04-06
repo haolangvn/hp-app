@@ -4,7 +4,7 @@ namespace app\modules\demo\backend\controllers;
 
 use Yii;
 use app\modules\demo\models\Demo;
-use yii\data\ActiveDataProvider;
+use app\modules\demo\models\search\Demo as DemoSearch;
 use common\core\Controller;
 use yii\web\NotFoundHttpException;
 
@@ -19,11 +19,11 @@ class DemoController extends Controller {
      */
     public function actionIndex()
     {
-        $dataProvider = new ActiveDataProvider([
-            'query' => Demo::find(),
-        ]);
+        $searchModel = new DemoSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
+            'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
     }

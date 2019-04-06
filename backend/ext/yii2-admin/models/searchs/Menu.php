@@ -64,7 +64,7 @@ class Menu extends MenuModel
             'desc' => ['parent.order' => SORT_DESC, 't.order' => SORT_DESC],
             'label' => 'order',
         ];
-        $sort->defaultOrder = ['menuParent.name' => SORT_ASC];
+        $sort->defaultOrder = ['menuParent.name' => SORT_ASC, 'order' => SORT_ASC];
 
         if (!($this->load($params) && $this->validate())) {
             return $dataProvider;

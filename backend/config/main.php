@@ -5,20 +5,19 @@ $params = require(__DIR__ . '/params.php');
 $config = [
     'id' => 'app-backend',
     'name' => 'Web Skeleton',
+    'language' => 'en-US', // en-US, vi-VN, ru
     'timeZone' => 'Asia/Ho_Chi_Minh',
-    'language' => 'en', // en, ru
     'basePath' => dirname(__DIR__),
     'vendorPath' => dirname(dirname(__DIR__)) . '/vendor',
     'defaultRoute' => 'main/default/index',
     'aliases' => [
+        '@app' => dirname(dirname(__DIR__)),
         '@bower' => '@vendor/bower',
         '@npm' => '@ext/npm-asset',
         '@hp' => '@ext/hp-main',
         '@mdm/admin' => '@ext/yii2-admin',
         '@modules/system' => '@ext/system',
         '@modules/users' => '@ext/users',
-        '@app' => dirname(dirname(__DIR__)),
-//        '@vova07/imperavi' => '@ext/yii2-imperavi-widget-master/src'
     ],
     'bootstrap' => [
         'log',
@@ -124,10 +123,13 @@ $config = [
             'hidden' => true, // no languages in your url (most case for pages which are not multi lingual)
 //            'default' => ['langShortCode' => 'en'], // the default language for the composition should match your default language shortCode in the language table.
         ],
-//        'formatter' => [
-//            'class' => 'yii\i18n\Formatter',
-//            'defaultTimeZone' => 'Asia/Ho_Chi_Minh',
-//        ],
+        'formatter' => [
+            'locale' => 'vi-VN',
+            // format theo Format ICU
+            // dieu chinh FormatDate sẽ anh huong den tim kiem kieu du lieu date
+            'dateFormat' => 'dd/MM/yyyy',
+            'datetimeFormat' => 'dd/MM/yy, HH:mm',
+        ],
     ],
     'as access' => [
         'class' => '\mdm\admin\components\AccessControl',
