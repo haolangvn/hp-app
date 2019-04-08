@@ -14,8 +14,6 @@ composer.phar
 #/configs/env.php
 
 /backend/ext/npm-*
-/backend/runtime
-/backend/web/assets
 
 # SASS & GULP
 /resources/.sass-cache
@@ -31,6 +29,3 @@ composer.phar
 .buildpath
 .project
 .settings
-
-/public_html/storage2
-/public_html/storage
