@@ -15,7 +15,7 @@ $items = MenuHelper::getAssignedMenu(Yii::$app->user->id, null, function ($menu)
             $con = \yii\helpers\ArrayHelper::getValue($tmp, 2);
 
             if ($mod === $m && $con === $c) {
-//                $active = true;
+                $active = true;
                 $css = 'active ';
             }
 
@@ -23,19 +23,19 @@ $items = MenuHelper::getAssignedMenu(Yii::$app->user->id, null, function ($menu)
                 $css .= 'treeview ';
             }
 
-//            if ($child && !$active) {
-//                foreach ($menu['children'] as $n) {
-//                    $tmp = explode('/', yii\helpers\ArrayHelper::getValue($n['url'], 0));
-//                    $mod = \yii\helpers\ArrayHelper::getValue($tmp, 1);
-//                    $con = \yii\helpers\ArrayHelper::getValue($tmp, 2);
-//
-//                    if ($mod === $m && $con === $c) {
-//                        $css = 'treeview active menu-open';
-//                    }
-//                    
+            if ($child && !$active) {
+                foreach ($menu['children'] as $n) {
+                    $tmp = explode('/', yii\helpers\ArrayHelper::getValue($n['url'], 0));
+                    $mod = \yii\helpers\ArrayHelper::getValue($tmp, 1);
+                    $con = \yii\helpers\ArrayHelper::getValue($tmp, 2);
+
+                    if ($mod === $m && $con === $c) {
+                        $css = 'treeview active menu-open';
+                    }
+                    
 //                    print_r($n['items']);
-//                }
-//            }
+                }
+            }
 
             $icon = 'fa-circle-o';
             if ($menu['icon']) {

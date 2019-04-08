@@ -2,7 +2,6 @@
 
 namespace hp\backend\controllers;
 
-use alexantr\elfinder\ConnectorAction;
 use Yii;
 use common\utils\UShort;
 
@@ -12,19 +11,22 @@ class FileController extends \common\core\Controller {
      * @return array
      */
     public function actions() {
-        $url = UShort::app()->urlManagerFrontend->baseUrl . '/storage/';
+        $url = UShort::app()->urlManagerFrontend->baseUrl . '/storage2/';
+        $filePath = Yii::getAlias('@storage2');
         return [
-            'image-upload' => [
-                'class' => 'vova07\imperavi\actions\UploadFileAction',
-                'url' => $url, // Directory URL address, where files are stored.
-                'path' => Yii::getAlias('@storage'), // Or absolute path to directory where files are stored.
-                'uploadOnlyImage' => true, // For any kind of files uploading.
-            ],
             'files-get' => [
                 'class' => 'vova07\imperavi\actions\GetFilesAction',
                 'url' => $url, // Directory URL address, where files are stored.
-                'path' => Yii::getAlias('@storage'), // Or absolute path to directory where files are stored.
+                'path' => $filePath, // Or absolute path to directory where files are stored.
             ],
+            
+            'image-upload' => [
+                'class' => 'vova07\imperavi\actions\UploadFileAction',
+                'url' => $url, // Directory URL address, where files are stored.
+                'path' => $filePath, // Or absolute path to directory where files are stored.
+                'uploadOnlyImage' => true, // For any kind of files uploading.
+            ],
+            
             'file-upload' => [
                 'class' => 'vova07\imperavi\actions\UploadFileAction',
                 'url' => $url, // Directory URL address, where files are stored.
@@ -36,13 +38,14 @@ class FileController extends \common\core\Controller {
                 'url' => $url, // Directory URL address, where files are stored.
                 'path' => Yii::getAlias('@storage'), // Or absolute path to directory where files are stored.
             ],
+            // Elfinder
             'connector' => [
-                'class' => ConnectorAction::className(),
+                'class' => \alexantr\elfinder\ConnectorAction::className(),
                 'options' => [
                     'roots' => [
                         [
                             'driver' => 'LocalFileSystem',
-                            'path' => Yii::getAlias('@storage'),
+                            'path' => $filePath,
                             'URL' => $url,
                             'mimeDetect' => 'internal',
                             'imgLib' => 'gd',
@@ -55,6 +58,10 @@ class FileController extends \common\core\Controller {
                         ],
                     ],
                 ],
+            ],
+            'input' => [
+                'class' => \alexantr\elfinder\InputFileAction::className(),
+                'connectorRoute' => 'connector',
             ],
         ];
     }
