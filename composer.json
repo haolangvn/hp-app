@@ -1,5 +1,5 @@
 {
-    "name": "hp/webapp-skeleton",
+    "name": "hlv/webapp-skeleton",
     "description": "The kickstarter project for a new LUYA application.",
     "type": "luya-kickstarter",
     "license":"MIT",
