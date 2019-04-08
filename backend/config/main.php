@@ -113,7 +113,7 @@ $config = [
             'class' => 'yii\caching\FileCache',
         ],
         'db' => [
-            'tablePrefix' => 'tbl_'
+            'tablePrefix' => '_'
         ],
         'adminLanguage' => [
             'class' => \luya\admin\components\AdminLanguage::class,

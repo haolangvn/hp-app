@@ -22,7 +22,7 @@ class Translate extends \common\core\ActiveRecord {
      * {@inheritdoc}
      */
     public static function tableName() {
-        return 'tbl_main_translate';
+        return '{{%translate}}';
     }
 
     /**
