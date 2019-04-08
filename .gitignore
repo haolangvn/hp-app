@@ -31,3 +31,6 @@ composer.phar
 .buildpath
 .project
 .settings
+
+/public_html/storage2
+/public_html/storage
