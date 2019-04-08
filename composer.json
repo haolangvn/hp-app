@@ -17,7 +17,8 @@
         "vova07/yii2-imperavi-widget": "*",
         "alexantr/yii2-elfinder": "^1.5",
         "kartik-v/yii2-widget-datetimepicker": "*",
-        "kartik-v/yii2-widget-datepicker": "@dev"
+        "kartik-v/yii2-widget-datepicker": "@dev",
+        "luyadev/luya-module-news": "~1.0.0"
     },
     "require-dev": {
         "yiisoft/yii2-gii" : "~2.0.0",

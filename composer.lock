@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "865e92b228fb8de3def7f8140c01d800",
+    "content-hash": "a663d905cc8ad9447a4324f06eb4205e",
     "packages": [
         {
             "name": "alexantr/yii2-elfinder",
@@ -1114,6 +1114,58 @@
                 "yii2-cms"
             ],
             "time": "2019-02-18T09:55:07+00:00"
+        },
+        {
+            "name": "luyadev/luya-module-news",
+            "version": "1.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/luyadev/luya-module-news.git",
+                "reference": "1fa05f9c4e8a6916e0b61660adb42632eb23e490"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/luyadev/luya-module-news/zipball/1fa05f9c4e8a6916e0b61660adb42632eb23e490",
+                "reference": "1fa05f9c4e8a6916e0b61660adb42632eb23e490",
+                "shasum": ""
+            },
+            "require-dev": {
+                "luyadev/luya-testsuite": "~1.0.0"
+            },
+            "type": "luya-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "luya\\news\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Basil",
+                    "email": "git@nadar.io",
+                    "homepage": "https://github.com/nadar"
+                }
+            ],
+            "description": "The news module will provided you a basic news system with categories and tags.",
+            "homepage": "http://luya.io",
+            "keywords": [
+                "luya",
+                "luya-module",
+                "module",
+                "news",
+                "php",
+                "yii",
+                "yii2"
+            ],
+            "time": "2018-09-04T10:44:50+00:00"
         },
         {
             "name": "phpmailer/phpmailer",

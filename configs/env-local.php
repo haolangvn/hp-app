@@ -63,6 +63,13 @@ $config = [
             'hiddenBlocks' => [],
             'blockVariations' => [],
         ],
+		
+		'news' => [
+			'class' => 'luya\news\frontend\Module',
+			'useAppViewPath' => false, // When enabled the views will be looked up in the @app/views folder, otherwise the views shipped with the module will be used.
+		],
+		'newsadmin' => 'luya\news\admin\Module',
+	
         'demo' => [
             'class' => 'app\modules\demo\frontend\Module',
             'useAppViewPath' => false, // When enabled the views will be looked up in the @app/views folder, otherwise the views shipped with the module will be used.
