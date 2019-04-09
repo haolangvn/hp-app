@@ -26,7 +26,7 @@ class Demo extends NgRestModel {
      * @inheritdoc
      */
     public static function tableName() {
-        return '__demo';
+        return '{{%hp_demo}}';
     }
 
     /**

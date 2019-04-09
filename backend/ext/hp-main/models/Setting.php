@@ -21,7 +21,7 @@ class Setting extends \common\core\ActiveRecord
      */
     public static function tableName()
     {
-        return '{{%setting}}';
+        return '{{%hp_setting}}';
     }
 
     /**

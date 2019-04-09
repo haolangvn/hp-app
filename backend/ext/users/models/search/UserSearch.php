@@ -53,7 +53,7 @@ class UserSearch extends User
     {
         $query = User::find();
         $query->innerJoinWith('profile', 'profile.user_id = id');
-        $query->leftJoin('{{%auth_assignment}}', '{{%auth_assignment}}.user_id = {{%user}}.id');
+        $query->leftJoin('{{%auth_assignment}}', '{{%auth_assignment}}.user_id = {{%auth_user}}.id');
         return $query;
     }
 

@@ -14,7 +14,7 @@ use modules\users\traits\ModuleTrait;
 use modules\users\Module;
 
 /**
- * This is the model class for table "{{%user}}".
+ * This is the model class for table "{{%auth_user}}".
  *
  * @property int $id ID
  * @property string $username Username
@@ -62,7 +62,7 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public static function tableName()
     {
-        return '{{%user}}';
+        return '{{%auth_user}}';
     }
 
     /**

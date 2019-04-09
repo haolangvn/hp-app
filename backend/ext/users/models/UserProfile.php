@@ -8,7 +8,7 @@ use modules\users\traits\ModuleTrait;
 use modules\users\Module;
 
 /**
- * This is the model class for table "{{%user_profile}}".
+ * This is the model class for table "{{%auth_user_profile}}".
  *
  * @property int $id ID
  * @property int $user_id User
@@ -32,7 +32,7 @@ class UserProfile extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return '{{%user_profile}}';
+        return '{{%auth_user_profile}}';
     }
 
     public function behaviors()

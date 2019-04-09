@@ -21,7 +21,7 @@ class m161022_180040_create_table_user extends Migration
             $tableOptions = 'CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE=InnoDB';
         }
 
-        $this->createTable('{{%user}}', [
+        $this->createTable('{{%auth_user}}', [
             'id' => $this->primaryKey()->comment('ID'),
             'username' => $this->string()->notNull()->unique()->comment('Username'),
             'email' => $this->string()->notNull()->unique()->comment('Email'),
@@ -34,7 +34,7 @@ class m161022_180040_create_table_user extends Migration
             'status' => $this->smallInteger()->notNull()->defaultValue(0)->comment('Status'),
         ], $tableOptions);
 
-        $this->createTable('{{%user_profile}}', [
+        $this->createTable('{{%auth_user_profile}}', [
             'id' => $this->primaryKey()->comment('ID'),
             'user_id' => $this->integer()->notNull()->comment('User'),
             'first_name' => $this->string()->comment('First Name'),
@@ -45,8 +45,8 @@ class m161022_180040_create_table_user extends Migration
             'updated_at' => $this->integer()->notNull()->comment('Updated'),
         ], $tableOptions);
 
-        $this->createIndex('IDX_user_profile_user_id', '{{%user_profile}}', 'user_id');
-        $this->addForeignKey('FK-user_profile-user', '{{%user_profile}}', 'user_id', '{{%user}}', 'id', 'CASCADE', 'CASCADE');
+        $this->createIndex('IDX_auth_user_profile_user_id', '{{%auth_user_profile}}', 'user_id');
+        $this->addForeignKey('FK-auth_user_profile-user', '{{%auth_user_profile}}', 'user_id', '{{%auth_user}}', 'id', 'CASCADE', 'CASCADE');
     }
 
     /**
@@ -54,7 +54,7 @@ class m161022_180040_create_table_user extends Migration
      */
     public function safeDown()
     {
-        $this->dropTable('{{%user_profile}}');
-        $this->dropTable('{{%user}}');
+        $this->dropTable('{{%auth_user_profile}}');
+        $this->dropTable('{{%auth_user}}');
     }
 }
