@@ -31,8 +31,7 @@ $config = [
      */
     'basePath' => dirname(__DIR__),
     'aliases' => [
-        '@common' => dirname(__DIR__) . '/common',
-        '@hp/ecommerce' => dirname(__DIR__) . '/packages_dev/hp-e/src',
+        '@common' => dirname(__DIR__) . '/common'
     ],
     'modules' => [
         /*
@@ -65,12 +64,12 @@ $config = [
             'blockVariations' => [],
         ],
 		
-		'news' => [
-			'class' => 'luya\news\frontend\Module',
-			'useAppViewPath' => false, // When enabled the views will be looked up in the @app/views folder, otherwise the views shipped with the module will be used.
-		],
-		'newsadmin' => 'luya\news\admin\Module',
-	
+	'news' => [
+		'class' => 'luya\news\frontend\Module',
+		'useAppViewPath' => false, // When enabled the views will be looked up in the @app/views folder, otherwise the views shipped with the module will be used.
+	],
+	'newsadmin' => 'luya\news\admin\Module',
+
         'demo' => [
             'class' => 'app\modules\demo\frontend\Module',
             'useAppViewPath' => false, // When enabled the views will be looked up in the @app/views folder, otherwise the views shipped with the module will be used.
