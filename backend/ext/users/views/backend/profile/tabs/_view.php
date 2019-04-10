@@ -31,11 +31,11 @@ $this->registerJs(new yii\web\JsExpression("
                 'profile.first_name',
                 'profile.last_name',
                 'email:email',
-                [
-                    'attribute' => 'userRoleName',
-                    'format' => 'raw',
-                    'value' => $assignModel->getRoleName($model->id),
-                ],
+//                [
+//                    'attribute' => 'userRoleName',
+//                    'format' => 'raw',
+//                    'value' => $assignModel->getRoleName($model->id),
+//                ],
                 [
                     'attribute' => 'status',
                     'format' => 'raw',

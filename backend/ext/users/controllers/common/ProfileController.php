@@ -7,7 +7,6 @@ use yii\web\Controller;
 use modules\users\models\User;
 use modules\users\models\UpdatePasswordForm;
 use modules\users\models\UserDeleteForm;
-use modules\rbac\models\Assignment;
 use yii\web\NotFoundHttpException;
 use yii\bootstrap\ActiveForm;
 use yii\web\Response;
@@ -27,12 +26,12 @@ class ProfileController extends Controller
     {
         $model = $this->findModel();
 
-        $assignModel = new Assignment();
-        $assignModel->user = $model;
+//        $assignModel = new Assignment();
+//        $assignModel->user = $model;
 
         return $this->render('index', [
             'model' => $model,
-            'assignModel' => $assignModel,
+//            'assignModel' => $assignModel,
         ]);
     }
 

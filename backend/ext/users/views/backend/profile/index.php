@@ -27,7 +27,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         'label' => Html::encode($this->title),
                         'content' => $this->render('tabs/_view', [
                             'model' => $model,
-                            'assignModel' => $assignModel,
+//                            'assignModel' => $assignModel,
                         ]),
                         'options' => ['id' => 'profile', 'role' => 'tabpanel'],
                         'active' => (!Yii::$app->request->get('tab') || (Yii::$app->request->get('tab') == 'profile')) ? true : false,
