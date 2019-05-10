@@ -13,7 +13,7 @@ use yii\db\ActiveRecord;
  */
 class BlameableBehavior extends Behavior {
 
-    public $insert = ['created_by'];
+    public $insert = ['created_by', 'updated_by'];
     public $update = ['updated_by'];
 
     /**

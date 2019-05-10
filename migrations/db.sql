@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 09, 2019 at 08:22 AM
+-- Generation Time: Apr 10, 2019 at 12:17 PM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 7.2.1
 
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `201902_minus417`
+-- Database: `201904_minus417`
 --
 
 -- --------------------------------------------------------
@@ -68,9 +68,10 @@ INSERT INTO `admin_auth` (`id`, `alias_name`, `module_name`, `is_crud`, `route`,
 (24, 'menu_group_item_env_config', 'cmsadmin', 0, 'cmsadmin/config/index', '0'),
 (25, 'menu_node_cms', 'cmsadmin', 0, 'cmsadmin/default/index', '0'),
 (26, 'menu_group_item_env_permission', 'cmsadmin', 0, 'cmsadmin/permission/index', '0'),
-(27, 'Demo', 'demoadmin', 1, '0', 'api-demo-demo'),
-(28, 'article', 'newsadmin', 1, '0', 'api-news-article'),
-(29, 'cat', 'newsadmin', 1, '0', 'api-news-cat');
+(27, 'article', 'newsadmin', 1, '0', 'api-news-article'),
+(28, 'cat', 'newsadmin', 1, '0', 'api-news-cat'),
+(29, 'Product', 'ecomadmin', 1, '0', 'api-ecom-product'),
+(30, 'Demo', 'demoadmin', 1, '0', 'api-demo-demo');
 
 -- --------------------------------------------------------
 
@@ -91,9 +92,9 @@ CREATE TABLE `admin_config` (
 
 INSERT INTO `admin_config` (`name`, `value`, `is_system`, `id`) VALUES
 ('100genericBlockUpdate', '1', 1, 1),
-('last_import_timestamp', '1554651782', 1, 2),
-('installer_vendor_timestamp', '1554651568', 1, 3),
-('setup_command_timestamp', '1554392103', 1, 4);
+('last_import_timestamp', '1554891339', 1, 2),
+('installer_vendor_timestamp', '1554719163', 1, 3),
+('setup_command_timestamp', '1554891375', 1, 4);
 
 -- --------------------------------------------------------
 
@@ -145,7 +146,6 @@ INSERT INTO `admin_group_auth` (`group_id`, `auth_id`, `crud_create`, `crud_upda
 (1, 9, 1, 1, 1),
 (1, 10, 1, 1, 1),
 (1, 11, 1, 1, 1),
-(1, 12, 1, 1, 1),
 (1, 13, 1, 1, 1),
 (1, 14, 1, 1, 1),
 (1, 15, 1, 1, 1),
@@ -153,16 +153,18 @@ INSERT INTO `admin_group_auth` (`group_id`, `auth_id`, `crud_create`, `crud_upda
 (1, 17, 1, 1, 1),
 (1, 18, 1, 1, 1),
 (1, 19, 1, 1, 1),
-(1, 20, 1, 1, 1),
-(1, 21, 1, 1, 1),
-(1, 22, 1, 1, 1),
-(1, 23, 1, 1, 1),
-(1, 24, 1, 1, 1),
-(1, 25, 1, 1, 1),
-(1, 26, 1, 1, 1),
 (1, 27, 1, 1, 1),
 (1, 28, 1, 1, 1),
-(1, 29, 1, 1, 1);
+(1, 29, 1, 1, 1),
+(1, 30, 1, 1, 1),
+(1, 12, 1, 1, 1),
+(1, 24, 1, 1, 1),
+(1, 25, 1, 1, 1),
+(1, 20, 1, 1, 1),
+(1, 22, 1, 1, 1),
+(1, 23, 1, 1, 1),
+(1, 21, 1, 1, 1),
+(1, 26, 1, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -183,9 +185,7 @@ CREATE TABLE `admin_lang` (
 --
 
 INSERT INTO `admin_lang` (`id`, `name`, `short_code`, `is_default`, `is_deleted`) VALUES
-(1, 'English', 'en', 0, 0),
-(2, 'Tiếng Việt', 'vn', 1, 0),
-(3, 'Ru', 'ru', 0, 1);
+(1, 'English', 'en', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -230,51 +230,6 @@ CREATE TABLE `admin_ngrest_log` (
   `table_name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `is_delete` tinyint(1) DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Dumping data for table `admin_ngrest_log`
---
-
-INSERT INTO `admin_ngrest_log` (`id`, `user_id`, `timestamp_create`, `route`, `api`, `is_update`, `is_insert`, `attributes_json`, `attributes_diff_json`, `pk_value`, `table_name`, `is_delete`) VALUES
-(1, 1, 1554432774, '', 'api-demo-demo', 1, 0, '{\"id\":1,\"name\":\"Ten_______\",\"desc\":\"MOta\",\"created_at\":1554357600}', '{\"name\":\"Ten\"}', '1', '1_demo', 0),
-(2, 1, 1554448403, '', 'api-admin-lang', 0, 1, '{\"id\":2,\"name\":\"Tiếng Việt\",\"short_code\":\"vi\",\"is_default\":\"0\",\"is_deleted\":null}', NULL, '2', 'admin_lang', 0),
-(3, 1, 1554449125, '', 'api-demo-demo', 0, 1, '{\"id\":4,\"name\":\"{\\\"en\\\":\\\"eee\\\"}\",\"desc\":\"{\\\"en\\\":\\\"eeeeee\\\"}\",\"created_at\":null,\"updated_at\":null,\"created_by\":null,\"updated_by\":null}', NULL, '4', '1_demo', 0),
-(4, 1, 1554449313, '', 'api-demo-demo', 1, 0, '{\"id\":4,\"name\":\"{\\\"en\\\":\\\"eee\\\",\\\"vi\\\":\\\"\\\"}\",\"desc\":\"{\\\"en\\\":\\\"eeeeee222222\\\",\\\"vi\\\":\\\"\\\"}\",\"created_at\":0,\"updated_at\":0,\"created_by\":0,\"updated_by\":0}', '{\"name\":\"{\\\"en\\\":\\\"eee\\\"}\",\"desc\":\"{\\\"en\\\":\\\"eeeeee\\\"}\"}', '4', '1_demo', 0),
-(5, 1, 1554449451, '', 'api-demo-demo', 1, 0, '{\"id\":4,\"name\":\"{\\\"en\\\":\\\"English\\\",\\\"vi\\\":\\\"Tiếng Việt\\\"}\",\"desc\":\"{\\\"en\\\":\\\"EnglishEnglishEnglishEnglishEnglish\\\",\\\"vi\\\":\\\"Tiếng ViệtTiếng Việt\\\"}\",\"created_at\":0,\"updated_at\":0,\"created_by\":0,\"updated_by\":0}', '{\"name\":\"{\\\"en\\\":\\\"eee\\\",\\\"vi\\\":\\\"\\\"}\",\"desc\":\"{\\\"en\\\":\\\"eeeeee222222\\\",\\\"vi\\\":\\\"\\\"}\"}', '4', '1_demo', 0),
-(6, 1, 1554450485, '', 'api-admin-lang', 1, 0, '{\"id\":2,\"name\":\"Tiếng Việt\",\"short_code\":\"vi\",\"is_default\":1,\"is_deleted\":0}', '{\"is_default\":null}', '2', 'admin_lang', 0),
-(7, 1, 1554451024, '', 'api-admin-lang', 1, 0, '{\"id\":2,\"name\":\"Tiếng Việt\",\"short_code\":\"vn\",\"is_default\":1,\"is_deleted\":0}', '{\"short_code\":\"vi\",\"is_default\":null}', '2', 'admin_lang', 0),
-(8, 1, 1554451069, '', 'api-admin-lang', 1, 0, '{\"id\":2,\"name\":\"Tiếng Việt\",\"short_code\":\"vi\",\"is_default\":1,\"is_deleted\":0}', '{\"short_code\":\"vn\",\"is_default\":null}', '2', 'admin_lang', 0),
-(9, 1, 1554451080, '', 'api-admin-lang', 1, 0, '{\"id\":2,\"name\":\"Tiếng Việt\",\"short_code\":\"vn\",\"is_default\":1,\"is_deleted\":0}', '{\"short_code\":\"vi\",\"is_default\":null}', '2', 'admin_lang', 0),
-(10, 1, 1554451535, '', 'api-admin-lang', 1, 0, '{\"id\":1,\"name\":\"English\",\"short_code\":\"en\",\"is_default\":1,\"is_deleted\":0}', '{\"is_default\":null}', '1', 'admin_lang', 0),
-(11, 1, 1554451672, '', 'api-admin-lang', 0, 1, '{\"id\":3,\"name\":\"Ru\",\"short_code\":\"ru\",\"is_default\":\"0\",\"is_deleted\":null}', NULL, '3', 'admin_lang', 0),
-(12, 1, 1554452148, '', 'api-admin-lang', 0, 0, '{\"id\":3,\"name\":\"Ru\",\"short_code\":\"ru\",\"is_default\":0,\"is_deleted\":true}', NULL, '3', 'admin_lang', 1),
-(13, 1, 1554452561, '', 'api-demo-demo', 1, 0, '{\"id\":4,\"name\":\"{\\\"en\\\":\\\"English\\\",\\\"vi\\\":\\\"Tiếng Việt\\\",\\\"vn\\\":\\\"Tiếng Việt\\\"}\",\"desc\":\"{\\\"en\\\":\\\"EnglishEnglishEnglishEnglishEnglish\\\",\\\"vi\\\":\\\"Tiếng ViệtTiếng Việt\\\",\\\"vn\\\":\\\"Tiếng Việt\\\"}\",\"created_at\":0,\"updated_at\":1554452560,\"created_by\":0,\"updated_by\":null}', '{\"name\":\"{\\\"en\\\":\\\"English\\\",\\\"vi\\\":\\\"Tiếng Việt\\\"}\",\"desc\":\"{\\\"en\\\":\\\"EnglishEnglishEnglishEnglishEnglish\\\",\\\"vi\\\":\\\"Tiếng ViệtTiếng Việt\\\"}\",\"updated_at\":0,\"updated_by\":0}', '4', '1_demo', 0),
-(14, 1, 1554452590, '', 'api-demo-demo', 1, 0, '{\"id\":4,\"name\":\"{\\\"en\\\":\\\"English\\\",\\\"vi\\\":\\\"Tiếng Việt\\\",\\\"vn\\\":\\\"Tiếng Việt\\\"}\",\"desc\":\"{\\\"en\\\":\\\"EnglishEnglishEnglishEnglishEnglish\\\",\\\"vi\\\":\\\"Tiếng ViệtTiếng Việt\\\",\\\"vn\\\":\\\"Tiếng Việt\\\"}\",\"created_at\":0,\"updated_at\":1554452590,\"created_by\":0,\"updated_by\":1}', '{\"updated_at\":1554452560,\"updated_by\":0}', '4', '1_demo', 0),
-(15, 1, 1554455754, '', 'api-demo-demo', 1, 0, '{\"id\":4,\"name\":\"{\\\"en\\\":\\\"English\\\",\\\"vi\\\":\\\"Tiếng Việt\\\",\\\"vn\\\":\\\"Tiếng Việt\\\"}\",\"desc\":\"{\\\"en\\\":\\\"EnglishEnglishEnglishEnglishEnglish\\\",\\\"vi\\\":\\\"Tiếng ViệtTiếng Việt\\\",\\\"vn\\\":\\\"Tiếng Việt\\\"}\",\"created_at\":0,\"updated_at\":1554452590,\"created_by\":0,\"updated_by\":1}', '[]', '4', '1_demo', 0),
-(16, 1, 1554456833, '', 'api-demo-demo', 1, 0, '{\"id\":4,\"name\":\"{\\\"en\\\":\\\"English\\\",\\\"vi\\\":\\\"Tiếng Việt\\\",\\\"vn\\\":\\\"Tiếng Việt\\\"}\",\"desc\":\"{\\\"en\\\":\\\"EnglishEnglishEnglishEnglishEnglish\\\",\\\"vi\\\":\\\"Tiếng ViệtTiếng Việt\\\",\\\"vn\\\":\\\"Tiếng Việt\\\"}\",\"created_at\":0,\"updated_at\":1554456833,\"created_by\":0,\"updated_by\":1}', '{\"updated_at\":1554452590}', '4', '1_demo', 0),
-(17, 1, 1554456878, '', 'api-demo-demo', 1, 0, '{\"id\":4,\"name\":\"{\\\"en\\\":\\\"English\\\",\\\"vi\\\":\\\"Tiếng Việt\\\",\\\"vn\\\":\\\"Tiếng Việt\\\"}\",\"desc\":\"{\\\"en\\\":\\\"EnglishEnglishEnglishEnglishEnglish\\\",\\\"vi\\\":\\\"Tiếng ViệtTiếng Việt\\\",\\\"vn\\\":\\\"Tiếng Việt\\\"}\",\"created_at\":0,\"updated_at\":1554456878,\"created_by\":0,\"updated_by\":1}', '{\"updated_at\":1554456833}', '4', '1_demo', 0),
-(18, 1, 1554456917, '', 'api-demo-demo', 0, 1, '{\"id\":5,\"name\":\"{\\\"en\\\":\\\"Item\\\"}\",\"desc\":\"{\\\"en\\\":\\\"Item\\\"}\",\"created_at\":1554456917,\"updated_at\":1554456917,\"created_by\":1,\"updated_by\":null}', NULL, '5', '1_demo', 0),
-(19, 1, 1554457530, '', 'api-demo-demo', 1, 0, '{\"id\":5,\"name\":\"{\\\"en\\\":\\\"English\\\",\\\"vn\\\":\\\"Tiếng Việt\\\"}\",\"desc\":\"{\\\"en\\\":\\\"English\\\",\\\"vn\\\":\\\"Tiếng Việt\\\"}\",\"created_at\":1554456917,\"updated_at\":1554457530,\"created_by\":1,\"updated_by\":1}', '{\"name\":\"{\\\"en\\\":\\\"Item\\\"}\",\"desc\":\"{\\\"en\\\":\\\"Item\\\"}\",\"updated_at\":1554456917,\"updated_by\":0}', '5', '1_demo', 0),
-(20, 1, 1554457556, '', 'api-admin-lang', 1, 0, '{\"id\":2,\"name\":\"Tiếng Việt\",\"short_code\":\"vn\",\"is_default\":1,\"is_deleted\":0}', '{\"is_default\":null}', '2', 'admin_lang', 0),
-(21, 1, 1554457799, '', 'api-demo-demo', 1, 0, '{\"id\":5,\"name\":\"{\\\"en\\\":\\\"English\\\",\\\"vn\\\":\\\"Tiếng Việt\\\"}\",\"desc\":\"{\\\"en\\\":\\\"English\\\",\\\"vn\\\":\\\"Tiếng Việt\\\"}\",\"created_at\":1554456917,\"updated_at\":1554457799,\"created_by\":1,\"updated_by\":1}', '{\"name\":\"English\",\"desc\":\"English 2\",\"updated_at\":1554457577,\"updated_by\":0}', '5', '1_demo', 0),
-(22, 1, 1554471719, '', '', 0, 1, '{\"id\":1,\"name\":\"products\",\"parent_id\":0,\"timestamp_create\":1554471719,\"is_deleted\":null}', NULL, '1', 'admin_storage_folder', 0),
-(23, 1, 1554471815, '', '', 0, 1, '{\"id\":1,\"is_hidden\":false,\"folder_id\":1,\"name_original\":\"5.png\",\"name_new\":\"5\",\"name_new_compound\":\"5_03b15e7b.png\",\"mime_type\":\"image/png\",\"extension\":\"png\",\"hash_file\":\"4cffdb2ac7dc60265c228a0205e2acdd\",\"hash_name\":\"03b15e7b\",\"upload_timestamp\":1554471815,\"file_size\":143914,\"upload_user_id\":1,\"is_deleted\":false,\"passthrough_file\":null,\"passthrough_file_password\":null,\"passthrough_file_stats\":null,\"caption\":null,\"inline_disposition\":null}', NULL, '1', 'admin_storage_file', 0),
-(24, 1, 1554471892, '', '', 0, 1, '{\"id\":2,\"is_hidden\":false,\"folder_id\":1,\"name_original\":\"1.jpg\",\"name_new\":\"1\",\"name_new_compound\":\"1_2d81ae5c.jpg\",\"mime_type\":\"image/jpeg\",\"extension\":\"jpg\",\"hash_file\":\"c18fcebeabb347c07ccb9c586f6c70b1\",\"hash_name\":\"2d81ae5c\",\"upload_timestamp\":1554471892,\"file_size\":105960,\"upload_user_id\":1,\"is_deleted\":false,\"passthrough_file\":null,\"passthrough_file_password\":null,\"passthrough_file_stats\":null,\"caption\":null,\"inline_disposition\":null}', NULL, '2', 'admin_storage_file', 0),
-(25, 1, 1554471901, '', '', 0, 1, '{\"id\":3,\"is_hidden\":false,\"folder_id\":1,\"name_original\":\"1.png\",\"name_new\":\"1\",\"name_new_compound\":\"1_a2f3ed50.png\",\"mime_type\":\"image/png\",\"extension\":\"png\",\"hash_file\":\"e57684a8e54ced41a6177c37b23ae844\",\"hash_name\":\"a2f3ed50\",\"upload_timestamp\":1554471901,\"file_size\":132439,\"upload_user_id\":1,\"is_deleted\":false,\"passthrough_file\":null,\"passthrough_file_password\":null,\"passthrough_file_stats\":null,\"caption\":null,\"inline_disposition\":null}', NULL, '3', 'admin_storage_file', 0),
-(26, 1, 1554471901, '', '', 0, 1, '{\"id\":4,\"is_hidden\":false,\"folder_id\":1,\"name_original\":\"2.png\",\"name_new\":\"2\",\"name_new_compound\":\"2_6087696b.png\",\"mime_type\":\"image/png\",\"extension\":\"png\",\"hash_file\":\"25628c5a249cf0eccf75cb995998b9e5\",\"hash_name\":\"6087696b\",\"upload_timestamp\":1554471901,\"file_size\":158582,\"upload_user_id\":1,\"is_deleted\":false,\"passthrough_file\":null,\"passthrough_file_password\":null,\"passthrough_file_stats\":null,\"caption\":null,\"inline_disposition\":null}', NULL, '4', 'admin_storage_file', 0),
-(27, 1, 1554471943, '', '', 0, 1, '{\"id\":5,\"is_hidden\":false,\"folder_id\":0,\"name_original\":\"tbl_promotion_product.xlsx\",\"name_new\":\"tbl-promotion-product\",\"name_new_compound\":\"tbl-promotion-product_c539eea8.xlsx\",\"mime_type\":\"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet\",\"extension\":\"xlsx\",\"hash_file\":\"02a8e6b1e5b1b8e62362029fc2bddf7d\",\"hash_name\":\"c539eea8\",\"upload_timestamp\":1554471943,\"file_size\":14392,\"upload_user_id\":1,\"is_deleted\":false,\"passthrough_file\":null,\"passthrough_file_password\":null,\"passthrough_file_stats\":null,\"caption\":null,\"inline_disposition\":null}', NULL, '5', 'admin_storage_file', 0),
-(28, 1, 1554472079, '', '', 0, 0, '{\"id\":5,\"is_hidden\":0,\"folder_id\":0,\"name_original\":\"tbl_promotion_product.xlsx\",\"name_new\":\"tbl-promotion-product\",\"name_new_compound\":\"tbl-promotion-product_c539eea8.xlsx\",\"mime_type\":\"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet\",\"extension\":\"xlsx\",\"hash_file\":\"02a8e6b1e5b1b8e62362029fc2bddf7d\",\"hash_name\":\"c539eea8\",\"upload_timestamp\":1554471943,\"file_size\":14392,\"upload_user_id\":1,\"is_deleted\":true,\"passthrough_file\":0,\"passthrough_file_password\":null,\"passthrough_file_stats\":0,\"caption\":null,\"inline_disposition\":0}', NULL, '5', 'admin_storage_file', 1),
-(29, 1, 1554651868, '', 'api-news-cat', 0, 1, '{\"id\":1,\"title\":\"{\\\"vn\\\":\\\"Thời sự\\\"}\"}', NULL, '1', 'news_cat', 0),
-(30, 1, 1554651878, '', 'api-news-cat', 0, 1, '{\"id\":2,\"title\":\"{\\\"vn\\\":\\\"Đời sống\\\"}\"}', NULL, '2', 'news_cat', 0),
-(31, 1, 1554652000, '', 'api-news-cat', 1, 0, '{\"id\":2,\"title\":\"{\\\"vn\\\":\\\"Đời sống\\\",\\\"en\\\":\\\"Life\\\"}\"}', '{\"title\":\"{\\\"vn\\\":\\\"Đời sống\\\"}\"}', '2', 'news_cat', 0),
-(32, 1, 1554652006, '', 'api-news-cat', 1, 0, '{\"id\":1,\"title\":\"{\\\"vn\\\":\\\"Thời sự\\\",\\\"en\\\":\\\"News\\\"}\"}', '{\"title\":\"{\\\"vn\\\":\\\"Thời sự\\\"}\"}', '1', 'news_cat', 0),
-(33, 1, 1554652112, '', 'api-news-article', 0, 1, '{\"id\":1,\"title\":\"{\\\"en\\\":\\\"2222222222\\\",\\\"vn\\\":\\\"333333333\\\"}\",\"text\":\"{\\\"en\\\":\\\"222222222222222\\\",\\\"vn\\\":\\\"3333333333333333333333\\\"}\",\"cat_id\":1,\"image_id\":9,\"image_list\":\"{\\\"en\\\":[{\\\"imageId\\\":10,\\\"caption\\\":\\\"\\\"}],\\\"vn\\\":[]}\",\"file_list\":\"[{\\\"fileId\\\":0,\\\"caption\\\":\\\"\\\"}]\",\"create_user_id\":1,\"update_user_id\":1,\"timestamp_create\":1554652112,\"timestamp_update\":1554652112,\"timestamp_display_from\":1554652112,\"timestamp_display_until\":null,\"is_deleted\":null,\"is_display_limit\":0,\"teaser_text\":\"{\\\"en\\\":\\\"222222222222222222222\\\",\\\"vn\\\":\\\"3333333333333\\\"}\"}', NULL, '1', 'news_article', 0),
-(34, 1, 1554652291, '', 'api-admin-tag', 0, 1, '{\"id\":1,\"name\":\"chanel\"}', NULL, '1', 'admin_tag', 0),
-(35, 1, 1554652297, '', 'api-admin-tag', 0, 1, '{\"id\":2,\"name\":\"news\"}', NULL, '2', 'admin_tag', 0),
-(36, 1, 1554652699, '', 'api-news-article', 1, 0, '{\"id\":1,\"title\":\"{\\\"en\\\":\\\"2222222222\\\",\\\"vn\\\":\\\"\\\"}\",\"text\":\"{\\\"en\\\":\\\"222222222222222\\\",\\\"vn\\\":\\\"\\\"}\",\"cat_id\":1,\"image_id\":9,\"image_list\":\"{\\\"en\\\":[{\\\"imageId\\\":10,\\\"caption\\\":\\\"\\\"}],\\\"vn\\\":[]}\",\"file_list\":\"[{\\\"fileId\\\":0,\\\"caption\\\":\\\"\\\"}]\",\"create_user_id\":1,\"update_user_id\":1,\"timestamp_create\":1554652112,\"timestamp_update\":1554652699,\"timestamp_display_from\":1554652112,\"timestamp_display_until\":null,\"is_deleted\":0,\"is_display_limit\":0,\"teaser_text\":\"{\\\"en\\\":\\\"222222222222222222222\\\",\\\"vn\\\":\\\"\\\"}\"}', '{\"title\":\"{\\\"en\\\":\\\"2222222222\\\",\\\"vn\\\":\\\"333333333\\\"}\",\"text\":\"{\\\"en\\\":\\\"222222222222222\\\",\\\"vn\\\":\\\"3333333333333333333333\\\"}\",\"timestamp_update\":1554652112,\"teaser_text\":\"{\\\"en\\\":\\\"222222222222222222222\\\",\\\"vn\\\":\\\"3333333333333\\\"}\"}', '1', 'news_article', 0),
-(37, 1, 1554693287, '', '', 0, 1, '{\"id\":6,\"is_hidden\":false,\"folder_id\":1,\"name_original\":\"tbl_promotion_product.xlsx\",\"name_new\":\"tbl-promotion-product\",\"name_new_compound\":\"tbl-promotion-product_0f8dc846.xlsx\",\"mime_type\":\"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet\",\"extension\":\"xlsx\",\"hash_file\":\"02a8e6b1e5b1b8e62362029fc2bddf7d\",\"hash_name\":\"0f8dc846\",\"upload_timestamp\":1554693287,\"file_size\":14392,\"upload_user_id\":1,\"is_deleted\":false,\"passthrough_file\":null,\"passthrough_file_password\":null,\"passthrough_file_stats\":null,\"caption\":null,\"inline_disposition\":null}', NULL, '6', 'admin_storage_file', 0),
-(38, 1, 1554693305, '', '', 0, 0, '{\"id\":6,\"is_hidden\":0,\"folder_id\":1,\"name_original\":\"tbl_promotion_product.xlsx\",\"name_new\":\"tbl-promotion-product\",\"name_new_compound\":\"tbl-promotion-product_0f8dc846.xlsx\",\"mime_type\":\"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet\",\"extension\":\"xlsx\",\"hash_file\":\"02a8e6b1e5b1b8e62362029fc2bddf7d\",\"hash_name\":\"0f8dc846\",\"upload_timestamp\":1554693287,\"file_size\":14392,\"upload_user_id\":1,\"is_deleted\":true,\"passthrough_file\":0,\"passthrough_file_password\":null,\"passthrough_file_stats\":0,\"caption\":null,\"inline_disposition\":0}', NULL, '6', 'admin_storage_file', 1),
-(39, 1, 1554696049, '', 'api-admin-user', 0, 1, '{\"id\":2,\"firstname\":\"TGNH\",\"lastname\":\"Mr\",\"title\":1,\"email\":\"admin@thegioinuochoa.com.vn\",\"password\":\"$2y$13$MRNR0BFksdt5PWVwx03UD.Wj/Y4RhfQ3/0cbdtGnjwDaEDXIpGom.\",\"password_salt\":\"rx2i3URKC1XTP4lZ-tNX2jWXN7n-ecOG\",\"auth_token\":\"558b22203f6c7d9834342acf9d48ab8ff1bac269b401b1fdeec1366d137572cdi4STsbCyxsz_F5TWvH9wYpSIinJIMBAJ\",\"is_deleted\":false,\"secure_token\":null,\"secure_token_timestamp\":null,\"force_reload\":null,\"settings\":null,\"cookie_token\":null,\"is_api_user\":null,\"api_rate_limit\":null,\"api_allowed_ips\":null,\"api_last_activity\":null,\"email_verification_token\":null,\"email_verification_token_timestamp\":null,\"login_attempt\":null,\"login_attempt_lock_expiration\":null}', NULL, '2', 'admin_user', 0);
 
 -- --------------------------------------------------------
 
@@ -391,18 +346,6 @@ CREATE TABLE `admin_storage_file` (
   `inline_disposition` tinyint(1) DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
---
--- Dumping data for table `admin_storage_file`
---
-
-INSERT INTO `admin_storage_file` (`id`, `is_hidden`, `folder_id`, `name_original`, `name_new`, `name_new_compound`, `mime_type`, `extension`, `hash_file`, `hash_name`, `upload_timestamp`, `file_size`, `upload_user_id`, `is_deleted`, `passthrough_file`, `passthrough_file_password`, `passthrough_file_stats`, `caption`, `inline_disposition`) VALUES
-(1, 0, 1, '5.png', '5', '5_03b15e7b.png', 'image/png', 'png', '4cffdb2ac7dc60265c228a0205e2acdd', '03b15e7b', 1554471815, 143914, 1, 0, 0, NULL, 0, NULL, 0),
-(2, 0, 1, '1.jpg', '1', '1_2d81ae5c.jpg', 'image/jpeg', 'jpg', 'c18fcebeabb347c07ccb9c586f6c70b1', '2d81ae5c', 1554471892, 105960, 1, 0, 0, NULL, 0, NULL, 0),
-(3, 0, 1, '1.png', '1', '1_a2f3ed50.png', 'image/png', 'png', 'e57684a8e54ced41a6177c37b23ae844', 'a2f3ed50', 1554471901, 132439, 1, 0, 0, NULL, 0, NULL, 0),
-(4, 0, 1, '2.png', '2', '2_6087696b.png', 'image/png', 'png', '25628c5a249cf0eccf75cb995998b9e5', '6087696b', 1554471901, 158582, 1, 0, 0, NULL, 0, NULL, 0),
-(5, 0, 0, 'tbl_promotion_product.xlsx', 'tbl-promotion-product', 'tbl-promotion-product_c539eea8.xlsx', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', 'xlsx', '02a8e6b1e5b1b8e62362029fc2bddf7d', 'c539eea8', 1554471943, 14392, 1, 1, 0, NULL, 0, NULL, 0),
-(6, 0, 1, 'tbl_promotion_product.xlsx', 'tbl-promotion-product', 'tbl-promotion-product_0f8dc846.xlsx', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', 'xlsx', '02a8e6b1e5b1b8e62362029fc2bddf7d', '0f8dc846', 1554693287, 14392, 1, 1, 0, NULL, 0, NULL, 0);
-
 -- --------------------------------------------------------
 
 --
@@ -473,13 +416,6 @@ CREATE TABLE `admin_storage_folder` (
   `is_deleted` tinyint(1) DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
---
--- Dumping data for table `admin_storage_folder`
---
-
-INSERT INTO `admin_storage_folder` (`id`, `name`, `parent_id`, `timestamp_create`, `is_deleted`) VALUES
-(1, 'products', 0, 1554471719, 0);
-
 -- --------------------------------------------------------
 
 --
@@ -494,24 +430,6 @@ CREATE TABLE `admin_storage_image` (
   `resolution_height` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
---
--- Dumping data for table `admin_storage_image`
---
-
-INSERT INTO `admin_storage_image` (`id`, `file_id`, `filter_id`, `resolution_width`, `resolution_height`) VALUES
-(1, 1, 8, 40, 40),
-(2, 1, 4, 300, 300),
-(3, 2, 8, 40, 40),
-(4, 2, 4, 300, 300),
-(5, 3, 8, 40, 40),
-(6, 3, 4, 300, 300),
-(7, 4, 8, 40, 40),
-(8, 4, 4, 300, 300),
-(9, 2, 0, 1200, 1200),
-(10, 4, 0, 360, 360),
-(11, 2, 3, 300, 300),
-(12, 3, 0, 360, 360);
-
 -- --------------------------------------------------------
 
 --
@@ -522,14 +440,6 @@ CREATE TABLE `admin_tag` (
   `id` int(11) NOT NULL,
   `name` varchar(120) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Dumping data for table `admin_tag`
---
-
-INSERT INTO `admin_tag` (`id`, `name`) VALUES
-(1, 'chanel'),
-(2, 'news');
 
 -- --------------------------------------------------------
 
@@ -542,13 +452,6 @@ CREATE TABLE `admin_tag_relation` (
   `table_name` varchar(120) COLLATE utf8_unicode_ci NOT NULL,
   `pk_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Dumping data for table `admin_tag_relation`
---
-
-INSERT INTO `admin_tag_relation` (`tag_id`, `table_name`, `pk_id`) VALUES
-(1, 'news_article', 1);
 
 -- --------------------------------------------------------
 
@@ -586,8 +489,8 @@ CREATE TABLE `admin_user` (
 --
 
 INSERT INTO `admin_user` (`id`, `firstname`, `lastname`, `title`, `email`, `password`, `password_salt`, `auth_token`, `is_deleted`, `secure_token`, `secure_token_timestamp`, `force_reload`, `settings`, `cookie_token`, `is_api_user`, `api_rate_limit`, `api_allowed_ips`, `api_last_activity`, `email_verification_token`, `email_verification_token_timestamp`, `login_attempt`, `login_attempt_lock_expiration`) VALUES
-(1, 'Hao', 'Lang', 1, 'haolangvn@gmail.com', '$2y$13$gQkIjQ/gJ2fRAvt9AnA2oeAsVx9/V573aabAVbUzPAM4zIj34arAO', '-XxkbqHE6MtMBtgL2Zk3j_TAqjpz8nNg', 'a20ea9e5a7611a023510b7e187d72e2e0914a486107eab5b40bd99973353025cWWPIcm1t-HVYuaCv4pQCxT8wQEgx7AGf', 0, NULL, 0, 0, '{\"ngrestorder\":{\"admin/api-demo-demo\":{\"sort\":3,\"field\":\"id\"}},\"togglecat\":{\"1\":0},\"filemanagerFolderId\":1}', NULL, 0, NULL, NULL, 1554788667, NULL, NULL, 0, NULL),
-(2, 'TGNH', 'Mr', 1, 'admin@thegioinuochoa.com.vn', '$2y$13$MRNR0BFksdt5PWVwx03UD.Wj/Y4RhfQ3/0cbdtGnjwDaEDXIpGom.', 'rx2i3URKC1XTP4lZ-tNX2jWXN7n-ecOG', '558b22203f6c7d9834342acf9d48ab8ff1bac269b401b1fdeec1366d137572cdi4STsbCyxsz_F5TWvH9wYpSIinJIMBAJ', 0, NULL, 0, 0, NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+(1, 'Hao', 'Lang', 1, 'haolangvn@gmail.com', '$2y$13$EXcxy.rxR2TYcamGKAn5q.1LrSyGCGeIsZ7GzIqBXYwYA6fv9TYe6', 'yxwoIOSCrayboFgSootEj8jfUkP-2WsB', NULL, 0, NULL, 0, 0, NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(2, 'TG', 'NH', 1, 'admin@thegioinuochoa.com.vn', '$2y$13$RUKCktoENIyH/rrTMlxKyehBR15ruAyJM3IyupUxBsUlg9h6kBl/O', 'D951HHp3DxSMAaa8dmebvin5mWLhcfUT', NULL, 0, NULL, 0, 0, NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -606,7 +509,8 @@ CREATE TABLE `admin_user_group` (
 --
 
 INSERT INTO `admin_user_group` (`id`, `user_id`, `group_id`) VALUES
-(1, 1, 1);
+(1, 1, 1),
+(2, 2, 1);
 
 -- --------------------------------------------------------
 
@@ -622,29 +526,6 @@ CREATE TABLE `admin_user_login` (
   `ip` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
   `is_destroyed` tinyint(1) DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Dumping data for table `admin_user_login`
---
-
-INSERT INTO `admin_user_login` (`id`, `user_id`, `timestamp_create`, `auth_token`, `ip`, `is_destroyed`) VALUES
-(1, 1, 1554392161, '755a85aeb232b0cf1235efebf32e5806c77b7056baa7e8c28ed7cd7e9fa937a6Deg-_JPY2wJYXN0g473FOMti8OTneX1T', '::1', 1),
-(2, 1, 1554432254, 'f80ddde1a2d1c8235c4846ae8b768ff560469064df2865c3b09675dac241434bFCZZq57j06JQOoKn_Y8ryofram3Tdf-C', '::1', 1),
-(3, 1, 1554446811, '4fd7f8716fdedc88e1afb4dbdf5ea2024f8c18c14b10299053f0158f5638a87f4n5eSQBF-C5xA8v-8mFliiOkSjRYvlMI', '::1', 1),
-(4, 1, 1554454990, '9b22b1144b127935909ccad4d7625a02159e1e1b54546d5c88f16adb0c4daa783tKgPyiY_3lpqrswBOT7YTObxgV2mJLq', '::1', 1),
-(5, 1, 1554455057, 'a23e79a09262cf00d9c9df860e1ae874bd927d0bcb46012de885ae0a313f85b9uUPgUr4kFhvisqBPcZEaHQrYOdj45xIE', '::1', 1),
-(6, 1, 1554456082, '32989325b63e25d1a00cde967dfbb8efab9d7ccc87738aba85e3d886d05e4c60kqzVthjhdMXUPkozeGwaqgk0IzU-KBkG', '::1', 1),
-(7, 1, 1554461478, 'eef0d315e6fb67dfc99165257f346dddb7e2eb9a81f4cc4b4764bc11f955d568SEIC_fp1P8JJIW_XnyY5vK1DQPAWRW1K', '::1', 1),
-(8, 1, 1554474599, '3f6cb5f95d2d4050d9a87290dc167a85778efcb7d901b17730a8fc7310b20003-vC05QJzhc9jWNnjkbPnhGmXNVYLiK7B', '::1', 1),
-(9, 1, 1554517569, '1fe018a92e7eb66e73b0486da9e8784214ce0efc5eab4b58b52d4f80b26645e0zOpdOXOtrNBvEstR-ZxQ9LXlDfGSzTNr', '::1', 1),
-(10, 1, 1554569230, '296def0ae932eadf01c5224348076bb4b38cff1ceeff6d700c7c10757dc10cf5DlyBvqXoKGwntT_hv9c3HeQ2xMqox85k', '::1', 1),
-(11, 1, 1554612393, '8e7371ac9fb163fbad0b3b447a6afca85fbc0ec30d87b361335dd3b883167444994BIqRCZ4gMUa89jlrsmU2dv7ZJDTiU', '::1', 1),
-(12, 1, 1554616434, '817858fd5258c4103997bfb14dc5a96b216ff40910b80db706ac587cc1636723diC-5Ae8DHW5m3S1YaAQpGpetQ-lAewt', '::1', 1),
-(13, 1, 1554644548, '509b911d700aa42a06da83772042eb50805e7b09d11d626bb879a733776b0c4emmN96Rl-vcAtbsnfCKwlqao7bSSC0MtH', '::1', 1),
-(14, 1, 1554651737, '2b9b5ea8693013c878be37fc484a5909c8deb1613072087df7a7adfac2822e3ffBuywkAL8PKJkU5qBaIf_TcXjIyHcPZS', '::1', 1),
-(15, 1, 1554693131, '6531a1026295f4ef29719ffd34d6f8a9312713cfb5977b836a2bed587e1053171Ta0Cwo6J-QzgP014jPFy2sUtaYgNxAz', '::1', 1),
-(16, 1, 1554695953, 'd06a05ef8ad62e346e3e37ddd40826dcf30fbe180813ce84a2be02403f5c151fXA659Ae3XYvxCZ9LKA5COtOsYSeVTw6D', '::1', 1),
-(17, 1, 1554786835, '5dff4db2f5410b96a0773399067d73932fbc0827918d9331996df537c9214865vy6F6BZs5K-5QlW9IWD5iZD5DNl9joLK', '::1', 1);
 
 -- --------------------------------------------------------
 
@@ -983,7 +864,7 @@ CREATE TABLE `auth_user_profile` (
 --
 
 INSERT INTO `auth_user_profile` (`id`, `user_id`, `first_name`, `last_name`, `email_gravatar`, `last_visit`, `created_at`, `updated_at`) VALUES
-(1, 1, 'Hao', 'Lang', 'haolangvn@gmail.com', 1554790601, 1552899730, 1552899730),
+(1, 1, 'Hao', 'Lang', 'haolangvn@gmail.com', 1554891123, 1552899730, 1552899730),
 (2, 2, 'Hao', 'Lang', 'hao@thegioinuochoa.com.vn', 1552976529, 1552905477, 1552905477),
 (3, 3, 'Phong', 'Tang', 'admin@thegioinuochoa.com.vn', NULL, 1552971356, 1554696136);
 
@@ -1029,8 +910,8 @@ CREATE TABLE `cms_block_group` (
 --
 
 INSERT INTO `cms_block_group` (`id`, `name`, `is_deleted`, `identifier`, `created_timestamp`, `class`) VALUES
-(1, 'block_group_dev_elements', 0, 'development-group', 1554391981, '\\luya\\cms\\frontend\\blockgroups\\DevelopmentGroup'),
-(2, 'block_group_basic_elements', 0, 'main-group', 1554651598, '\\luya\\cms\\frontend\\blockgroups\\MainGroup');
+(1, 'block_group_dev_elements', 0, 'development-group', 1554891338, '\\luya\\cms\\frontend\\blockgroups\\DevelopmentGroup'),
+(2, 'block_group_basic_elements', 0, 'main-group', 1554891338, '\\luya\\cms\\frontend\\blockgroups\\MainGroup');
 
 -- --------------------------------------------------------
 
@@ -1042,13 +923,6 @@ CREATE TABLE `cms_config` (
   `name` varchar(80) COLLATE utf8_unicode_ci NOT NULL,
   `value` varchar(255) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Dumping data for table `cms_config`
---
-
-INSERT INTO `cms_config` (`name`, `value`) VALUES
-('httpExceptionNavId', '1');
 
 -- --------------------------------------------------------
 
@@ -1068,8 +942,8 @@ CREATE TABLE `cms_layout` (
 --
 
 INSERT INTO `cms_layout` (`id`, `name`, `json_config`, `view_file`) VALUES
-(1, 'Main', '{\"placeholders\":[[{\"cols\":12,\"var\":\"content\",\"label\":\"Main Container\"}]]}', '@app/views/cmslayouts\\main.php'),
-(2, '2column', '{\"placeholders\":[[{\"cols\":8,\"var\":\"left\",\"label\":\"Main content Left\"},{\"cols\":4,\"var\":\"right\",\"label\":\"Sidebar Right\"}]]}', '@app/views/cmslayouts\\2column.php');
+(1, '2column', '{\"placeholders\":[[{\"cols\":8,\"var\":\"left\",\"label\":\"Main content Left\"},{\"cols\":4,\"var\":\"right\",\"label\":\"Sidebar Right\"}]]}', '@app/views/cmslayouts\\2column.php'),
+(2, 'Main', '{\"placeholders\":[[{\"cols\":12,\"var\":\"content\",\"label\":\"Main Container\"}]]}', '@app/views/cmslayouts\\main.php');
 
 -- --------------------------------------------------------
 
@@ -1089,32 +963,6 @@ CREATE TABLE `cms_log` (
   `table_name` varchar(120) COLLATE utf8_unicode_ci DEFAULT NULL,
   `row_id` int(11) DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Dumping data for table `cms_log`
---
-
-INSERT INTO `cms_log` (`id`, `user_id`, `is_insertion`, `is_update`, `is_deletion`, `timestamp`, `message`, `data_json`, `table_name`, `row_id`) VALUES
-(1, 1, 1, 0, 0, 1554392433, '{\"tableName\":\"cms_nav\",\"action\":\"insert\",\"row\":2}', '{\"parent_nav_id\":\"0\",\"nav_container_id\":\"1\",\"is_hidden\":true,\"is_offline\":true,\"sort_index\":1,\"id\":2}', 'cms_nav', 2),
-(2, 1, 1, 0, 0, 1554392433, '{\"tableName\":\"cms_nav_item\",\"action\":\"insert\",\"row\":2}', '{\"lang_id\":\"1\",\"title\":\"Demo\",\"alias\":\"demo2\",\"description\":\"Demo Content\",\"nav_item_type\":2,\"nav_item_type_id\":1,\"nav_id\":2,\"timestamp_create\":1554392433,\"timestamp_update\":0,\"create_user_id\":1,\"update_user_id\":1,\"id\":2}', 'cms_nav_item', 2),
-(3, 1, 0, 1, 0, 1554392440, '{\"tableName\":\"cms_nav\",\"action\":\"update\",\"row\":2}', '{\"id\":2,\"nav_container_id\":1,\"parent_nav_id\":0,\"sort_index\":2,\"is_deleted\":0,\"is_hidden\":\"0\",\"is_home\":0,\"is_offline\":1,\"is_draft\":0,\"layout_file\":null,\"publish_from\":null,\"publish_till\":null}', 'cms_nav', 2),
-(4, 1, 0, 1, 0, 1554392441, '{\"tableName\":\"cms_nav\",\"action\":\"update\",\"row\":2}', '{\"id\":2,\"nav_container_id\":1,\"parent_nav_id\":0,\"sort_index\":2,\"is_deleted\":0,\"is_hidden\":0,\"is_home\":0,\"is_offline\":\"0\",\"is_draft\":0,\"layout_file\":null,\"publish_from\":null,\"publish_till\":null}', 'cms_nav', 2),
-(5, 1, 1, 0, 0, 1554432988, '{\"tableName\":\"cms_nav\",\"action\":\"insert\",\"row\":3}', '{\"parent_nav_id\":\"0\",\"nav_container_id\":\"1\",\"is_hidden\":true,\"is_offline\":true,\"is_draft\":\"0\",\"sort_index\":3,\"id\":3}', 'cms_nav', 3),
-(6, 1, 1, 0, 0, 1554432989, '{\"tableName\":\"cms_nav_item\",\"action\":\"insert\",\"row\":3}', '{\"lang_id\":\"1\",\"title\":\"Test\",\"alias\":\"test\",\"description\":null,\"nav_item_type\":1,\"nav_item_type_id\":2,\"nav_id\":3,\"timestamp_create\":1554432988,\"timestamp_update\":0,\"create_user_id\":1,\"update_user_id\":1,\"id\":3}', 'cms_nav_item', 3),
-(7, 1, 0, 1, 0, 1554432999, '{\"tableName\":\"cms_nav\",\"action\":\"update\",\"row\":3}', '{\"id\":3,\"nav_container_id\":1,\"parent_nav_id\":0,\"sort_index\":3,\"is_deleted\":0,\"is_hidden\":\"0\",\"is_home\":0,\"is_offline\":1,\"is_draft\":0,\"layout_file\":null,\"publish_from\":null,\"publish_till\":null}', 'cms_nav', 3),
-(8, 1, 0, 1, 0, 1554433000, '{\"tableName\":\"cms_nav\",\"action\":\"update\",\"row\":3}', '{\"id\":3,\"nav_container_id\":1,\"parent_nav_id\":0,\"sort_index\":3,\"is_deleted\":0,\"is_hidden\":0,\"is_home\":0,\"is_offline\":\"0\",\"is_draft\":0,\"layout_file\":null,\"publish_from\":null,\"publish_till\":null}', 'cms_nav', 3),
-(9, 1, 1, 0, 0, 1554433009, '{\"tableName\":\"cms_nav_item_page_block_item\",\"action\":\"insert\",\"row\":1,\"pageTitle\":\"Test\",\"blockName\":\"Module\"}', '[]', 'cms_nav_item_page_block_item', 1),
-(10, 1, 1, 0, 0, 1554433014, '{\"tableName\":\"cms_nav_item_page_block_item\",\"action\":\"insert\",\"row\":2,\"pageTitle\":\"Test\",\"blockName\":\"Module\"}', '[]', 'cms_nav_item_page_block_item', 2),
-(11, 1, 0, 1, 0, 1554433020, '{\"tableName\":\"cms_nav_item_page_block_item\",\"action\":\"update\",\"row\":2,\"pageTitle\":\"Test\",\"blockName\":\"Module\"}', '[]', 'cms_nav_item_page_block_item', 2),
-(12, 1, 0, 1, 0, 1554433025, '{\"tableName\":\"cms_nav_item_page_block_item\",\"action\":\"update\",\"row\":1,\"pageTitle\":\"Test\",\"blockName\":\"Module\"}', '[]', 'cms_nav_item_page_block_item', 1),
-(13, 1, 0, 0, 1, 1554433100, '{\"tableName\":\"cms_nav_item_page_block_item\",\"action\":\"delete\",\"row\":2,\"pageTitle\":\"Test\",\"blockName\":\"Module\"}', '[]', 'cms_nav_item_page_block_item', 2),
-(14, 1, 1, 0, 0, 1554433156, '{\"tableName\":\"cms_nav_item_page_block_item\",\"action\":\"insert\",\"row\":3,\"pageTitle\":\"Test\",\"blockName\":\"Module\"}', '[]', 'cms_nav_item_page_block_item', 3),
-(15, 1, 0, 1, 0, 1554433169, '{\"tableName\":\"cms_nav_item_page_block_item\",\"action\":\"update\",\"row\":3,\"pageTitle\":\"Test\",\"blockName\":\"Module\"}', '[]', 'cms_nav_item_page_block_item', 3),
-(16, 1, 0, 1, 0, 1554433213, '{\"tableName\":\"cms_nav_item\",\"action\":\"update\",\"row\":3}', '{\"id\":3,\"nav_id\":3,\"lang_id\":1,\"nav_item_type\":1,\"nav_item_type_id\":\"3\",\"create_user_id\":1,\"update_user_id\":1,\"timestamp_create\":\"1554432988\",\"timestamp_update\":1554433212,\"title\":\"Test\",\"alias\":\"test\",\"description\":\"\",\"keywords\":\"\",\"title_tag\":\"\"}', 'cms_nav_item', 3),
-(17, 1, 1, 0, 0, 1554451957, '{\"tableName\":\"cms_nav_item\",\"action\":\"insert\",\"row\":4}', '{\"nav_id\":1,\"lang_id\":\"2\",\"nav_item_type\":1,\"nav_item_type_id\":1,\"timestamp_create\":1554451957,\"timestamp_update\":0,\"title\":\"Homepage\",\"alias\":\"homepage\",\"description\":null,\"keywords\":null,\"title_tag\":null,\"create_user_id\":1,\"update_user_id\":1,\"id\":4}', 'cms_nav_item', 4),
-(18, 1, 0, 1, 0, 1554451957, '{\"tableName\":\"cms_nav_item\",\"action\":\"update\",\"row\":4}', '{\"nav_id\":1,\"lang_id\":\"2\",\"nav_item_type\":1,\"nav_item_type_id\":4,\"timestamp_create\":1554451957,\"timestamp_update\":1554451957,\"title\":\"Homepage\",\"alias\":\"homepage\",\"description\":null,\"keywords\":null,\"title_tag\":null,\"create_user_id\":1,\"update_user_id\":1,\"id\":4}', 'cms_nav_item', 4),
-(19, 1, 1, 0, 0, 1554452352, '{\"tableName\":\"cms_nav_item\",\"action\":\"insert\",\"row\":5}', '{\"nav_id\":2,\"lang_id\":\"2\",\"nav_item_type\":2,\"nav_item_type_id\":1,\"timestamp_create\":1554452352,\"timestamp_update\":0,\"title\":\"Demo\",\"alias\":\"demo2\",\"description\":\"Demo Content\",\"keywords\":null,\"title_tag\":null,\"create_user_id\":1,\"update_user_id\":1,\"id\":5}', 'cms_nav_item', 5),
-(20, 1, 0, 1, 0, 1554452353, '{\"tableName\":\"cms_nav_item\",\"action\":\"update\",\"row\":5}', '{\"nav_id\":2,\"lang_id\":\"2\",\"nav_item_type\":2,\"nav_item_type_id\":2,\"timestamp_create\":1554452352,\"timestamp_update\":1554452353,\"title\":\"Demo\",\"alias\":\"demo2\",\"description\":\"Demo Content\",\"keywords\":null,\"title_tag\":null,\"create_user_id\":1,\"update_user_id\":1,\"id\":5}', 'cms_nav_item', 5);
 
 -- --------------------------------------------------------
 
@@ -1142,9 +990,7 @@ CREATE TABLE `cms_nav` (
 --
 
 INSERT INTO `cms_nav` (`id`, `nav_container_id`, `parent_nav_id`, `sort_index`, `is_deleted`, `is_hidden`, `is_home`, `is_offline`, `is_draft`, `layout_file`, `publish_from`, `publish_till`) VALUES
-(1, 1, 0, 1, 0, 0, 1, 0, 0, NULL, NULL, NULL),
-(2, 1, 0, 2, 0, 0, 0, 0, 0, NULL, NULL, NULL),
-(3, 1, 0, 3, 0, 0, 0, 0, 0, NULL, NULL, NULL);
+(1, 1, 0, 0, 0, 0, 1, 0, 0, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -1194,11 +1040,7 @@ CREATE TABLE `cms_nav_item` (
 --
 
 INSERT INTO `cms_nav_item` (`id`, `nav_id`, `lang_id`, `nav_item_type`, `nav_item_type_id`, `create_user_id`, `update_user_id`, `timestamp_create`, `timestamp_update`, `title`, `alias`, `description`, `keywords`, `title_tag`) VALUES
-(1, 1, 1, 1, 1, 1, 1, 1554392103, 0, 'Homepage', 'homepage', NULL, NULL, NULL),
-(2, 2, 1, 2, 1, 1, 1, 1554392433, 0, 'Demo', 'demo2', 'Demo Content', NULL, NULL),
-(3, 3, 1, 1, 3, 1, 1, 1554432988, 1554433212, 'Test', 'test', '', '', ''),
-(4, 1, 2, 1, 4, 1, 1, 1554451957, 1554451957, 'Homepage', 'homepage', NULL, NULL, NULL),
-(5, 2, 2, 2, 2, 1, 1, 1554452352, 1554452353, 'Demo', 'demo2', 'Demo Content', NULL, NULL);
+(1, 1, 1, 1, 1, 1, 1, 1554891374, 0, 'Homepage', 'homepage', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -1210,14 +1052,6 @@ CREATE TABLE `cms_nav_item_module` (
   `id` int(11) NOT NULL,
   `module_name` varchar(255) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Dumping data for table `cms_nav_item_module`
---
-
-INSERT INTO `cms_nav_item_module` (`id`, `module_name`) VALUES
-(1, 'demo'),
-(2, 'demo');
 
 -- --------------------------------------------------------
 
@@ -1239,10 +1073,7 @@ CREATE TABLE `cms_nav_item_page` (
 --
 
 INSERT INTO `cms_nav_item_page` (`id`, `layout_id`, `nav_item_id`, `timestamp_create`, `create_user_id`, `version_alias`) VALUES
-(1, 1, 1, 1554392103, 1, 'Initial'),
-(2, 2, 3, 1554432988, 1, 'Initial'),
-(3, 1, 3, 1554433116, 1, 'test2'),
-(4, 1, 4, 1554392103, 1, 'First version');
+(1, 1, 1, 1554891374, 1, 'Initial');
 
 -- --------------------------------------------------------
 
@@ -1267,14 +1098,6 @@ CREATE TABLE `cms_nav_item_page_block_item` (
   `is_hidden` tinyint(1) DEFAULT '0',
   `variation` varchar(255) COLLATE utf8_unicode_ci DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Dumping data for table `cms_nav_item_page_block_item`
---
-
-INSERT INTO `cms_nav_item_page_block_item` (`id`, `block_id`, `placeholder_var`, `nav_item_page_id`, `prev_id`, `json_config_values`, `json_config_cfg_values`, `is_dirty`, `create_user_id`, `update_user_id`, `timestamp_create`, `timestamp_update`, `sort_index`, `is_hidden`, `variation`) VALUES
-(1, 2, 'left', 2, 0, '{\"moduleName\":\"demo\"}', '{\"__e\":\"__o\"}', 1, 1, 1, 1554433009, 1554433025, 0, 0, '0'),
-(3, 2, 'content', 3, 0, '{\"moduleName\":\"demo\"}', '{\"__e\":\"__o\"}', 1, 1, 1, 1554433155, 1554433169, 0, 0, '0');
 
 -- --------------------------------------------------------
 
@@ -1414,65 +1237,65 @@ CREATE TABLE `migration` (
 --
 
 INSERT INTO `migration` (`version`, `apply_time`) VALUES
-('m000000_000000_base', 1554391835),
-('m141104_104622_admin_group', 1554391838),
-('m141104_104631_admin_user_group', 1554391841),
-('m141104_114809_admin_user', 1554391841),
-('m141203_121042_admin_lang', 1554391842),
-('m141203_143052_cms_cat', 1554391843),
-('m141203_143059_cms_nav', 1554391844),
-('m141203_143111_cms_nav_item', 1554391844),
-('m141208_134038_cms_nav_item_page', 1554391845),
-('m150106_095003_cms_layout', 1554391846),
-('m150108_154017_cms_block', 1554391846),
-('m150108_155009_cms_nav_item_page_block_item', 1554391847),
-('m150122_125429_cms_nav_item_module', 1554391848),
-('m150204_144806_news_article', 1554651767),
-('m150205_141350_block_group', 1554391848),
-('m150304_152220_admin_storage_folder', 1554391849),
-('m150304_152238_admin_storage_file', 1554391850),
-('m150304_152244_admin_storage_filter', 1554391851),
-('m150304_152250_admin_storage_effect', 1554391852),
-('m150304_152256_admin_storage_image', 1554391853),
-('m150309_142652_admin_storage_filter_chain', 1554391853),
-('m150323_125407_admin_auth', 1554391854),
-('m150323_132625_admin_group_auth', 1554391854),
-('m150331_125022_admin_ngrest_log', 1554391855),
-('m150428_095829_news_cat', 1554651768),
-('m150615_094744_admin_user_login', 1554391856),
-('m150617_200836_admin_user_online', 1554391856),
-('m150626_084948_admin_search_data', 1554391857),
-('m150915_081559_admin_config', 1554391858),
-('m150924_112309_cms_nav_prop', 1554391859),
-('m150924_120914_admin_prop', 1554391861),
-('m151012_072207_cms_log', 1554391862),
-('m151022_143429_cms_nav_item_redirect', 1554391863),
-('m151026_161841_admin_tag', 1554391865),
-('m160629_092417_cmspermissiontable', 1554391866),
-('m160915_081618_create_admin_logger_table', 1554391867),
-('m161212_084323_add_teaser_field', 1554651770),
-('m161219_150240_admin_lang_soft_delete', 1554391868),
-('m161220_183300_lcp_base_tables', 1554391870),
-('m170116_120553_cms_block_variation_field', 1554391871),
-('m170131_104109_user_model_updates', 1554391877),
-('m170218_215610_cms_nav_layout_file', 1554391877),
-('m170301_084325_cms_config', 1554391878),
-('m170619_103728_cms_blocksettings', 1554391879),
-('m170926_144137_add_admin_user_session_id_column', 1554391880),
-('m170926_164913_add_ngrest_log_diff_data', 1554391886),
-('m171003_065811_add_class_column_to_block_group_table', 1554391888),
-('m171009_083835_add_admin_user_login_destroy_info', 1554391890),
-('m171121_170909_add_publish_at_date', 1554391891),
-('m171129_104706_config_add_system_type', 1554391895),
-('m171206_113949_cms_redirection_table', 1554391896),
-('m180214_134657_system_user_ngrest_deletion', 1554391905),
-('m180326_170839_file_disposition', 1554391906),
-('m180412_092824_user_security_columns_v12', 1554391911),
-('m180527_225613_user_login_ipv6', 1554391912),
-('m180619_134519_indexes', 1554391913),
-('m180723_120432_indexes', 1554391943),
-('m180723_123237_indexes', 1554391961),
-('m181113_120432_user_index', 1554391962);
+('m000000_000000_base', 1554891145),
+('m141104_104622_admin_group', 1554891149),
+('m141104_104631_admin_user_group', 1554891150),
+('m141104_114809_admin_user', 1554891151),
+('m141203_121042_admin_lang', 1554891152),
+('m141203_143052_cms_cat', 1554891152),
+('m141203_143059_cms_nav', 1554891153),
+('m141203_143111_cms_nav_item', 1554891154),
+('m141208_134038_cms_nav_item_page', 1554891154),
+('m150106_095003_cms_layout', 1554891155),
+('m150108_154017_cms_block', 1554891155),
+('m150108_155009_cms_nav_item_page_block_item', 1554891156),
+('m150122_125429_cms_nav_item_module', 1554891157),
+('m150204_144806_news_article', 1554891158),
+('m150205_141350_block_group', 1554891158),
+('m150304_152220_admin_storage_folder', 1554891159),
+('m150304_152238_admin_storage_file', 1554891160),
+('m150304_152244_admin_storage_filter', 1554891160),
+('m150304_152250_admin_storage_effect', 1554891161),
+('m150304_152256_admin_storage_image', 1554891162),
+('m150309_142652_admin_storage_filter_chain', 1554891163),
+('m150323_125407_admin_auth', 1554891163),
+('m150323_132625_admin_group_auth', 1554891164),
+('m150331_125022_admin_ngrest_log', 1554891164),
+('m150428_095829_news_cat', 1554891165),
+('m150615_094744_admin_user_login', 1554891166),
+('m150617_200836_admin_user_online', 1554891166),
+('m150626_084948_admin_search_data', 1554891167),
+('m150915_081559_admin_config', 1554891168),
+('m150924_112309_cms_nav_prop', 1554891169),
+('m150924_120914_admin_prop', 1554891170),
+('m151012_072207_cms_log', 1554891170),
+('m151022_143429_cms_nav_item_redirect', 1554891171),
+('m151026_161841_admin_tag', 1554891172),
+('m160629_092417_cmspermissiontable', 1554891172),
+('m160915_081618_create_admin_logger_table', 1554891173),
+('m161212_084323_add_teaser_field', 1554891174),
+('m161219_150240_admin_lang_soft_delete', 1554891176),
+('m161220_183300_lcp_base_tables', 1554891177),
+('m170116_120553_cms_block_variation_field', 1554891179),
+('m170131_104109_user_model_updates', 1554891183),
+('m170218_215610_cms_nav_layout_file', 1554891184),
+('m170301_084325_cms_config', 1554891185),
+('m170619_103728_cms_blocksettings', 1554891186),
+('m170926_144137_add_admin_user_session_id_column', 1554891187),
+('m170926_164913_add_ngrest_log_diff_data', 1554891189),
+('m171003_065811_add_class_column_to_block_group_table', 1554891190),
+('m171009_083835_add_admin_user_login_destroy_info', 1554891192),
+('m171121_170909_add_publish_at_date', 1554891193),
+('m171129_104706_config_add_system_type', 1554891197),
+('m171206_113949_cms_redirection_table', 1554891197),
+('m180214_134657_system_user_ngrest_deletion', 1554891204),
+('m180326_170839_file_disposition', 1554891206),
+('m180412_092824_user_security_columns_v12', 1554891211),
+('m180527_225613_user_login_ipv6', 1554891212),
+('m180619_134519_indexes', 1554891213),
+('m180723_120432_indexes', 1554891230),
+('m180723_123237_indexes', 1554891242),
+('m181113_120432_user_index', 1554891244);
 
 -- --------------------------------------------------------
 
@@ -1499,13 +1322,6 @@ CREATE TABLE `news_article` (
   `teaser_text` text COLLATE utf8_unicode_ci
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
---
--- Dumping data for table `news_article`
---
-
-INSERT INTO `news_article` (`id`, `title`, `text`, `cat_id`, `image_id`, `image_list`, `file_list`, `create_user_id`, `update_user_id`, `timestamp_create`, `timestamp_update`, `timestamp_display_from`, `timestamp_display_until`, `is_deleted`, `is_display_limit`, `teaser_text`) VALUES
-(1, '{\"en\":\"2222222222\",\"vn\":\"\"}', '{\"en\":\"222222222222222\",\"vn\":\"\"}', 1, 9, '{\"en\":[{\"imageId\":10,\"caption\":\"\"}],\"vn\":[]}', '[{\"fileId\":0,\"caption\":\"\"}]', 1, 1, 1554652112, 1554652699, 1554652112, NULL, 0, 0, '{\"en\":\"222222222222222222222\",\"vn\":\"\"}');
-
 -- --------------------------------------------------------
 
 --
@@ -1516,14 +1332,6 @@ CREATE TABLE `news_cat` (
   `id` int(11) NOT NULL,
   `title` varchar(150) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Dumping data for table `news_cat`
---
-
-INSERT INTO `news_cat` (`id`, `title`) VALUES
-(1, '{\"vn\":\"Thời sự\",\"en\":\"News\"}'),
-(2, '{\"vn\":\"Đời sống\",\"en\":\"Life\"}');
 
 --
 -- Indexes for dumped tables
@@ -1932,7 +1740,7 @@ ALTER TABLE `news_cat`
 -- AUTO_INCREMENT for table `admin_auth`
 --
 ALTER TABLE `admin_auth`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `admin_config`
@@ -1950,7 +1758,7 @@ ALTER TABLE `admin_group`
 -- AUTO_INCREMENT for table `admin_lang`
 --
 ALTER TABLE `admin_lang`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `admin_logger`
@@ -1962,7 +1770,7 @@ ALTER TABLE `admin_logger`
 -- AUTO_INCREMENT for table `admin_ngrest_log`
 --
 ALTER TABLE `admin_ngrest_log`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `admin_property`
@@ -1998,7 +1806,7 @@ ALTER TABLE `admin_storage_effect`
 -- AUTO_INCREMENT for table `admin_storage_file`
 --
 ALTER TABLE `admin_storage_file`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `admin_storage_filter`
@@ -2016,19 +1824,19 @@ ALTER TABLE `admin_storage_filter_chain`
 -- AUTO_INCREMENT for table `admin_storage_folder`
 --
 ALTER TABLE `admin_storage_folder`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `admin_storage_image`
 --
 ALTER TABLE `admin_storage_image`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `admin_tag`
 --
 ALTER TABLE `admin_tag`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `admin_user`
@@ -2040,19 +1848,19 @@ ALTER TABLE `admin_user`
 -- AUTO_INCREMENT for table `admin_user_group`
 --
 ALTER TABLE `admin_user_group`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `admin_user_login`
 --
 ALTER TABLE `admin_user_login`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `admin_user_online`
 --
 ALTER TABLE `admin_user_online`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `auth_menu`
@@ -2094,13 +1902,13 @@ ALTER TABLE `cms_layout`
 -- AUTO_INCREMENT for table `cms_log`
 --
 ALTER TABLE `cms_log`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `cms_nav`
 --
 ALTER TABLE `cms_nav`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `cms_nav_container`
@@ -2112,25 +1920,25 @@ ALTER TABLE `cms_nav_container`
 -- AUTO_INCREMENT for table `cms_nav_item`
 --
 ALTER TABLE `cms_nav_item`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `cms_nav_item_module`
 --
 ALTER TABLE `cms_nav_item_module`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `cms_nav_item_page`
 --
 ALTER TABLE `cms_nav_item_page`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `cms_nav_item_page_block_item`
 --
 ALTER TABLE `cms_nav_item_page_block_item`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `cms_nav_item_redirect`
@@ -2166,13 +1974,13 @@ ALTER TABLE `hp_translate`
 -- AUTO_INCREMENT for table `news_article`
 --
 ALTER TABLE `news_article`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `news_cat`
 --
 ALTER TABLE `news_cat`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables
