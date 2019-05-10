@@ -3,7 +3,7 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
-use common\components\DatePicker;
+use hp\backend\components\DatePicker;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\modules\demo\models\search\Demo */

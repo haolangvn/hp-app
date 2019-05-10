@@ -7,7 +7,7 @@ namespace app\modules\demo\backend\controllers;
  *
  * @author HAO
  */
-class DefaultController extends \common\core\Controller {
+class DefaultController extends \hp\base\Controller {
 
     public function actionIndex() {
         return $this->render('index');

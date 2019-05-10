@@ -3,7 +3,7 @@
 namespace app\modules\demo\models;
 
 use Yii;
-use common\core\NgRestModel;
+use hp\ngrest\NgRestModel;
 
 /**
  * Demo.
@@ -16,7 +16,6 @@ use common\core\NgRestModel;
  * @property integer $created_at
  */
 class Demo extends NgRestModel {
-
     /**
      * @inheritdoc
      */
@@ -54,6 +53,7 @@ class Demo extends NgRestModel {
     public function rules() {
         return [
             [['name', 'desc'], 'required'],
+            [['parent_id'], 'integer'],
             [['desc'], 'string'],
             [['name'], 'string', 'max' => 225],
             // ensure empty values are stored as NULL in the database
@@ -68,6 +68,7 @@ class Demo extends NgRestModel {
      */
     public function ngRestAttributeTypes() {
         return [
+            'parent_id' => 'number',
             'name' => 'text',
             'desc' => 'textarea',
             'created_at' => 'datetime',
@@ -79,10 +80,20 @@ class Demo extends NgRestModel {
      */
     public function ngRestScopes() {
         return [
-            ['list', ['name', 'desc', 'created_at']],
-            [['create', 'update'], ['name', 'desc']],
+            ['list', ['parent_id', 'name', 'desc', 'created_at']],
+            [['create', 'update'], ['parent_id', 'name', 'desc']],
             ['delete', true],
         ];
     }
 
+//    public function setParent_id($data) {
+//        $this->parent_id = $data;
+//        $this->update();
+//        // This is triggered when the value from the AngularJS api response tries to save or update the model with $data.
+//    }
+//
+//    public function getParent_id() {
+//        return 1;
+//        // This is triggered when the active record tries to get the values for the field. This is the basic getter/setter concept of the yii\base\BaseObject.
+//    }
 }

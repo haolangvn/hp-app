@@ -1,0 +1,91 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : May 2, 2019, 4:54:24 PM
+    Author     : phong
+*/
+.item-list .product-item {
+    height: 340px;
+    text-align: center;
+    padding: 10px 0 20px;
+    position: relative;
+    border: 1px solid #e6e6e6;
+    margin-bottom: 20px;
+}
+
+.item-list .product-item:hover {
+    -webkit-box-shadow: 2px 2px 7px rgba(17,17,17,.24);
+    border: 1px solid transparent;
+}
+
+.item-list .product-item a {
+    text-decoration: none;
+    color: #1d1d1b;
+}
+
+.item-list .product-item a:hover{
+    color:#b99845;
+    text-decoration:none
+}
+
+.item-list .product-item .product-name {
+    overflow: hidden;
+    display: -webkit-box;
+    line-height: 20px;
+    height: 60px;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    padding: 0 8px;
+    font-weight: 700;    
+    background-color: transparent;
+    margin-top: 15px;
+}
+
+.item-list .product-item .product-brand {
+    display: block;
+    font-size: 14px;
+    background-color: transparent;
+}
+
+.item-list .product-item .product-discount {
+    margin-bottom: 5px;
+    text-decoration: line-through;
+    color: #b99845;
+    font-family: 'IntroBlackAlt';
+    font-size: 12px;
+    line-height: 14px;
+}
+
+.item-list .product-item .product-price {
+    color: #1d1d1b;
+    font-size: 18px;
+    font-family: 'IntroBoldAlt';
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.item-list .product-item .add-cart {
+    background: #fff;
+    border: solid 1px #1d1d1d;
+    color: #1d1d1d;
+    margin-top: 16px;
+    margin: 10px 0 0;
+    padding-top: 6px;
+    padding-right: 10px;
+    padding-left: 10px;
+    height: 34px;
+    line-height: 21px;
+    display: inline-block;
+    text-transform: uppercase;
+    font-size: 14px;
+    text-align: center;
+    font-family: 'IntroLightAlt'
+}
+
+.item-list .product-item .add-cart:hover {
+    border: solid 1px #b99845;
+    color: #b99845;
+}

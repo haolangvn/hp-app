@@ -10,7 +10,7 @@ namespace app\modules\demo\frontend\controllers;
 class ClearController extends \luya\web\Controller {
 
     public function actionIndex() {
-        \common\utils\UShort::cache()->flush();
+        \hp\utils\UShort::cache()->flush();
         $this->goHome();
     }
 

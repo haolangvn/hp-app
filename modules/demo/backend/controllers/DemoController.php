@@ -5,7 +5,7 @@ namespace app\modules\demo\backend\controllers;
 use Yii;
 use app\modules\demo\models\Demo;
 use app\modules\demo\models\search\Demo as DemoSearch;
-use common\core\Controller;
+use hp\base\Controller;
 use yii\web\NotFoundHttpException;
 
 /**

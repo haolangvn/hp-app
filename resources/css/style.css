@@ -3,8 +3,12 @@
 }
 
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
 }
 
 nav .btn {
@@ -21,12 +25,12 @@ nav .btn a {
 }
 
 .footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  /* Set the fixed height of the footer here */
-  height: 60px;
-  background-color: #A50045;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    /* Set the fixed height of the footer here */
+    height: 60px;
+    background-color: #A50045;
 }
 
 .footer .container ul {
@@ -40,4 +44,12 @@ nav .btn a {
 .footer  a {
     color: #ffffff;
     text-decoration:underline;
+}
+
+.item-list {
+
+}
+
+.item-list .item {
+    height: 200px;
 }

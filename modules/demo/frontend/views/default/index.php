@@ -4,7 +4,7 @@
 //use Yii;
 use luya\cms\Menu;
 use app\modules\demo\models\Demo;
-use common\utils\UShort;
+use hp\utils\UShort;
 ?>
 
 <h2>Hello World</h2>
@@ -20,20 +20,27 @@ use common\utils\UShort;
     
 
     <?php
-    foreach (Yii::$app->menu->getLevelContainer(2) as $secondItem) {
-        echo $secondItem->title;
-    }
+    
+//    foreach (Yii::$app->menu->getLevelContainer(2) as $secondItem) {
+//        echo $secondItem->title;
+//    }
 
     $dataProvider = new \yii\data\ActiveDataProvider([
-        'query' => Demo::find(),
+        'query' => app\modules\ecommerce\models\Group::ngRestFind(),
+        'pagination' => [
+            'defaultPageSize' => 100
+        ]
     ]);
-    
-    
+
+//    $model = new app\modules\ecommerce\models\Barcode();
+//    var_dump($model->getDb()->getTableSchema('{{%ecommerce_product_}}', true));
+
     foreach ($dataProvider->getModels() as $node) {
-        echo $node->name . ' -' . $node->desc;
+//        hp\utils\UArray::dump($node->attributes);
+        hp\utils\UArray::dump($node->name);
     }
-    print_r(yii\helpers\ArrayHelper::getValue(\common\utils\UShort::app()->composition, 'langShortCode'));
-//    print_r(luya\helpers\ArrayHelper::getValue(\common\utils\UShort::app()->composition, ['langShortCode']));
+    print_r(yii\helpers\ArrayHelper::getValue(\hp\utils\UShort::app()->composition, 'langShortCode'));
+//    print_r(luya\helpers\ArrayHelper::getValue(\hp\utils\UShort::app()->composition, ['langShortCode']));
     ?>
 
 </pre>

@@ -10,7 +10,8 @@ namespace app\modules\demo\frontend;
  * @author
  * @since 1.0.0
  */
-class Module extends \luya\base\Module
-{
+class Module extends \luya\base\Module {
+
+    public $useAppViewPath = false;
 
 }

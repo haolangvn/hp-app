@@ -1,6 +1,6 @@
 <?php
 
-use common\utils\UD;
+use hp\utils\UD;
 ?>
 <div class="demo-index box box-primary">
     <div class="box-header"></div>

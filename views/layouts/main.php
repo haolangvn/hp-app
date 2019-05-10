@@ -1,11 +1,9 @@
 <?php
 
-use app\assets\ResourcesAsset;
 use luya\helpers\Url;
-use luya\cms\widgets\LangSwitcher;
-use common\utils\UTranslate;
+use app\assets\M417Asset;
 
-ResourcesAsset::register($this);
+M417Asset::register($this);
 
 /* @var $this luya\web\View */
 /* @var $content string */
@@ -20,84 +18,40 @@ $this->beginPage();
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title><?= $this->title; ?></title>
+        <link type="image/png" href="<?= Url::to('@web/images/Fav-417_black.gif') ?>" rel="icon">
+        <link type="image/x-icon" href="<?= Url::to('@web/images/Fav-417_black.gif') ?>" rel="shortcut icon" />
         <?php $this->head() ?>
     </head>
     <body>
         <?php $this->beginBody() ?>
-        <div class="nav-container bg-light m-b-3">
-            <nav class="navbar navbar-default">
-                <div class="container">
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                        <a class="navbar-brand" href="<?= $this->publicHtml; ?>">
-                            <img alt="luya.io-kickstarter" src="<?= $this->publicHtml; ?>/images/logo/0.2x/luya_logo@0.2x.png" height="20px" width="auto">
-                        </a>
-                    </div>
-                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                        <ul class="nav navbar-nav">
-                            <?php foreach (Yii::$app->menu->findAll(['depth' => 1, 'container' => 'default']) as $item): /* @var $item \luya\cms\menu\Item */ ?>
-                                <li class="nav-item<?= $item->isActive ? ' active' : '' ?>">
-                                    <a class="nav-link" href="<?= $item->link; ?>"><?= UTranslate::t(UTranslate::TYPE_MENU, $item->title); ?></a>
-                                </li>
-                            <?php endforeach; ?>
-                        </ul>
-                        <?=
-                        LangSwitcher::widget([
-                            'listElementOptions' => ['class' => 'nav navbar-nav navbar-right'],
-                            'elementOptions' => ['class' => 'nav-item'],
-                            'linkOptions' => ['class' => 'nav-link'],
-                            'linkLabel' => function ($lang) {
-                                return strtoupper($lang['short_code']);
-                            }
-                        ]);
-                        ?>
+
+        <?php
+        $this->params['content'] = $content;
+        if ($this->beginCache('PAGE', [
+                    'duration' => 3600,
+                    'variations' => [Yii::$app->language]
+                ])) {
+            ?>
+            <?= \app\widgets\Topheader::widget() ?>
+            <?= \app\widgets\Header::widget() ?>
+
+            <div class="container">
+                <nav aria-label="breadcrumb mb-3">
+                    <?= $this->renderDynamic('return app\widgets\Breadcrumbs::widget();'); ?>
+                </nav>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <?= $this->renderDynamic('return $this->params["content"];'); ?>
                     </div>
                 </div>
-            </nav>
-        </div>
-        <div class="container">
-            <nav aria-label="breadcrumb mb-3">
-                <ol class="breadcrumb">
-                    <?php foreach (Yii::$app->menu->current->teardown as $item): /* @var $item \luya\cms\menu\Item */ ?>
-                        <li class="breadcrumb-item<?= $item->isActive ? ' active' : ''; ?>">
-                            <a href="<?= $item->link; ?>"><?= $item->title; ?></a>
-                        </li>
-                    <?php endforeach; ?>
-                </ol>
-            </nav>
-
-            <div class="row">
-                <?php if (count(Yii::$app->menu->getLevelContainer(2)) > 0): ?>
-                    <div class="col-md-3">
-                        <ul class="nav nav-pills nav-stacked">
-                            <?php foreach (Yii::$app->menu->getLevelContainer(2) as $child): /* @var $child \luya\cms\menu\Item */ ?>
-                                <li <?php if ($child->isActive): ?>class="active" <?php endif; ?>><a href="<?= $child->link; ?>"><?= $child->title; ?></a></li>
-                            <?php endforeach; ?>
-                        </ul>
-                    </div>
-                    <div class="col-md-9">
-                        <?= $content; ?>
-                    </div>
-                <?php else: ?>
-                    <div class="col-md-12">
-                        <?= $content; ?>
-                    </div>
-                <?php endif; ?>
             </div>
-        </div>
-        <footer class="footer">
-            <div class="container">
-                <ul>
-                    <li><a href="" target="_blank">FOOTER</a></li>
-                </ul>
-            </div>
-        </footer>
-        <?php $this->endBody() ?>
+            <?= $this->render('//_footer') ?>
+            <?php
+            $this->endCache();
+        }
+        $this->endBody()
+        ?>
     </body>
 </html>
 <?php $this->endPage() ?>

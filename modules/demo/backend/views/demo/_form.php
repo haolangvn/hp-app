@@ -16,7 +16,7 @@ use yii\widgets\ActiveForm;
 
         <?= $form->field($model, 'desc')->textarea(['rows' => 6]) ?>
 
-        <?= $form->field($model, 'deadline')->widget(common\components\DateTimePicker::class); ?>
+        <?= $form->field($model, 'deadline')->widget(\hp\backend\componets\components\DateTimePicker::class); ?>
 
     </div>
     <div class="box-footer">

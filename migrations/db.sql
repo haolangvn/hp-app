@@ -793,6 +793,7 @@ INSERT INTO `auth_menu` (`id`, `name`, `parent`, `route`, `order`, `icon`, `data
 (7, 'Auth Rule', 1, '/rbac/rule/index', 20, '', NULL, 1552904071, 1, 1553486250, 1),
 (8, 'Auth Route', 1, '/rbac/route/index', 100, '', NULL, 1552907096, 1, 1553486245, 1),
 (9, 'Demo', NULL, '/demo/default/index', 9999999, '', NULL, 1552923245, 1, 1554734957, 1),
+
 (10, 'Translation', 14, '/main/translate/index', NULL, 'fa-language', NULL, 1552923964, 1, 1554560140, 1),
 (11, 'User Management', NULL, '/users/default/index', 80, 'fa-users', NULL, 1552971653, 1, 1552976813, 1),
 (12, 'Dashboard', NULL, '/main/default/index', 0, 'fa-dashboard', NULL, 1552976731, 1, 1552976744, 1),

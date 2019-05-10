@@ -31,7 +31,9 @@ $config = [
      */
     'basePath' => dirname(__DIR__),
     'aliases' => [
-        '@common' => dirname(__DIR__) . '/common'
+//        '@common' => dirname(__DIR__) . '/common',
+//        '@luya/estore' => dirname(__DIR__) . '/dev/luya-module-estore-master/src',
+        '@hp' => '@app/modules/hpmain'
     ],
     'modules' => [
         /*
@@ -63,18 +65,23 @@ $config = [
             'hiddenBlocks' => [],
             'blockVariations' => [],
         ],
-		
-	'news' => [
-		'class' => 'luya\news\frontend\Module',
-		'useAppViewPath' => false, // When enabled the views will be looked up in the @app/views folder, otherwise the views shipped with the module will be used.
-	],
-	'newsadmin' => 'luya\news\admin\Module',
+        // hp main
+        'main' => 'hp\frontend\Module',
+        'mainadmin' => 'hp\admin\Module',
 
-        'demo' => [
-            'class' => 'app\modules\demo\frontend\Module',
-            'useAppViewPath' => false, // When enabled the views will be looked up in the @app/views folder, otherwise the views shipped with the module will be used.
-        ],
+        // eCommerce Modules
+        'ecom' => 'app\modules\ecommerce\frontend\Module',
+        'ecomadmin' => 'app\modules\ecommerce\admin\Module',
+        // Demo Modules
+        'demo' => 'app\modules\demo\frontend\Module',
         'demoadmin' => 'app\modules\demo\admin\Module',
+        
+             // News Modules
+//        'news' => [
+//            'class' => 'luya\news\frontend\Module',
+//            'useAppViewPath' => false, // When enabled the views will be looked up in the @app/views folder, otherwise the views shipped with the module will be used.
+//        ],
+//        'newsadmin' => 'luya\news\admin\Module',
     ],
     'components' => [
         /*
@@ -96,7 +103,7 @@ $config = [
          * default: (array) Contains the default setup for the current language, this must match your language system configuration.
          */
         'composition' => [
-            'hidden' => false, // no languages in your url (most case for pages which are not multi lingual)
+            'hidden' => true, // no languages in your url (most case for pages which are not multi lingual)
 //            'default' => ['langShortCode' => 'vn'], // the default language for the composition should match your default language shortCode in the language table.
         ],
         /*
@@ -107,7 +114,8 @@ $config = [
          * http://www.yiiframework.com/doc-2.0/guide-caching-data.html#cache-apis
          */
         'cache' => [
-            'class' => 'yii\caching\DummyCache', // use: yii\caching\FileCache
+//            'class' => 'yii\caching\DummyCache', // use: yii\caching\FileCache
+            'class' => 'yii\caching\FileCache'
         ],
         /*
          * Translation component. If you don't have translations just remove this component and the folder `messages`.
@@ -119,15 +127,16 @@ $config = [
                 ],
             ],
         ],
+        'storage' => [
+            'class' => 'luya\admin\filesystem\LocalFileSystem',
+        ],
+        'AdminUser' => [
+            'class' => 'luya\admin\components\AdminUser',
+            'enableAutoLogin' => true
+        ]
 //        'session' => [
 //            // this is the name of the session cookie used for login on the backend
 //            'name' => 'advanced-backend',
-//        ],
-//        'user' => [
-//            'identityClass' => 'luya\admin\models\User',
-//            'enableAutoLogin' => true,
-////            'identityCookie' => ['name' => '_identity-backend', 'httpOnly' => true],
-////            'loginUrl' => ['/users/default/login'],
 //        ],
     ],
 ];

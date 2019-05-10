@@ -7,7 +7,7 @@ namespace app\modules\demo\backend\controllers;
  *
  * @author HAO
  */
-class ElfinderController extends \common\core\Controller {
+class ElfinderController extends \hp\base\Controller {
 
     public function actionIndex() {
         return $this->render('index');
