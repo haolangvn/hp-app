@@ -1,0 +1,16 @@
+{
+    "rows": [
+        [
+            {
+                "cols": 6,
+                "var": "left",
+                "label": "Left Content"
+            },
+            {
+                "cols": 6,
+                "var": "right",
+                "label": "Right Content"
+            }
+        ]
+    ]
+}
