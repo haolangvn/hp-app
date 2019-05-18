@@ -31,8 +31,7 @@ $config = [
      */
     'basePath' => dirname(__DIR__),
     'aliases' => [
-//        '@common' => dirname(__DIR__) . '/common',
-//        '@luya/estore' => dirname(__DIR__) . '/dev/luya-module-estore-master/src',
+        '@common' => dirname(__DIR__) . '/common',
         '@hp' => '@app/modules/hpmain'
     ],
     'modules' => [
@@ -65,23 +64,16 @@ $config = [
             'hiddenBlocks' => [],
             'blockVariations' => [],
         ],
-        // hp main
+        /*
+         * hp module
+         */
         'main' => 'hp\frontend\Module',
         'mainadmin' => 'hp\admin\Module',
-
-        // eCommerce Modules
-        'ecom' => 'app\modules\ecommerce\frontend\Module',
-        'ecomadmin' => 'app\modules\ecommerce\admin\Module',
-        // Demo Modules
+        /*
+         * demo module
+         */
         'demo' => 'app\modules\demo\frontend\Module',
         'demoadmin' => 'app\modules\demo\admin\Module',
-        
-             // News Modules
-//        'news' => [
-//            'class' => 'luya\news\frontend\Module',
-//            'useAppViewPath' => false, // When enabled the views will be looked up in the @app/views folder, otherwise the views shipped with the module will be used.
-//        ],
-//        'newsadmin' => 'luya\news\admin\Module',
     ],
     'components' => [
         /*
