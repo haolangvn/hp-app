@@ -2,7 +2,7 @@
 return [
   'components' => [
       'urlManagerFrontend' => [
-          'baseUrl' => '/2019/luya-cms/public_html/'
+          'baseUrl' => '/201905/hp-app_web_skeleton/public_html/'
       ]
   ]  
 ];

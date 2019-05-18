@@ -9,7 +9,7 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\widgets\Breadcrumbs;
 use backend\widgets\control\Alert;
-use common\utils\UTranslate;
+use hp\utils\UTranslate;
 use modules\users\widgets\AvatarWidget;
 use modules\users\Module as UserModule;
 

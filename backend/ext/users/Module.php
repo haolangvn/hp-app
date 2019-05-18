@@ -34,7 +34,7 @@ class Module extends \yii\base\Module
     /**
      * @var bool Если модуль используется для админ-панели.
      */
-    public $isBackend;
+    public $isBackend = true;
 
     /**
      * @inheritdoc

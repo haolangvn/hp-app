@@ -2,7 +2,7 @@
 
 use mdm\admin\components\MenuHelper;
 use backend\widgets\Menu;
-use common\utils\UTranslate;
+use hp\utils\UTranslate;
 
 $m = Yii::$app->controller->module->id;
 $c = Yii::$app->controller->id;

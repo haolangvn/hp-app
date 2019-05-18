@@ -11,27 +11,32 @@ $config = [
     'vendorPath' => dirname(dirname(__DIR__)) . '/vendor',
     'defaultRoute' => 'main/default/index',
     'aliases' => [
+        /**
+         * Default config
+         */
         '@app' => dirname(dirname(__DIR__)),
         '@bower' => '@vendor/bower',
-        '@npm' => '@ext/npm-asset',
-        '@hp' => '@ext/hp-main',
-        '@mdm/admin' => '@ext/yii2-admin',
-        '@modules/system' => '@ext/system',
-        '@modules/users' => '@ext/users',
+        '@npm' => '@backend/ext/npm-asset',
+        '@mdm/admin' => '@backend/ext/yii2-admin',
+        '@modules/system' => '@backend/ext/system',
+        '@modules/users' => '@backend/ext/users',
+        '@hp' => '@app/modules/hpmain',
+    /*
+     * 
+     */
     ],
     'bootstrap' => [
         'log',
         'modules\users\Bootstrap',
     ],
     'modules' => [
-        'users' => [
-            'class' => 'modules\users\Module',
-            'isBackend' => true
-        ],
-        'main' => 'hp\backend\Module',
+        /**
+         * Default Module
+         */
+        'users' => 'modules\users\Module',
         'rbac' => 'mdm\admin\Module',
         'system' => 'modules\system\Module',
-        // modules
+        'main' => 'hp\backend\Module',
         'demo' => app\modules\demo\backend\Module::class
     ],
     'components' => [
@@ -113,10 +118,10 @@ $config = [
             'class' => 'yii\caching\FileCache',
         ],
         'adminLanguage' => [
-            'class' => \luya\admin\components\AdminLanguage::class,
+            'class' => 'luya\admin\components\AdminLanguage',
         ],
         'composition' => [
-            'class' => luya\web\Composition::class,
+            'class' => 'luya\web\Composition',
             'hidden' => true, // no languages in your url (most case for pages which are not multi lingual)
 //            'default' => ['langShortCode' => 'en'], // the default language for the composition should match your default language shortCode in the language table.
         ],

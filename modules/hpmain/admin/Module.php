@@ -18,7 +18,7 @@ class Module extends \luya\admin\base\Module {
 
     public function getMenu() {
         return (new \luya\admin\components\AdminMenuBuilder($this))
-                        ->node('Logs', 'extension')
+                        ->node('Logs', 'add_alert')
                         ->group('Group')
                         ->itemApi('Change Log', 'mainadmin/ng-rest-log/index', 'label', 'api-main-ngrestlog');
     }
