@@ -3,6 +3,7 @@
 /bin
 /runtime
 /luya
+/modules/ecommerce
 composer.phar
 .DS_Store
 .env
