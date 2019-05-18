@@ -11,12 +11,12 @@ $this->title = 'Nav Items';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="nav-item-index box box-primary">
-        <?php Pjax::begin(); ?>
+    <?php Pjax::begin(); ?>
     <div class="box-header with-border">
-<?php // Html::a('Create', ['create'], ['class' => 'btn btn-success btn-flat'])    ?>
+        <?php // Html::a('Create', ['create'], ['class' => 'btn btn-success btn-flat'])    ?>
     </div>
     <div class="box-body table-responsive">
-        <?php // echo $this->render('_search', ['model' => $searchModel]);   ?>
+        <?php echo $this->render('_search', ['model' => $searchModel]); ?>
         <?=
         GridView::widget([
             'dataProvider' => $dataProvider,
@@ -25,7 +25,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'columns' => [
 //                ['class' => 'yii\grid\SerialColumn'],
                 'id',
-                'container',
+//                'container',
                 'title',
                 'alias',
 //                'nav_id',
@@ -41,11 +41,16 @@ $this->params['breadcrumbs'][] = $this->title;
                 // 'title_tag',
                 [
                     'class' => 'yii\grid\ActionColumn',
-                    'template' => mdm\admin\components\Helper::filterActionColumn(['update'])
+                    'template' => mdm\admin\components\Helper::filterActionColumn(['content', 'update']),
+                    'buttons' => [
+                        'content' => function($url, $model, $key) {
+                            return yii\helpers\Html::a('<i class="fa fa-newspaper-o" aria-hidden="true"></i> ', ['/main/nav/update-content', 'id' => $model->id, 'page' => $model->nav_item_type_id], ['target' => '_blank', 'data-pjax' => 0]);
+                        }
+                    ]
                 ],
             ],
         ]);
         ?>
     </div>
-<?php Pjax::end(); ?>
+    <?php Pjax::end(); ?>
 </div>

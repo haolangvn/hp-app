@@ -36,4 +36,12 @@ class UArray {
         }, ARRAY_FILTER_USE_KEY);
     }
 
+    public static function system() {
+        return [
+            0 =>'Thế Giới Nước Hoa',            
+            1 =>'Perfume World',
+            2 =>'Minus417',
+        ];
+    }
+
 }

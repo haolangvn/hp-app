@@ -10,7 +10,11 @@ namespace hp\frontend;
  * @author
  * @since 1.0.0
  */
-class Module extends \luya\base\Module
-{
+class Module extends \luya\base\Module {
+
+    public $urlRules = [
+        'main/<_c>' => 'main/<_c>/index',
+        'main/<_c>/<_a>' => 'main/<_c>/<_a>',
+    ];
 
 }

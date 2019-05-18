@@ -16,6 +16,7 @@ class NavItemSearch extends \yii\db\ActiveRecord {
 
     public $container;
     public $parent_nav_id;
+    public $build_tree = false;
 
     public static function tableName() {
         return NavItem::tableName();
@@ -26,7 +27,7 @@ class NavItemSearch extends \yii\db\ActiveRecord {
      */
     public function rules() {
         return [
-            ['id', 'integer'],
+            [['id', 'build_tree'], 'integer'],
             [['title', 'alias', 'container'], 'string', 'max' => 255],
             [['description', 'keywords', 'title_tag'], 'safe'],
         ];
@@ -48,15 +49,21 @@ class NavItemSearch extends \yii\db\ActiveRecord {
                 ->alias('item')
                 ->innerJoin(Nav::tableName() . ' nav', 'nav.id = item.nav_id')
                 ->innerJoin(NavContainer::tableName() . ' c', 'c.id = nav.nav_container_id')
-                ->where(['nav.parent_nav_id' => 0])
-                ->select('item.id, title, item.alias, c.name container, nav.parent_nav_id')
+                ->where(['nav.is_draft' => FALSE])
+                ->select('item.id, title, item.alias, item.nav_item_type_id, c.name container, nav.parent_nav_id')
                 ->orderBy('nav.nav_container_id, nav.sort_index');
-        
+
         $this->load($params);
+
+        // 
+        if ($this->build_tree) {
+            $query->andWhere(['nav.parent_nav_id' => 0]);
+        }
 
         // grid filtering conditions
         $query->andFilterWhere([
             'item.id' => $this->id,
+            'nav_container_id' => $this->container
 //            'nav_id' => $this->nav_id,
 //            'lang_id' => $this->lang_id,
 //            'nav_item_type' => $this->nav_item_type,
@@ -68,16 +75,15 @@ class NavItemSearch extends \yii\db\ActiveRecord {
         ]);
 
         $query->andFilterWhere(['like', 'item.title', $this->title])
-                ->andFilterWhere(['like', 'item.alias', $this->alias])
-                ->andFilterWhere(['like', 'c.name', $this->container]);
+                ->andFilterWhere(['like', 'item.alias', $this->alias]);
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
-            'models' => TreeDataBuilder::contruct($query, [
+            'models' => $this->build_tree ? TreeDataBuilder::contruct($query, [
                 'varLabel' => 'title',
                 'varParent' => 'parent_nav_id'
-            ])->getTree(),
-            'sort' => false,
+            ])->getTree() : null,
+            'sort' => $this->build_tree ? false : [],
         ]);
 
 

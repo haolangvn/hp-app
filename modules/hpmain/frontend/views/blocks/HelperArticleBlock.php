@@ -8,14 +8,16 @@
  *
  * @var $this \luya\cms\base\PhpBlockView
  */
-?>
-<div class="col-md-12">
-    <div class="col-md-8">
-        <?php
-        if ($this->varValue('article')) {
-            echo $this->extraValue('article');
-        }
-        ?>
+$model = $this->extraValue('model');
+
+if ($model) {
+    ?>
+    <h1><?= $model->name ?></h1>
+    <div class="col-md-12">
+        <div class="col-6 text-justify">
+            <?= $model->content ?>
+        </div>
     </div>
-    <div class="col-md-4"></div>
-</div>
+
+<?php }
+?>

@@ -153,4 +153,13 @@ class Menu extends \yii\db\ActiveRecord {
         return true;
     }
 
+    public function afterSave($insert, $changedAttributes) {
+        parent::afterSave($insert, $changedAttributes);
+        if ($this->order === null) {
+            $this->getDb()->createCommand()->update(self::tableName(), [
+                'order' => $this->id
+                    ], 'id=:id', [':id' => $this->id])->execute();
+        }
+    }
+
 }

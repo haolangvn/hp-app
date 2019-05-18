@@ -13,10 +13,10 @@ use yii\widgets\ActiveForm;
     <div class="box-body table-responsive">
 
         <?php // $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
-
-        <?= $form->field($model, 'title_tag')->textInput(['maxlength' => true]) ?> 
         
-        <?= $form->field($model, 'alias')->textInput(['maxlength' => true]) ?>
+        <?= $form->field($model, 'alias')->textInput(['maxlength' => true, 'readonly' => true]) ?>
+        
+        <?= $form->field($model, 'title_tag')->textInput(['maxlength' => true]) ?> 
 
         <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
 

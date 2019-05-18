@@ -19,6 +19,16 @@ class HelperArticleBlock extends PhpBlock {
     public $module = 'main';
 
     /**
+     * @var bool Enable or disable the block caching
+     */
+    public $cacheEnabled = false;
+
+    /**
+     * @var int The cache lifetime for this block in seconds (3600 = 1 hour), only affects when cacheEnabled is true. 0 means never expire.
+     */
+    public $cacheExpiration = 3600;
+
+    /**
      * @inheritDoc
      */
     public function blockGroup() {
@@ -55,9 +65,8 @@ class HelperArticleBlock extends PhpBlock {
     }
 
     public function extraVars() {
-        $model = Article::findOne($this->getVarValue('article'));
         return [
-            'article' => ($model) ? $model->content : null,
+            'model' => Article::findOne($this->getVarValue('article'))
         ];
     }
 
@@ -74,5 +83,4 @@ class HelperArticleBlock extends PhpBlock {
                 '{% endif %}' .
                 '</table>';
     }
-
 }

@@ -52,10 +52,6 @@ $items = MenuHelper::getAssignedMenu(Yii::$app->user->id, null, function ($menu)
             ];
         });
 
-//common\utils\UArray::dump($items);
-//$tmp = $m . '/' . $c;
-//common\utils\UArray::dump(\luya\helpers\ArrayHelper::);
-
 if (YII_DEBUG) {
 //    $items[] = [
 //        'label' => Yii::t('app', 'Navigation'),
