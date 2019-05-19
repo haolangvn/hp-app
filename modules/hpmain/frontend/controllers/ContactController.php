@@ -8,7 +8,6 @@ use Yii;
 
 class ContactController extends \luya\web\Controller {
 
-    //put your code here
     public function actionIndex() {
         $model = new Contact();
         if ($model->load(UShort::request()->post())/* && $model->save() */) {
@@ -16,9 +15,7 @@ class ContactController extends \luya\web\Controller {
             return $this->redirect(['index']);
         }
 
-        return $this->renderPartial('index', ['model' => $model]);
-//        UShort::setParams('content', $this->renderPartial('index', ['model' => $model]));
-//        return $this->renderContent('');
+        return $this->render('index', ['model' => $model]);
     }
 
 }

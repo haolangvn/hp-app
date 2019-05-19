@@ -11,7 +11,6 @@ class m190405_094933_main extends Migration {
      * {@inheritdoc}
      */
     public function safeUp() {
-
         $this->createTable('{{%hp_article}}', [
             'id' => $this->primaryKey(),
             'group' => $this->string(50)->notNull(),
@@ -20,28 +19,28 @@ class m190405_094933_main extends Migration {
             'created_at' => $this->integer()->notNull()->defaultValue(0),
             'updated_at' => $this->integer()->notNull()->defaultValue(0),
         ]);
-        $this->createIndex('hp-article_index_group', '{{%hp_article}}', 'group');
+        $this->createIndex('index_group', '{{%hp_article}}', 'group');
 
         $this->createTable('{{%hp_translate}}', [
             'id' => $this->primaryKey(),
             'category' => $this->string(25)->notNull(),
-            'language_code' => $this->string(8)->notNull()
+            'language_code' => $this->string(8)->notNull(),
+            'message' => 'varbinary(255) NOT NULL',
+            'translation' => $this->string(),
+            'created_at' => $this->integer()->notNull()->defaultValue(0),
+            'updated_at' => $this->integer()->notNull()->defaultValue(0),
         ]);
-        $this->addColumn('{{%hp_translate}}', 'message', 'varbinary(255) NOT NULL');
-        $this->addColumn('{{%hp_translate}}', 'translation', 'string(255)');
-        $this->addColumn('{{%hp_translate}}', 'created_at', 'int(11) default 0');
-        $this->addColumn('{{%hp_translate}}', 'updated_at', 'int(11) default 0');
-        $this->createIndex('hp-translate_unique', '{{%hp_translate}}', ['message', 'language_code', 'category'], true);
+        $this->createIndex('unique_key', '{{%hp_translate}}', ['message', 'language_code', 'category'], true);
 
         $this->createTable('{{%hp_setting}}', [
             'id' => $this->string(40)->notNull(),
             'name' => $this->string(40)->notNull(),
-            'value' => $this->text()
+            'value' => $this->text(),
+            'type' => 'ENUM("richtext", "json") NOT NULL',
+            'created_at' => $this->integer()->notNull()->defaultValue(0),
+            'updated_at' => $this->integer()->notNull()->defaultValue(0),
         ]);
-        $this->addColumn('{{%hp_setting}}', 'type', 'ENUM("richtext", "json") NOT NULL');
-        $this->addColumn('{{%hp_setting}}', 'created_at', 'int(11) default 0');
-        $this->addColumn('{{%hp_setting}}', 'updated_at', 'int(11) default 0');
-        $this->addPrimaryKey('hp-setting_pk', '{{%hp_setting}}', 'id');
+        $this->addPrimaryKey('PK', '{{%hp_setting}}', 'id');
     }
 
     /**
