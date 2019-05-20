@@ -5,7 +5,7 @@ $params = require(__DIR__ . '/params.php');
 $config = [
     'id' => 'app-backend',
     'name' => 'Web Skeleton',
-    'language' => 'en-US', // en-US, vi-VN, ru
+    'language' => 'vi', // en-US, vi-VN, ru
     'timeZone' => 'Asia/Ho_Chi_Minh',
     'basePath' => dirname(__DIR__),
     'vendorPath' => dirname(dirname(__DIR__)) . '/vendor',
@@ -123,7 +123,10 @@ $config = [
         'composition' => [
             'class' => 'luya\web\Composition',
             'hidden' => true, // no languages in your url (most case for pages which are not multi lingual)
-//            'default' => ['langShortCode' => 'en'], // the default language for the composition should match your default language shortCode in the language table.
+            'default' => [
+                'langShortCode' => 'vi',
+                'countryShortCode' => 'vn'
+            ], // the default language for the composition should match your default language shortCode in the language table.
         ],
         'formatter' => [
             'locale' => 'vi-VN',

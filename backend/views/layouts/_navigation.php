@@ -43,7 +43,7 @@ $items = MenuHelper::getAssignedMenu(Yii::$app->user->id, null, function ($menu)
             }
 
             return [
-                'label' => UTranslate::t(UTranslate::TYPE_MENU, $menu['name']),
+                'label' => UTranslate::t($menu['name'], UTranslate::TYPE_MENU),
                 'url' => [$menu['route']],
                 'options' => ['class' => $css],
                 'items' => $menu['children'],

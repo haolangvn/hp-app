@@ -26,6 +26,7 @@ $config = [
      * of LUYA is also that you can use a website without the CMS module!
      */
     'defaultRoute' => 'cms',
+    'timeZone' => 'Asia/Ho_Chi_Minh',
     /*
      * Define the basePath of the project (Yii Configration Setup)
      */
@@ -96,7 +97,10 @@ $config = [
          */
         'composition' => [
             'hidden' => true, // no languages in your url (most case for pages which are not multi lingual)
-//            'default' => ['langShortCode' => 'vn'], // the default language for the composition should match your default language shortCode in the language table.
+            'default' => [
+                'langShortCode' => 'vi',
+//                'countryShortCode' => 'vn'
+            ], // the default language for the composition should match your default language shortCode in the language table.
         ],
         /*
          * If cache is enabled LUYA will cache cms blocks and speed up the system in different ways. In the prep config
@@ -121,6 +125,13 @@ $config = [
         ],
         'storage' => [
             'class' => 'luya\admin\filesystem\LocalFileSystem',
+        ],
+        'formatter' => [
+            'locale' => 'vi-VN',
+            // format theo Format ICU
+            // dieu chinh FormatDate sẽ anh huong den tim kiem kieu du lieu date
+            'dateFormat' => 'dd/MM/yyyy',
+            'datetimeFormat' => 'dd/MM/yy, HH:mm',
         ],
         'AdminUser' => [
             'class' => 'luya\admin\components\AdminUser',
