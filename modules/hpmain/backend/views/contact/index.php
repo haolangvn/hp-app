@@ -5,16 +5,16 @@ use yii\grid\GridView;
 use yii\widgets\Pjax;
 
 /* @var $this yii\web\View */
-/* @var $searchModel hp\models\search\Contact */
+/* @var $searchModel hpmain\models\search\Contact */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = Yii::t('app', 'Contacts');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="contact-index box box-primary">
-        <?php Pjax::begin(); ?>
+    <?php Pjax::begin(); ?>
     <div class="box-header with-border">
-<?= Html::a(Yii::t('app', 'Create'), ['create'], ['class' => 'btn btn-success btn-flat']) ?>
+        <?= Html::a(Yii::t('app', 'Create'), ['create'], ['class' => 'btn btn-success btn-flat']) ?>
     </div>
     <div class="box-body table-responsive">
         <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
@@ -29,7 +29,8 @@ $this->params['breadcrumbs'][] = $this->title;
                 'phone',
                 'email:email',
                 'address',
-                'content:ntext',
+                ['class' => 'hp\grid\Boolean', 'attribute' => 'status'],
+//                'content:ntext',
                 [
                     'class' => 'yii\grid\ActionColumn',
                     'template' => mdm\admin\components\Helper::filterActionColumn(['view', 'delete'])
@@ -38,5 +39,5 @@ $this->params['breadcrumbs'][] = $this->title;
         ]);
         ?>
     </div>
-<?php Pjax::end(); ?>
+    <?php Pjax::end(); ?>
 </div>

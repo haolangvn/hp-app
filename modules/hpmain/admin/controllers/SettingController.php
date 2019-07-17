@@ -1,6 +1,6 @@
 <?php
 
-namespace hp\admin\controllers;
+namespace hpmain\admin\controllers;
 
 /**
  * Setting Controller.
@@ -12,5 +12,5 @@ class SettingController extends \luya\admin\ngrest\base\Controller
     /**
      * @var string The path to the model which is the provider for the rules and fields.
      */
-    public $modelClass = 'hp\models\Setting';
+    public $modelClass = 'hpmain\models\Setting';
 }

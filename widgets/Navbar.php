@@ -63,13 +63,14 @@ class Navbar extends Widget {
         return $html;
     }
 
-    public function getSubMenuMobile($items, $level = 1) {
+    public function getSubMenuMobile($items, $level = 2) {
         $html = '<ul class="nav nav-list tree mobile-level-2" style="display: none;">';
         foreach ($items as $item) {
-            $html .= '<li>';
-            $html .= '<a href="' . $item->link . '" class="tree-toggle nav-header">' . $item->title . '</a>';
-            $html .= '<ul class="nav nav-list tree mobile-level-3" style="display: none;">';
             $subList = UShort::app()->menu->getLevelContainer($level, $item);
+            $html .= '<li>';
+            $html .= '<a href="' . (count($subList) ? '#' : $item->link) . '" class="tree-toggle nav-header">' . $item->title . '</a>';
+            $html .= '<ul class="nav nav-list tree mobile-level-3" style="display: none;">';
+
             if ($subList) {
                 foreach ($subList as $node) {
                     $html .= '<li><a href="' . $node->link . '">' . $node->title . '</a></li>';

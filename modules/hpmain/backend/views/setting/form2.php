@@ -21,33 +21,12 @@ $this->params['breadcrumbs'][] = $this->title;
 
                 <?= Html::activeHiddenInput($model, 'id') ?>
                 <?= Html::activeHiddenInput($model, 'type') ?>
+                <?= $form->field($model, 'lang_id')->dropDownList($model->getLang()) ?>
                 <?= $form->field($model, 'name')->hint("ID: {{$model->id}}", ['class' => 'help-block'])->textInput(['maxlength' => true]) ?>
 
                 <?php
                 if ($model->type == 'richtext') {
-                    echo $form->field($model, 'value')->widget(\vova07\imperavi\Widget::class, [
-                        'settings' => [
-                            'minHeight' => 200,
-                            'language' => 'en',
-                            'plugins' => [
-                                'clips',
-                                'fullscreen'
-                            ],
-                            'fileUpload' => Url::to(['/main/file/file-upload']),
-                            'fileDelete' => Url::to(['/main/file/file-delete']),
-                            'fileManagerJson' => Url::to(['/main/file/files-get']),
-                            'imageUpload' => Url::to(['/main/file/image-upload']),
-                            'clips' => [
-                                ['Lorem ipsum...', 'Lorem...'],
-                                ['red', '<span class="label-red">red</span>'],
-                                ['green', '<span class="label-green">green</span>'],
-                                ['blue', '<span class="label-blue">blue</span>'],
-                            ],
-                        ],
-                        'plugins' => [
-                            'imagemanager' => 'vova07\imperavi\bundles\ImageManagerAsset',
-                        ],
-                    ]);
+                    echo $form->field($model, 'value')->widget(alexantr\ckeditor\CKEditor::className());
                 } else {
                     if ($model->isNewRecord) {
                         echo '<div id="setting">';

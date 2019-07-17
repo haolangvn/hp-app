@@ -12,13 +12,19 @@ use backend\widgets\control\Alert;
 use hp\utils\UTranslate;
 use modules\users\widgets\AvatarWidget;
 use modules\users\Module as UserModule;
+use hp\utils\UShort;
 
 iCheckAsset::register($this);
 AppAsset::register($this);
 
 /* @var \modules\users\models\User $identity */
-$identity = Yii::$app->user->identity;
-$fullUserName = ($identity !== null) ? $identity->getUserFullName() : Yii::t('app', 'No Authorize');
+
+$identity = null;
+if (UShort::app()->has('adminuser') && UShort::app()->adminuser->getIdentity()) {
+    $identity = UShort::app()->adminuser->getIdentity();
+}
+
+$fullUserName = ($identity) ? $identity->firstname . ' ' . $identity->lastname : Yii::t('app', 'No Authorize');
 
 $assetManager = Yii::$app->assetManager;
 /** @var false|string $publishedUrl */
@@ -91,7 +97,7 @@ $homeUrl = is_string(Yii::$app->homeUrl) ? Yii::$app->homeUrl : '/';
                                             <?= ucfirst($fullUserName) ?>
                                             <small><?php
                                                 if ($identity) {
-                                                    echo UserModule::t('module', 'Member since') . ' ' . $formatter->asDatetime($identity->created_at, 'LLL yyyy');
+                                                    echo UserModule::t('module', 'Member since') . ' ' . $formatter->asDatetime($identity->api_last_activity, 'LLL yyyy');
                                                 }
                                                 ?></small>
                                         </p>
@@ -163,7 +169,7 @@ $homeUrl = is_string(Yii::$app->homeUrl) ? Yii::$app->homeUrl : '/';
                     </h1>
                     <?=
                     Breadcrumbs::widget([
-                        'homeLink' => ['label' => '<i class="fa fa-dashboard"></i> ' . UTranslate::t('label', 'Home'), 'url' => Url::to(['/main/default/index'])],
+                        'homeLink' => ['label' => '<i class="fa fa-dashboard"></i> ' . UTranslate::t('Home'), 'url' => Url::to(['/main/default/index'])],
                         'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
                         'encodeLabels' => false,
                     ])

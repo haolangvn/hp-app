@@ -1,169 +1,106 @@
 <?php
-
 use yii\helpers\Url;
 ?>
-<nav class="navbar navbar-expand-md mainanv d-none d-md-block">
-    <div class="collapse navbar-collapse" id="navbarsExample04">
-
-        <ul class="navbar-nav mr-auto">
-            <?= $mainNav; ?>
+<div class="container">
+    <nav id="ddmenu">
+        <div class="menu-icon" tabindex="0"></div>
+        <ul>
+            <li class="full-width">
+                <span class="top-heading">Unde Omnis</span>
+                <i class="caret"></i>
+                <div class="dropdown">
+                    <div class="dd-inner">
+                        <ul class="column">
+                            <li><h3>Lorem Ipsum</h3></li>
+                            <li><a href="#">Dolor sit amet</a></li>
+                            <li><a href="#">Consectetur elit</a></li>
+                            <li><a href="#">Etiam massa</a></li>
+                            <li><a href="#">Suscipit sapien</a></li>
+                            <li><a href="#">Quis turpis</a></li>
+                        </ul>
+                        <ul class="column">
+                            <li><h3>Etiam Massa</h3></li>
+                            <li><a href="#">Sed interdum</a></li>
+                            <li><a href="#">Fringilla congue</a></li>
+                            <li><a href="#">Dolor nisl auctor</a></li>
+                            <li><a href="#">Quisque dictum</a></li>
+                            <li><a href="#">Porttitor</a></li>
+                        </ul>
+                        <ul class="column mayHide">
+                            <li><br /><img src="ddmenu/img1.jpg" /></li>
+                        </ul>
+                    </div>
+                </div>
+            </li>
+            <li class="no-sub"><a class="top-heading" href="http://www.google.com">Quisque</a></li>
+            <li>
+                <a class="top-heading" href="http://www.microsoft.com">Link</a>
+                <i class="caret"></i>
+                <div class="dropdown">
+                    <div class="dd-inner">
+                        <ul class="column">
+                            <li><h3>Vestibulum Ut</h3></li>
+                            <li><a href="#">Nunc pharetra</a></li>
+                            <li><a href="#">Vestibulum ante</a></li>
+                            <li><a href="#">Nulla id laoreet</a></li>
+                            <li><a href="#">Elementum blandit</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <span class="top-heading">Accusantium</span>
+                <i class="caret"></i>
+                <div class="dropdown offset300">
+                    <div class="dd-inner">
+                        <ul class="column">
+                            <li><h3>Pellentesque</h3></li>
+                            <li><a href="#">Fermentum ut nulla</a></li>
+                            <li><a href="#">Duis ut mauris</a></li>
+                            <li><h3>Volutpat</h3></li>
+                            <li><a href="#">Quisque dictum</a></li>
+                            <li><a href="#">Nulla scelerisque</a></li>
+                        </ul>
+                        <ul class="column">
+                            <li><h3>Suspendisse</h3></li>
+                            <li><a href="#">Suspendisse potenti</a></li>
+                            <li><a href="#">Curabitur in mauris</a></li>
+                            <li><a href="#">Phasellus ultrices</a></li>
+                            <li><a href="#">Quisque ornare</a></li>
+                            <li><a href="#">Vestibulum</a></li>
+                            <li><a href="#">Vitae tempus risus</a></li>
+                        </ul>
+                        <ul class="column mayHide">
+                            <li><br /><img src="<?= Url::to('@web/images/logo.png') ?>" /></li>
+                        </ul>
+                    </div>
+                </div>
+            </li>
+            <li class="no-sub">
+                <a class="top-heading" href="#">Dignissim</a>
+            </li>
+            <li>
+                <span class="top-heading">Laudantium</span>
+                <i class="caret"></i>
+                <div class="dropdown right-aligned">
+                    <div class="dd-inner">
+                        <ul class="column">
+                            <li><h3>Nam a leo</h3></li>
+                            <li><a href="#">Vel faucibus leo</a></li>
+                            <li><a href="#">Duis ut mauris</a></li>
+                            <li><a href="#">In tempus semper</a></li>
+                            <li><a href="#">laoreet erat</a></li>
+                        </ul>
+                        <ul class="column">
+                            <li><h3>Proin iaculis</h3></li>
+                            <li><a href="#">In tempus semper</a></li>
+                            <li><a href="#">Hendrerit tincidunt</a></li>
+                            <li><a href="#">Duis ut mauris</a></li>
+                            <li><a href="#">pretium amet</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </li>
         </ul>
-    </div>
-</nav>
-
-<div class="modal fade d-block d-md-none mobile" id="menuModal" tabindex="-1" role="dialog" aria-labelledby="menuModalLabel" style="display: none;" aria-hidden="true">
-    <div class="modal-dialog mobile_nav" role="document">
-        <div class="modal-content">
-            <div class="modal-body">
-                <ul class="nav nav-list">
-                    <li>
-                        <a href="<?= Url::toRoute(['about/index']) ?>" class="tree-toggle nav-header">Về Minus 417</a>
-                    </li>
-                    <?= $mobileNav; ?>
-                    <li>
-                        <a href="#" data-toggle="modal" data-target="#newsLetter">Đăng ký</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
+    </nav>
 </div>
-
-
-<!--<div class="modal fade d-block d-md-none mobile" id="menuModal" tabindex="-1" role="dialog" aria-labelledby="menuModalLabel" style="display: none;" aria-hidden="true">
-    <div class="modal-dialog mobile_nav" role="document">
-        <div class="modal-content">
-            <div class="modal-body">
-
-                <ul class="nav nav-list">
-
-                    <li><a href="https://www.minus417.com/about" class="tree-toggle nav-header">ABOUT</a>
-
-                    </li>
-                    <li><a href="javascript:void(0)" class="tree-toggle nav-header">Products</a>
-
-                        <ul class="nav nav-list tree" style="display: none;">
-
-                            <li>
-                                <a href="javascript:void(0)" class="tree-toggle nav-header">Show me</a>
-
-                                <ul class="nav nav-list tree" style="display: none;">
-                                    <li><a href="https://www.minus417.com/en/new-products">New products</a></li><li><a href="https://www.minus417.com/en/special-offers">Special offers</a></li><li><a href="https://www.minus417.com/gifts-special-offers">Gifts</a></li><li><a href="https://www.minus417.com/en/everything">everything</a></li>
-                                </ul>
-
-                            </li>
-
-                            <li>
-                                <a href="javascript:void(0)" class="tree-toggle nav-header">Face</a>
-
-                                <ul class="nav nav-list tree" style="display: none;">
-                                    <li><a href="https://www.minus417.com/en/day-moisturizer">DAY MOISTURIZER</a></li><li><a href="https://www.minus417.com/en/night-cream">NIGHT CREAM</a></li><li><a href="https://www.minus417.com/en/serum">SERUM</a></li><li><a href="https://www.minus417.com/en/cleanser">CLEANSER</a></li><li><a href="https://www.minus417.com/en/masks">MASKS</a></li><li><a href="https://www.minus417.com/en/peelings">PEELINGS</a></li><li><a href="https://www.minus417.com/en/eye-creams">EYES</a></li>
-                                </ul>
-
-                            </li>
-
-                            <li>
-                                <a href="javascript:void(0)" class="tree-toggle nav-header">Body</a>
-
-                                <ul class="nav nav-list tree" style="display: none;">
-                                    <li><a href="https://www.minus417.com/en/body-scrub">BODY SCRUB</a></li><li><a href="https://www.minus417.com/en/body-butter">BODY BUTTER</a></li><li><a href="https://www.minus417.com/en/dead-sea-salt">BODY DEAD SEA SALT</a></li><li><a href="https://www.minus417.com/en/dead-sea-mud">BODY DEAD SEA MUD</a></li><li><a href="https://www.minus417.com/en/shower-gel">SHOWER GEL</a></li><li><a href="https://www.minus417.com/en/hair-care">HAIR CARE</a></li><li><a href="https://www.minus417.com/en/hand-cream">HAND CREAM</a></li><li><a href="https://www.minus417.com/en/foot-cream">FOOT CREAM</a></li>
-                                </ul>
-
-                            </li>
-
-                            <li>
-                                <a href="javascript:void(0)" class="tree-toggle nav-header">CONCERNS</a>
-
-                                <ul class="nav nav-list tree" style="display: none;">
-                                    <li><a href="https://www.minus417.com/en/anti-aging">ANTI AGING</a></li><li><a href="https://www.minus417.com?section=2103">hydration</a></li><li><a href="https://www.minus417.com/en/even-skin-tone">EVEN SKIN TONE</a></li><li><a href="https://www.minus417.com/en/body-slimmimg">BODY SLIMMING</a></li><li><a href="https://www.minus417.com/en/body-pampering">BODY PAMPERING</a></li>
-                                </ul>
-
-                            </li>
-
-                            <li>
-                                <a href="javascript:void(0)" class="tree-toggle nav-header">Skin type</a>
-
-                                <ul class="nav nav-list tree" style="display: none;">
-                                    <li><a href="https://www.minus417.com/en/dry-skin">DRY SKIN</a></li><li><a href="https://www.minus417.com/en/normal-skin">NORMAL SKIN</a></li><li><a href="https://www.minus417.com/en/oily-skin">OILY SKIN</a></li><li><a href="https://www.minus417.com/en/sensitive-skin">SENSITIVE SKIN</a></li>
-                                </ul>
-
-                            </li>
-
-                        </ul>
-
-                    </li>
-                    <li><a href="javascript:void(0)" class="tree-toggle nav-header">Collection</a>
-
-                        <ul class="nav nav-list tree" style="display: none;">
-
-                            <li>
-                                <a href="javascript:void(0)" class="tree-toggle nav-header">HYDRATING</a>
-
-                                <ul class="nav nav-list tree" style="display: none;">
-                                    <li><a href="https://www.minus417.com/en/redefine">Re Define</a></li><li><a href="https://www.minus417.com/en/infinite-motion">Infinite Motion </a></li>
-                                </ul>
-
-                            </li>
-
-                            <li>
-                                <a href="javascript:void(0)" class="tree-toggle nav-header">BRIGHTENING</a>
-
-                                <ul class="nav nav-list tree" style="display: none;">
-                                    <li><a href="https://www.minus417.com/en/even-more">Even More</a></li>
-                                </ul>
-
-                            </li>
-
-                            <li>
-                                <a href="javascript:void(0)" class="tree-toggle nav-header">Anti Aging</a>
-
-                                <ul class="nav nav-list tree" style="display: none;">
-                                    <li><a href="https://www.minus417.com/en/radiant-see">Radiant See</a></li><li><a href="https://www.minus417.com/en/time-control">Time Control</a></li>
-                                </ul>
-
-                            </li>
-
-                            <li>
-                                <a href="javascript:void(0)" class="tree-toggle nav-header">Body &amp; Hair</a>
-
-                                <ul class="nav nav-list tree" style="display: none;">
-                                    <li><a href="https://www.minus417.com/en/serenity-legend">Serenity Legend</a></li><li><a href="https://www.minus417.com/en/absolute-mud">Absolute Mud</a></li><li><a href="https://www.minus417.com/en/sensual-essense">Sensual Essense</a></li>
-                                </ul>
-
-                            </li>
-
-                            <li>
-                                <a href="javascript:void(0)" class="tree-toggle nav-header">For Men</a>
-
-                                <ul class="nav nav-list tree" style="display: none;">
-                                    <li><a href="https://www.minus417.com/en/for-men">For Men</a></li>
-                                </ul>
-
-                            </li>
-
-                        </ul>
-
-                    </li>
-                    <li>
-                        <a href="#" class="tree-toggle nav-header">English</a>
-                        <ul class="nav nav-list tree" style="display: none;">
-
-                            <li><a href="https://www.minus417.com?section=1" class="tree-toggle nav-header">English</a></li>
-                            <li><a href="http://fr.minus417.com" class="tree-toggle nav-header">français</a></li>
-                            <li><a href="https://www.minus417.com/es" class="tree-toggle nav-header">español</a></li>
-                            <li><a href="https://www.minus417.com/de" class="tree-toggle nav-header">Deutsch</a></li>
-                            <li><a href="https://www.minus417.com/ru-index" class="tree-toggle nav-header">русский</a></li>
-                            <li><a href="https://www.minus417.com/portugues" class="tree-toggle nav-header">Português</a></li>
-                            <li><a href="https://www.minus417.com?section=402" class="tree-toggle nav-header">中文</a></li>
-                            <li><a href="https://www.minus417.com?section=653" class="tree-toggle nav-header">עברית</a></li>
-                            <li><a href="https://www.minus417.com?section=656" class="tree-toggle nav-header">Cyprus</a></li>
-                            <li><a href="https://www.minus417.com?section=719" class="tree-toggle nav-header">Finnish</a></li>
-                            <li><a href="https://www.minus417.com?section=1139" class="tree-toggle nav-header">polish</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#" data-toggle="modal" data-target="#newsLetter">Register</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</div>-->

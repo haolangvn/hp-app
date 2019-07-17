@@ -1,6 +1,6 @@
 <?php
 
-namespace hp\models;
+namespace hpmain\models;
 
 use luya\cms\models\Block;
 

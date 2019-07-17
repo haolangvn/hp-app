@@ -1,6 +1,6 @@
 <?php
 
-namespace hp\frontend;
+namespace hpmain\frontend;
 
 /**
  * Hpmain Admin Module.

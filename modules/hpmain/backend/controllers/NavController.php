@@ -1,15 +1,15 @@
 <?php
 
-namespace hp\backend\controllers;
+namespace hpmain\backend\controllers;
 
 use Yii;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Json;
-use hp\models\NavItem;
-use hp\models\Search\NavItemSearch;
 use yii\web\NotFoundHttpException;
 use hp\base\Controller;
 use hp\utils\UShort;
+use hpmain\models\NavItem;
+use hpmain\models\Search\NavItemSearch;
 
 /**
  * NavController implements the CRUD actions for NavItem model.
@@ -22,11 +22,12 @@ class NavController extends Controller {
      */
     public function actionIndex() {
         $searchModel = new NavItemSearch();
+//        $searchModel->lang_id = ArrayHelper::getValue(UShort::app()->composition, 'langShortCode');
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
                     'searchModel' => $searchModel,
-                    'dataProvider' => $dataProvider,
+                    'dataProvider' => $dataProvider
         ]);
     }
 

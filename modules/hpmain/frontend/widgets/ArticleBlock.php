@@ -1,6 +1,6 @@
 <?php
 
-namespace hp\frontend\widgets;
+namespace hpmain\frontend\widgets;
 
 /**
  * Description of ArticleBlock
@@ -14,10 +14,10 @@ class ArticleBlock extends \yii\base\Widget {
 
     public function run() {
 //        return $this->render('article_block', [
-//                    'model' => \hp\models\Article::findOne($this->id)
+//                    'model' => \hpmain\models\Article::findOne($this->id)
 //        ]);
 ////        return $this->render('article_block', [
-////                    'model' => \hp\models\Article::findOne($this->id)
+////                    'model' => \hpmain\models\Article::findOne($this->id)
 ////        ]);
 //
 //        return time();
@@ -26,7 +26,7 @@ class ArticleBlock extends \yii\base\Widget {
         ]);
         return \hp\utils\UShort::cache()->getOrSet(['ARTICLE', $this->id], function() {
                     return $this->render('article_block', [
-                                'model' => \hp\models\Article::findOne($this->id)
+                                'model' => \hpmain\models\Article::findOne($this->id)
                     ]);
                 }, 0, $dependency);
     }

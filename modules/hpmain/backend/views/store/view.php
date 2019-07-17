@@ -4,19 +4,20 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model hp\models\Store */
+/* @var $model hpmain\models\Store */
 
 $this->title = $model->name;
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Stores'), 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Stores', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="store-view box box-primary">
     <div class="box-header">
-        <?= Html::a(Yii::t('app', 'Update'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary btn-flat']) ?>
-        <?= Html::a(Yii::t('app', 'Delete'), ['delete', 'id' => $model->id], [
+        <?= Html::a('Create', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary btn-flat']) ?>
+        <?= Html::a('Delete', ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger btn-flat',
             'data' => [
-                'confirm' => Yii::t('app', 'Are you sure you want to delete this item?'),
+                'confirm' => 'Are you sure you want to delete this item?',
                 'method' => 'post',
             ],
         ]) ?>
@@ -29,15 +30,17 @@ $this->params['breadcrumbs'][] = $this->title;
                 'name',
                 'alias',
                 'phone',
-                'email:email',
                 'address',
+                'email:email',
                 'image',
-                'system',
+                'coordinates',
                 'province',
                 'region',
+                'system',
                 'content:ntext',
-                'status',
-                'weight',
+                'sort_order',
+                'is_hidden',
+                'is_deleted',
                 'created_at:datetime',
                 'updated_at:datetime',
                 'created_by',

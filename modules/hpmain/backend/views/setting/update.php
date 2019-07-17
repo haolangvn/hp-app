@@ -1,7 +1,7 @@
 <?php
 
 /* @var $this yii\web\View */
-/* @var $model hp\models\Setting */
+/* @var $model hpmain\models\Setting */
 
 $this->title = Yii::t('app', 'Update {modelClass}: ', [
     'modelClass' => 'Setting',

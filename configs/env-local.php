@@ -33,7 +33,10 @@ $config = [
     'basePath' => dirname(__DIR__),
     'aliases' => [
         '@common' => dirname(__DIR__) . '/common',
-        '@hp' => '@app/modules/hpmain'
+        '@hp' => '@app/modules/core',
+        '@hpmain' => '@app/modules/hpmain',
+        '@hpec' => '@app/modules/ecom',
+        '@hpnews' => '@app/modules/news',
     ],
     'modules' => [
         /*
@@ -68,15 +71,26 @@ $config = [
         /*
          * hp module
          */
-        'main' => 'hp\frontend\Module',
-        'mainadmin' => 'hp\admin\Module',
+        'main' => 'hpmain\frontend\Module',
+        'mainadmin' => 'hpmain\admin\Module',
         /*
-         * demo module
+         * ecommerce module
          */
-        'demo' => 'app\modules\demo\frontend\Module',
-        'demoadmin' => 'app\modules\demo\admin\Module',
+        //'ecom' => 'hpec\frontend\Module',
+        //'ecomadmin' => 'hpec\admin\Module',
+//        /*
+//         * demo module
+//         */
+//        'demo' => 'app\modules\demo\frontend\Module',
+//        'demoadmin' => 'app\modules\demo\admin\Module',
     ],
     'components' => [
+        // error when use command line
+//        'request' => [
+//            'enableCsrfValidation' => true,
+//            'cookieValidationKey' => 'drWx549F9PFLEYpkv6mweYvTWZjMznLv',
+//            'csrfParam' => '_csrf',
+//        ],
         /*
          * Add your smtp connection to the mail component to send mails (which is required for secure login), you can test your
          * mail component with the luya console command ./vendor/bin/luya health/mailer.
@@ -96,7 +110,7 @@ $config = [
          * default: (array) Contains the default setup for the current language, this must match your language system configuration.
          */
         'composition' => [
-            'hidden' => true, // no languages in your url (most case for pages which are not multi lingual)
+            'hidden' => false, // no languages in your url (most case for pages which are not multi lingual)
             'default' => [
                 'langShortCode' => 'vi',
 //                'countryShortCode' => 'vn'
@@ -123,9 +137,6 @@ $config = [
                 ],
             ],
         ],
-        'storage' => [
-            'class' => 'luya\admin\filesystem\LocalFileSystem',
-        ],
         'formatter' => [
             'locale' => 'vi-VN',
             // format theo Format ICU
@@ -133,13 +144,48 @@ $config = [
             'dateFormat' => 'dd/MM/yyyy',
             'datetimeFormat' => 'dd/MM/yy, HH:mm',
         ],
-        'AdminUser' => [
+        'menu' => [
+            'class' => 'hp\components\Menu',
+        ],
+        'adminuser' => [
             'class' => 'luya\admin\components\AdminUser',
+            'defaultLanguage' => 'en',
             'enableAutoLogin' => true
-        ]
-//        'session' => [
-//            // this is the name of the session cookie used for login on the backend
-//            'name' => 'advanced-backend',
+        ],
+        'storage' => [
+            'class' => 'luya\admin\filesystem\LocalFileSystem',
+        ],
+        'session' => [
+            // this is the name of the session cookie used for login on the backend
+            'class' => 'yii\web\Session',
+            'name' => '_ss_admin',
+            'cookieParams' => ['httponly' => true, 'lifetime' => 60 * 60 * 24],
+            'timeout' => 60 * 60 * 24, //session expire
+            'useCookies' => true,
+        ],
+        'cart' => [
+            'class' => 'hpec\shoppingcart\Cart',
+            'id' => 'shoppingcart',
+//            'storage' => [
+//                'class' => 'hscstudio\cart\MultipleStorage',
+//                'storages' => [
+//                    ['class' => 'hscstudio\cart\SessionStorage'],
+//                    [
+//                        'class' => 'hscstudio\cart\DatabaseStorage',
+//                        'table' => 'cart',
+//                    ],
+//                ],
+//            ]
+        ],
+//        'assetManager' => [
+//            'appendTimestamp' => true,
+//            'bundles' => [
+//                'yii\web\JqueryAsset' => [
+//                    'jsOptions' => [
+//                        'async' => 'async'
+//                    ],
+//                ],
+//            ],
 //        ],
     ],
 ];
@@ -155,7 +201,7 @@ if (YII_DEBUG) {
             'crud' => [
                 'class' => 'yii\gii\generators\crud\Generator',
                 'templates' => [
-                    'adminlte' => '@app/backend/ext/gii/templates/crud/simple',
+                    'adminlte' => '@hp/gii/templates/crud/simple',
                 ]
             ]
         ],

@@ -26,7 +26,7 @@ return [
     'Available' => 'Có sẵn',
     'Class Name' => 'Tên lớp',
     'Create' => 'Tạo mới',
-    'Create Menu' => 'tạo menu',
+    'Create Menu' => 'Tạo menu',
     'Create Permission' => 'Tạo Quyền',
     'Create Role' => 'Tạo Vai trò',
     'Create Route' => 'Tạo Route',

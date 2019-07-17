@@ -1,12 +1,12 @@
-<?php
+<?php 
 
-namespace hp\backend\controllers;
+namespace hpmain\backend\controllers;
 
 use Yii;
-use hp\models\Article;
-use hp\models\search\Article as ArticleSearch;
-use hp\base\Controller;
+use hpmain\models\base\Article;
+use hpmain\models\search\ArticleSearch;
 use yii\web\NotFoundHttpException;
+use hp\base\Controller;
 
 /**
  * ArticleController implements the CRUD actions for Article model.

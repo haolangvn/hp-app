@@ -19,7 +19,7 @@ class AssignmentController extends Controller
 {
     public $userClassName;
     public $idField = 'id';
-    public $usernameField = 'username';
+    public $usernameField = 'email';
     public $fullnameField;
     public $searchClass;
     public $extraColumns = [];
@@ -31,8 +31,7 @@ class AssignmentController extends Controller
     {
         parent::init();
         if ($this->userClassName === null) {
-            $this->userClassName = Yii::$app->getUser()->identityClass;
-            $this->userClassName = $this->userClassName ? : 'mdm\admin\models\User';
+            $this->userClassName = 'mdm\admin\models\User';
         }
     }
 

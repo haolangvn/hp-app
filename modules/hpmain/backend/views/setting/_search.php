@@ -4,37 +4,42 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model hp\models\search\Setting */
+/* @var $model hpmain\models\search\Setting */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
 <div class="setting-search">
 
-    <?php $form = ActiveForm::begin([
-        'action' => ['index'],
-        'method' => 'get',
-        'options' => [
-            'data-pjax' => 1
-        ],
-    ]); ?>
+    <?php
+    $form = ActiveForm::begin([
+                'id' => 'search',
+                'action' => ['index'],
+                'method' => 'get',
+                'options' => [
+                    'data-pjax' => 1
+                ],
+    ]);
+    ?>
 
-    <?= $form->field($model, 'id') ?>
-
-    <?= $form->field($model, 'name') ?>
-
-    <?= $form->field($model, 'value') ?>
-
-    <?= $form->field($model, 'type') ?>
-
-    <?= $form->field($model, 'created_at') ?>
-
-    <?php // echo $form->field($model, 'updated_at') ?>
-
-    <div class="form-group">
-        <?= Html::submitButton(Yii::t('app', 'Search'), ['class' => 'btn btn-primary']) ?>
-        <?= Html::resetButton(Yii::t('app', 'Reset'), ['class' => 'btn btn-default']) ?>
+    <div class="col-md-2 pull-right">
+        <div class="row">
+            <?=
+            $form->field($model, 'lang_id')->dropDownList($model->getLang(), [
+                'onchange' => '$("#search").submit()',
+                'prompt' => 'Select Language'
+            ])->label(false)
+            ?>
+        </div>
     </div>
 
-    <?php ActiveForm::end(); ?>
+
+        <?php // echo $form->field($model, 'updated_at')   ?>
+
+    <div class="form-group">
+<?php // Html::submitButton(Yii::t('app', 'Search'), ['class' => 'btn btn-primary'])   ?>
+    <?php // Html::resetButton(Yii::t('app', 'Reset'), ['class' => 'btn btn-default'])   ?>
+    </div>
+
+<?php ActiveForm::end(); ?>
 
 </div>

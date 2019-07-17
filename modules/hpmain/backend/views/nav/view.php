@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model hp\models\NavItem */
+/* @var $model hpmain\models\NavItem */
 
 $this->title = $model->title;
 $this->params['breadcrumbs'][] = ['label' => 'Nav Items', 'url' => ['index']];

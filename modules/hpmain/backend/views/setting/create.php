@@ -1,6 +1,6 @@
 <?php
 /* @var $this yii\web\View */
-/* @var $model hp\models\Setting */
+/* @var $model hpmain\models\Setting */
 
 $this->title = Yii::t('app', 'Create Setting');
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Settings'), 'url' => ['index']];

@@ -1,0 +1,21 @@
+{
+    "rows": [
+        [
+            {
+                "cols": 2,
+                "var": "left",
+                "label": "Left"
+            },
+            {
+                "cols": 8,
+                "var": "center",
+                "label": "Article Center Content"
+            },
+            {
+                "cols": 2,
+                "var": "right",
+                "label": "Right"
+            }
+        ]
+    ]
+}

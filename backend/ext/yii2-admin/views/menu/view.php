@@ -13,6 +13,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="menu-index box">
     <div class="box-body">
         <p>
+            <?= Html::a(Yii::t('rbac-admin', 'Create'), ['create'], ['class' => 'btn btn-success']) ?>
             <?= Html::a(Yii::t('rbac-admin', 'Update'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
             <?=
             Html::a(Yii::t('rbac-admin', 'Delete'), ['delete', 'id' => $model->id], [

@@ -1,10 +1,10 @@
 <?php
 
-namespace hp\backend\controllers;
+namespace hpmain\backend\controllers;
 
 use Yii;
-use hp\models\Setting;
-use hp\models\search\Setting as SettingSearch;
+use hpmain\models\base\Setting;
+use hpmain\models\search\SettingSearch;
 use hp\base\Controller;
 use yii\web\NotFoundHttpException;
 use hp\utils\UShort;
@@ -70,6 +70,8 @@ class ParamsController extends Controller {
             }
             if ($model->save()) {
                 UShort::setFlash('Params has been created.');
+            } else {
+                UShort::setFlash($model->getErrorsJson(), 'error');
             }
             return $this->redirect(['create']);
         }

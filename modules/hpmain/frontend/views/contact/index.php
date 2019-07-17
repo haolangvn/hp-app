@@ -1,67 +1,69 @@
 <?php
 
-use yii\helpers\Url;
 use yii\widgets\ActiveForm;
-use hp\utils\UShort;
+use hp\utils\UTranslate as UT;
 ?>
-<div class="container" id="contact">
-    <div class="row">
-        <div class="col-md-12 title col-xs-12">
-            <h1>Liên Hệ</h1>            
-        </div>  
-    </div>
-    <?php
-    $form = ActiveForm::begin([
-                'id' => 'faq-form',
+<section id="contact-form">
+    <div class="col-md-offset-3 col-md-6">
+        <div class="contact-form">
+            <div class="row clearfix">
+                <?php
+                $form = ActiveForm::begin([
+                            'id' => 'faq-form',
 //                    'options' => ['class' => 'col-md-12 col-sm-12 col-xs-12 form-main clearfix'],
-                'enableClientValidation' => false,
-                'enableClientScript' => false,
-                'fieldConfig' => [
-                    'template' => "{input}"
-                ]
-    ]);
-    ?>
-    <div class="row">
-        <div class="col-md-12 col-sm-12 col-xs-12" style="margin-bottom:15px;">
-            <hr>
-            <p>Vui lòng điền thông tin dưới đây:</p>
-        </div>
-        <?php
-        if ($flash = UShort::session()->getFlash('success')) {
-            echo '<div class="col-md-12 col-sm-12 col-xs-12" style="margin-bottom: 20px">';
-            echo '<p class="alert alert-success">' . $flash . '</p>';
-            echo '</div>';
-        }
-        ?>
+                            'enableClientValidation' => false,
+                            'enableClientScript' => false,
+                            'fieldConfig' => [
+                                'template' => "{input}"
+                            ]
+                ]);
+                ?>
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <hr>
+                        <p><?= UT::t('Please fill out the form below:') ?></p>
+                    </div>
 
-        <div class="col-md-4 col-sm-6 col-xs-12 form-group">
-            <?= $form->field($model, 'fullname')->textInput(['placeholder' => 'Họ và tên (*)', 'required' => true, 'data-placement' => 'bottom']) ?>
-        </div>
-        <div class="col-md-4 col-sm-6 col-xs-12 form-group">
-            <?= $form->field($model, 'email')->textInput(['placeholder' => 'Email', 'type' => 'email', 'data-placement' => 'bottom']) ?>
-        </div>
-        <div class="col-md-4 col-sm-6 col-xs-12 form-group">
-            <?= $form->field($model, 'phone')->textInput(['placeholder' => 'Điện thoại (*)', 'required' => true, 'type' => 'number', 'data-placement' => 'bottom']) ?>
-        </div>
-        <div class="col-md-4 col-sm-6 col-xs-12 form-group">
-            <?= $form->field($model, 'address')->textInput(['placeholder' => 'Địa chỉ', 'data-placement' => 'bottom']) ?>
-        </div>
-        <div class="col-md-4 col-sm-12 col-xs-12 form-group">
-            <?= $form->field($model, 'content')->textarea(['placeholder' => 'Nội dung (*)', 'required' => true]) ?>                    
-        </div>
+                    <div class="col-md-6 col-sm-6 col-xs-6 form-group">
+                        <?= $form->field($model, 'fullname')->textInput(['placeholder' => $model->getAttributeLabel('fullname') . ' (*)', 'required' => true, 'data-placement' => 'bottom']) ?>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-xs-6 form-group">
+                        <?= $form->field($model, 'phone')->textInput(['placeholder' => $model->getAttributeLabel('phone') . ' (*)', 'required' => true, 'type' => 'number', 'data-placement' => 'bottom']) ?>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-xs-6 form-group">
+                        <?= $form->field($model, 'email')->textInput(['placeholder' => $model->getAttributeLabel('email'), 'type' => 'email', 'data-placement' => 'bottom']) ?>
+                    </div>        
+                    <div class="col-md-6 col-sm-6 col-xs-6 form-group">
+                        <?= $form->field($model, 'address')->textInput(['placeholder' => $model->getAttributeLabel('address'), 'data-placement' => 'bottom']) ?>
+                    </div>
+                    <div class="col-md-12 col-sm-12 col-xs-12 form-group">
+                        <?= $form->field($model, 'subject')->textInput(['placeholder' => $model->getAttributeLabel('subject') . ' (*)', 'required' => true, 'rows' => 4]) ?>                    
+                    </div>
+                    <div class="col-md-12 col-sm-12 col-xs-12 form-group">
+                        <?= $form->field($model, 'content')->textarea(['placeholder' => $model->getAttributeLabel('content') . ' (*)', 'required' => true, 'rows' => 4]) ?>                    
+                    </div>
+                    <?= \hp\validators\GCaptcha::viewCaptcha() ?>
+                </div>
 
-
-
+                <div class="row">
+                    <div class="col-md-9 col-sm-9 col-xs-12"><small><b>(*) <?= UT::t('Required Fields') ?></b></small></div>
+                    <div class="col-md-3 col-sm-3 col-xs-12 text-right">
+                        <input type="submit" class="btn btn-default" value="<?= UT::t('Send', UT::TYPE_BUTTON) ?>">
+                    </div>
+                </div>
+                <?php ActiveForm::end(); ?>
+            </div>
+        </div>
     </div>
-    <div class="row">
-        <div class="col-md-9 col-sm-9 col-xs-12"><small><b>* Phần bắt buộc</b></small></div>
-        <div class="col-md-3 col-sm-3 col-xs-12"><input type="submit" class="butt_2" value="Gửi"></div>
-    </div>
-    <?php ActiveForm::end(); ?>
-</div>
+</section>
 <?php
 $css = <<< CSS
-    #contact {margin-bottom: 20px} 
+    #contact-form {
+        background: #F2F2F2;
+        padding-top: 30px;
+        padding-bottom: 30px;
+        overflow: hidden;
+        } 
     #contact .title h1{
         font-size: 40px;
         margin: 0px 0px 8px;
@@ -98,10 +100,8 @@ $css = <<< CSS
         background: #b99845;
         border: solid 1px #b99845;
         color: #fff;
-        width: 166px;
         height: 34px;
         text-align: center;
-        padding-top: 6px;
         line-height: 20px;
         display: inline-block;
         text-transform: uppercase;
@@ -113,6 +113,7 @@ $css = <<< CSS
         border: solid 1px #7d7d7d;
         color: #fff;
     }
+    #contact .form-group {margin-bottom: 0}
 CSS;
 $this->registerCss($css);
 ?>

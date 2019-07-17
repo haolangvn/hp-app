@@ -1,100 +1,117 @@
 <?php
 
-use yii\helpers\Url;
-use hp\utils\UShort;
-use yii\helpers\Html;
+use luya\helpers\Url;
 ?>
-<?= Html::csrfMetaTags() ?>
-<div class="container" id="store">
-    <div class="row">
-        <div class="col-md-12 title col-xs-12">
-            <h1>Thông Tin Cửa Hàng</h1>
-            <hr>
-        </div>  
-        <div class="col-md-12 col-xs-12 col-sm-12 text-right">
-            <div class="filter">
+<section class="showroom">
+    <div class="container">
+        <div class="filter">
+            <div class="pull-right">
                 <label>Tìm cửa hàng gần nhất: </label>
-                <select  id="selectProvices">
+                <select id="province">
                     <?php
-                    $alias = 'tp-ho-chi-minh';
-                    foreach ($listProvinces as $province) {
-                        $selected = '';
-                        if ($province->alias == $alias)
-                            $selected = 'selected';
-                        echo '<option value="' . $province->id . '" ' . $selected . '>' . $province->name . '</option>';
+                    foreach ($listProvinces as $store) {
+                        echo '<option value="' . $store['province'] . '">' . $store['province'] . '</option>';
                     }
                     ?>
                 </select>
             </div>
         </div>
-        <div id="ResultShowroom">
+        <div id="showroom-list" class="row">
 
         </div>
     </div>
-    <?php
-    $css = <<< CSS
-    #store .title{
+</section>
+<?php
+$css = <<< CSS
+   .showroom {}
+   .showroom .filter {margin-top: 25px;}
+   .showroom .brand {
+        margin-bottom: 10px;
+        color: #9B0E62
+    }
+   .showroom .items {
         margin-bottom: 20px;
     }
-            
-    #store .title h1{
-        font-size: 40px;
-        margin: 0px 0px 8px;
+   .showroom .items .icon {
+       padding-right: 8px;
+   }
+        .showroom .items .name {
+        
+   }
+   .showroom .items .item-body {
+        color: #777;
     }
-        
 CSS;
-    $this->registerCss($css);
-    ?>
-<?php
-$urlGetShowroom = Url::toRoute(['store/get-showroom']);
-//$urlGetShowroom = Url::toRoute(['store/abc']);
+$this->registerCss($css);
+
+
+$urlGetShowroom = Url::toInternal(['main/store/get-showroom']);
+$cookie_name = 'SELECT_REGION';
+
 $js = <<< JS
-$('#selectProvices').change(function(){
-    let id = $(this).val();
-    return getShowroom(id)
-});
-        
-getShowroom(701);
-        
-function getShowroom(id) {
-    $.ajax({
-        url: '{$urlGetShowroom}',
-        data: 'id=' + id ,
-        method: 'post',
-        beforeSend: function() {
-            
-        },
-        success: function(html){
-            console.log(html);
-            if(html.success == 1){
-                let output_html = "";
-                $.each( html.data, function( i, item ) {
-                    
-                    output_html += '<div class="col-sm-12 col-md-12 col-xs-12" style="margin-top: 20px; margin-bottom: 15px;">';	
-                    output_html += '<p><strong style="font-size: 22px;"> ---------- '+i+' ---------- </strong></p>';
-                    output_html += '</div>';
-                    $.each( item, function( u, node ) {						
-						output_html += '<p style="font-size: 15px; padding-left: 25px;">';
-						output_html += '<b>* '+node.name+'</b>';
-						output_html += '<br/>';
-						output_html += ' &nbsp;&nbsp;&nbsp;'+node.address;
-						output_html += '<br/>';
-						output_html += '&nbsp;&nbsp;&nbsp;Điện thoại: ' + node.phone;
-						output_html += '</p>';                        
-                    });
-                    
-                });
-                $('#ResultShowroom').html(output_html);
-            }
-        }
-    }).done(function() {
-        
-    }).fail(function(jqXHR, textStatus ) {
-        console.log(jqXHR);
-    }).always(function() {
-        
+window.onload = function(){
+
+    getShowroom();
+
+    $('#province').change(function(){
+        let province = $(this).val();
+        return getShowroom(province)
     });
-}
+        
+    function getShowroom(province = null) {
+        var csrfToken = $('meta[name="csrf-token"]').attr("content");
+        if(province == null){
+            let region = getCookie("{$cookie_name}");
+            if(region != false){
+                province = region;
+            } else {
+                province = 'TP Hồ Chí Minh';
+            }
+        } else {
+            setCookie('{$cookie_name}', province, 365);
+        }
+
+            console.log(province);
+
+        $.ajax({
+            url: '{$urlGetShowroom}',
+            data: 'province=' + province + '&_csrf=' + csrfToken,
+            method: 'post',
+            beforeSend: function() {
+                $('#province').val(province);
+            },
+            success: function(html){
+                console.log(html);
+                if(html.success == 1){
+                    let output_html = "";
+                    $.each( html.data, function( i, item ) {
+
+                        output_html += '<div class="col-md-12 brand">';	
+                        output_html += '<h3><strong>' + i + '</strong></h3>';
+                        output_html += '</div>';
+                        $.each( item, function( u, node ) {						
+                            output_html += '<div class="col-md-4 col-sm-6 col-xs-12 items">';
+                            output_html += '<h4 class="name">'+node.name+'</h4>';
+                            output_html += '<div class="item-body"><i class="glyphicon glyphicon-map-marker icon"></i> ';
+                            output_html += node.address;
+                            output_html += '<br/>';
+                            output_html += '<i class="glyphicon glyphicon-phone-alt icon"></i>  ' + node.phone;
+                            output_html += '</div>';
+                            output_html += '</div>';
+                        });
+                        output_html += '<div class="clearfix"></div>';
+                    });
+                    $('#showroom-list').html(output_html);
+                }
+            }
+        }).done(function() {
+            console.log('Done');
+        }).fail(function(jqXHR, textStatus ) {
+            console.log(jqXHR);
+        }).always( function() {} );
+    }
+};
+
 JS;
 $this->registerJs($js);
 ?>

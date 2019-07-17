@@ -1,0 +1,22 @@
+<?php
+
+return [
+    'components' => [
+        'db' => [
+            'class' => 'yii\db\Connection',
+            'dsn' => 'mysql:host=192.168.0.227;dbname=1905_perfumeworld',
+            'username' => 'root',
+            'password' => 'Tgnh2019@',
+            // 'dsn' => 'mysql:host=localhost;dbname=DB_NAME;unix_socket=/Applications/MAMP/tmp/mysql/mysql.sock', // OSX MAMP
+            // 'dsn' => 'mysql:host=localhost;dbname=DB_NAME;unix_socket=/Applications/XAMPP/xamppfiles/var/mysql/mysql.sock', // OSX XAMPP
+            'charset' => 'utf8',
+            // in productive environments you can enable the schema caching
+            'enableSchemaCache' => true,
+            'schemaCacheDuration' => 3600,
+            'tablePrefix' => '',
+        ]
+    ],
+    'params' => [
+        'global_vars' => []
+    ]
+];

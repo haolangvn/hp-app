@@ -17,6 +17,8 @@ $this->params['breadcrumbs'][] = $this->title;
 
                 <?= $form->field($model, 'id')->textInput(['maxlength' => true]) ?>
 
+                <?= $form->field($model, 'lang_id')->dropDownList($model->getLang()) ?>
+                
                 <?= $form->field($model, 'type')->dropDownList(['richtext' => 'Rich Text', 'json' => 'Json']) ?>
 
                 <div class="form-group">

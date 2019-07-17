@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model hp\models\search\Translate */
+/* @var $model hpmain\models\search\TranslateSearch */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
@@ -20,11 +20,11 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'id') ?>
 
-    <?= $form->field($model, 'message') ?>
-
     <?= $form->field($model, 'category') ?>
 
     <?= $form->field($model, 'language_code') ?>
+
+    <?= $form->field($model, 'message') ?>
 
     <?= $form->field($model, 'translation') ?>
 
@@ -33,8 +33,8 @@ use yii\widgets\ActiveForm;
     <?php // echo $form->field($model, 'updated_at') ?>
 
     <div class="form-group">
-        <?= Html::submitButton(Yii::t('app', 'Search'), ['class' => 'btn btn-primary']) ?>
-        <?= Html::resetButton(Yii::t('app', 'Reset'), ['class' => 'btn btn-default']) ?>
+        <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
+        <?= Html::resetButton('Reset', ['class' => 'btn btn-default']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

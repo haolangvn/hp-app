@@ -1,10 +1,10 @@
 <?php
 
-namespace hp\frontend\blocks;
+namespace hpmain\frontend\blocks;
 
 use luya\cms\base\PhpBlock;
 use luya\cms\frontend\blockgroups\ProjectGroup;
-use hp\models\Article;
+use hpmain\models\base\Article;
 
 /**
  * Helper Article Block.

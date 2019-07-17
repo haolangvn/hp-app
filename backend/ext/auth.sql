@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 18, 2019 at 03:29 PM
+-- Generation Time: Jun 02, 2019 at 08:25 AM
 -- Server version: 5.7.26
 -- PHP Version: 7.1.29
 
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `hp-app`
+-- Database: `1905_minus417`
 --
 
 -- --------------------------------------------------------
@@ -78,6 +78,42 @@ INSERT INTO `auth_item` (`name`, `type`, `description`, `rule_name`, `data`, `cr
 ('/demo/demo/view', 2, NULL, NULL, NULL, 1554560318, 1554560318),
 ('/demo/elfinder/*', 2, NULL, NULL, NULL, 1558189526, 1558189526),
 ('/demo/elfinder/index', 2, NULL, NULL, NULL, 1558189526, 1558189526),
+('/ecom/*', 2, NULL, NULL, NULL, 1558495263, 1558495263),
+('/ecom/comment/*', 2, NULL, NULL, NULL, 1558495263, 1558495263),
+('/ecom/comment/create', 2, NULL, NULL, NULL, 1558495263, 1558495263),
+('/ecom/comment/delete', 2, NULL, NULL, NULL, 1558495263, 1558495263),
+('/ecom/comment/index', 2, NULL, NULL, NULL, 1558495263, 1558495263),
+('/ecom/comment/update', 2, NULL, NULL, NULL, 1558495263, 1558495263),
+('/ecom/comment/view', 2, NULL, NULL, NULL, 1558495263, 1558495263),
+('/ecom/order-detail/*', 2, NULL, NULL, NULL, 1558495263, 1558495263),
+('/ecom/order-detail/add-product', 2, NULL, NULL, NULL, 1558495263, 1558495263),
+('/ecom/order-detail/delete', 2, NULL, NULL, NULL, 1558495263, 1558495263),
+('/ecom/order-detail/get-promotion-by-id', 2, NULL, NULL, NULL, 1558495263, 1558495263),
+('/ecom/order-detail/update-description-by-id', 2, NULL, NULL, NULL, 1558495263, 1558495263),
+('/ecom/order-detail/update-promotion-by-id', 2, NULL, NULL, NULL, 1558495263, 1558495263),
+('/ecom/order/*', 2, NULL, NULL, NULL, 1558495263, 1558495263),
+('/ecom/order/api-product-price', 2, NULL, NULL, NULL, 1558495263, 1558495263),
+('/ecom/order/create', 2, NULL, NULL, NULL, 1558495263, 1558495263),
+('/ecom/order/delete', 2, NULL, NULL, NULL, 1558495263, 1558495263),
+('/ecom/order/editable-detail', 2, NULL, NULL, NULL, 1558495263, 1558495263),
+('/ecom/order/export-excel', 2, NULL, NULL, NULL, 1558495263, 1558495263),
+('/ecom/order/export-status-pending', 2, NULL, NULL, NULL, 1558495263, 1558495263),
+('/ecom/order/get-json', 2, NULL, NULL, NULL, 1558495263, 1558495263),
+('/ecom/order/get-promotion-by-id', 2, NULL, NULL, NULL, 1558495263, 1558495263),
+('/ecom/order/index', 2, NULL, NULL, NULL, 1558495263, 1558495263),
+('/ecom/order/print-bill', 2, NULL, NULL, NULL, 1558495263, 1558495263),
+('/ecom/order/print-label', 2, NULL, NULL, NULL, 1558495263, 1558495263),
+('/ecom/order/update', 2, NULL, NULL, NULL, 1558495263, 1558495263),
+('/ecom/order/update-description-by-id', 2, NULL, NULL, NULL, 1558495263, 1558495263),
+('/ecom/order/update-promotion-by-id', 2, NULL, NULL, NULL, 1558495263, 1558495263),
+('/ecom/order/view', 2, NULL, NULL, NULL, 1558495263, 1558495263),
+('/ecom/order/view-new', 2, NULL, NULL, NULL, 1558495263, 1558495263),
+('/ecom/product/*', 2, NULL, NULL, NULL, 1558495665, 1558495665),
+('/ecom/product/create', 2, NULL, NULL, NULL, 1558495665, 1558495665),
+('/ecom/product/delete', 2, NULL, NULL, NULL, 1558495665, 1558495665),
+('/ecom/product/index', 2, NULL, NULL, NULL, 1558495665, 1558495665),
+('/ecom/product/update', 2, NULL, NULL, NULL, 1558495665, 1558495665),
+('/ecom/product/view', 2, NULL, NULL, NULL, 1558495665, 1558495665),
 ('/main/*', 2, NULL, NULL, NULL, 1553486133, 1553486133),
 ('/main/article/*', 2, NULL, NULL, NULL, 1558189526, 1558189526),
 ('/main/article/create', 2, NULL, NULL, NULL, 1558189526, 1558189526),
@@ -85,6 +121,12 @@ INSERT INTO `auth_item` (`name`, `type`, `description`, `rule_name`, `data`, `cr
 ('/main/article/index', 2, NULL, NULL, NULL, 1558189526, 1558189526),
 ('/main/article/update', 2, NULL, NULL, NULL, 1558189526, 1558189526),
 ('/main/article/view', 2, NULL, NULL, NULL, 1558189526, 1558189526),
+('/main/contact/*', 2, NULL, NULL, NULL, 1558510913, 1558510913),
+('/main/contact/create', 2, NULL, NULL, NULL, 1558510913, 1558510913),
+('/main/contact/delete', 2, NULL, NULL, NULL, 1558510913, 1558510913),
+('/main/contact/index', 2, NULL, NULL, NULL, 1558510913, 1558510913),
+('/main/contact/update', 2, NULL, NULL, NULL, 1558510913, 1558510913),
+('/main/contact/view', 2, NULL, NULL, NULL, 1558510913, 1558510913),
 ('/main/default/*', 2, NULL, NULL, NULL, 1553486132, 1553486132),
 ('/main/default/index', 2, NULL, NULL, NULL, 1553486131, 1553486131),
 ('/main/error/*', 2, NULL, NULL, NULL, 1558189526, 1558189526),
@@ -110,6 +152,7 @@ INSERT INTO `auth_item` (`name`, `type`, `description`, `rule_name`, `data`, `cr
 ('/main/nav/delete', 2, NULL, NULL, NULL, 1558189526, 1558189526),
 ('/main/nav/index', 2, NULL, NULL, NULL, 1558189526, 1558189526),
 ('/main/nav/update', 2, NULL, NULL, NULL, 1558189526, 1558189526),
+('/main/nav/update-content', 2, NULL, NULL, NULL, 1558510918, 1558510918),
 ('/main/nav/view', 2, NULL, NULL, NULL, 1558189526, 1558189526),
 ('/main/params/*', 2, NULL, NULL, NULL, 1553499938, 1553499938),
 ('/main/params/create', 2, NULL, NULL, NULL, 1553499938, 1553499938),
@@ -117,6 +160,12 @@ INSERT INTO `auth_item` (`name`, `type`, `description`, `rule_name`, `data`, `cr
 ('/main/params/index', 2, NULL, NULL, NULL, 1553499938, 1553499938),
 ('/main/params/update', 2, NULL, NULL, NULL, 1553499938, 1553499938),
 ('/main/params/view', 2, NULL, NULL, NULL, 1553499938, 1553499938),
+('/main/store/*', 2, NULL, NULL, NULL, 1558510918, 1558510918),
+('/main/store/create', 2, NULL, NULL, NULL, 1558510918, 1558510918),
+('/main/store/delete', 2, NULL, NULL, NULL, 1558510918, 1558510918),
+('/main/store/index', 2, NULL, NULL, NULL, 1558510918, 1558510918),
+('/main/store/update', 2, NULL, NULL, NULL, 1558510918, 1558510918),
+('/main/store/view', 2, NULL, NULL, NULL, 1558510918, 1558510918),
 ('/main/translate/*', 2, NULL, NULL, NULL, 1553486133, 1553486133),
 ('/main/translate/create', 2, NULL, NULL, NULL, 1553486132, 1553486132),
 ('/main/translate/delete', 2, NULL, NULL, NULL, 1553486133, 1553486133),
@@ -284,7 +333,12 @@ INSERT INTO `auth_menu` (`id`, `name`, `parent`, `route`, `order`, `icon`, `data
 (17, 'Key-Value Storage', 14, '/main/params/index', NULL, 'fa-arrows-h', NULL, 1553503311, 1, 0, 0),
 (18, 'Pages', NULL, '/main/article/index', 18, 'fa-file', NULL, 1558189949, 1, 1558190704, 1),
 (19, 'Page List', 18, '/main/nav/index', 19, 'fa-circle-thin', NULL, 1558190174, 1, 1558190725, 1),
-(20, 'Article Content', 18, '/main/article/index', 20, 'fa-circle-thin', NULL, 1558190225, 1, 1558190738, 1);
+(20, 'Article Content', 18, '/main/article/index', 20, 'fa-circle-thin', NULL, 1558190225, 1, 1558190738, 1),
+(21, 'eCommerce', NULL, '/ecom/order/index', 21, 'fa-cart-plus', NULL, 1558495325, 1, 1558495439, 1),
+(22, 'Product', 21, '/ecom/product/index', 22, '', NULL, 1558495693, 1, 0, 0),
+(23, 'Review', 21, '/ecom/comment/index', 23, '', NULL, 1558495740, 1, 0, 0),
+(24, 'Contact', NULL, '/main/contact/index', 24, 'fa-address-card', NULL, 1558510941, 1, 1558511088, 1),
+(25, 'Order', 21, '/ecom/order/index', 25, '', NULL, 1558512152, 1, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -349,7 +403,7 @@ CREATE TABLE `auth_user_profile` (
 --
 
 INSERT INTO `auth_user_profile` (`id`, `user_id`, `first_name`, `last_name`, `email_gravatar`, `last_visit`, `created_at`, `updated_at`) VALUES
-(1, 1, 'Hao', 'Lang', 'haolangvn@gmail.com', 1558190864, 1552899730, 1552899730),
+(1, 1, 'Hao', 'Lang', 'haolangvn@gmail.com', 1558931043, 1552899730, 1552899730),
 (2, 2, 'Hao', 'Lang', 'hao@thegioinuochoa.com.vn', 1552976529, 1552905477, 1552905477),
 (3, 3, 'Phong', 'Tang', 'admin@thegioinuochoa.com.vn', NULL, 1552971356, 1554696136);
 
@@ -417,7 +471,7 @@ ALTER TABLE `auth_user_profile`
 -- AUTO_INCREMENT for table `auth_menu`
 --
 ALTER TABLE `auth_menu`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `auth_user`

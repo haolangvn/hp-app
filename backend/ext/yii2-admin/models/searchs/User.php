@@ -37,7 +37,7 @@ class User extends Model
     public function search($params)
     {
         /* @var $query \yii\db\ActiveQuery */
-        $class = Yii::$app->getUser()->identityClass ? : 'mdm\admin\models\User';
+        $class = 'mdm\admin\models\User';
         $query = $class::find();
 
         $dataProvider = new ActiveDataProvider([

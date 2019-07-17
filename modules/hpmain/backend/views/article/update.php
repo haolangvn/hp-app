@@ -1,7 +1,7 @@
 <?php
 
 /* @var $this yii\web\View */
-/* @var $model hp\models\Article */
+/* @var $model hpmain\models\base\Article */
 
 $this->title = 'Update Article: ' . $model->name;
 $this->params['breadcrumbs'][] = ['label' => 'Articles', 'url' => ['index']];

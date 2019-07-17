@@ -5,7 +5,7 @@ use yii\grid\GridView;
 use yii\widgets\Pjax;
 
 /* @var $this yii\web\View */
-/* @var $searchModel hp\models\search\Setting */
+/* @var $searchModel hpmain\models\search\Setting */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = Yii::t('app', 'Settings');
@@ -18,7 +18,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= Html::a(Yii::t('app', 'Create'), ['create'], ['class' => 'btn btn-icon btn-new btn-success btn-flat']) ?>
     </div>
     <div class="box-body table-responsive">
-        <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+        <?php echo $this->render('_search', ['model' => $searchModel]); ?>
         <?=
         GridView::widget([
             'dataProvider' => $dataProvider,

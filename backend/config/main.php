@@ -5,7 +5,7 @@ $params = require(__DIR__ . '/params.php');
 $config = [
     'id' => 'app-backend',
     'name' => 'Web Skeleton',
-    'language' => 'vi', // en-US, vi-VN, ru
+//    'language' => 'vi', // en-US, vi-VN, ru
     'timeZone' => 'Asia/Ho_Chi_Minh',
     'basePath' => dirname(__DIR__),
     'vendorPath' => dirname(dirname(__DIR__)) . '/vendor',
@@ -20,7 +20,10 @@ $config = [
         '@mdm/admin' => '@backend/ext/yii2-admin',
         '@modules/system' => '@backend/ext/system',
         '@modules/users' => '@backend/ext/users',
-        '@hp' => '@app/modules/hpmain',
+        '@hp' => '@app/modules/core',
+        '@hpmain' => '@app/modules/hpmain',
+        '@hpec' => '@app/modules/ecom',
+        '@hpnews' => '@app/modules/news',
     /*
      * 
      */
@@ -36,43 +39,34 @@ $config = [
         'users' => 'modules\users\Module',
         'rbac' => 'mdm\admin\Module',
         'system' => 'modules\system\Module',
-        'main' => 'hp\backend\Module',
+        'main' => 'hpmain\backend\Module',
+        'ecom' => 'hpec\backend\Module',
+        'news' => 'hpnews\backend\Module',
         'demo' => app\modules\demo\backend\Module::class
     ],
     'components' => [
         'request' => [
+            'enableCsrfValidation' => false,
+            'enableCookieValidation' => true,
             'cookieValidationKey' => 'drWx549F9PFLEYpkv6mweYvTWZjMznLv',
-            'csrfParam' => '_csrf-backend',
-        //'baseUrl' => '/admin',
+            'csrfParam' => '_csrf_admin',
         ],
         'authManager' => [
             'class' => 'yii\rbac\DbManager',
+            'itemTable' => 'auth_item',
+            'itemChildTable' => 'auth_item_child',
+            'assignmentTable' => 'auth_assignment',
         ],
-//        'assetManager' => [
-//            'bundles' => [
-//                'yii\bootstrap\BootstrapAsset' => [
-//                    'sourcePath' => '@vendor/almasaeed2010/adminlte/bower_components/bootstrap/dist',
-//                    'css' => [
-//                        YII_ENV_DEV ? 'css/bootstrap.css' : 'css/bootstrap.min.css',
-//                    ]
-//                ],
-//                'yii\bootstrap\BootstrapPluginAsset' => [
-//                    'sourcePath' => '@vendor/almasaeed2010/adminlte/bower_components/bootstrap/dist',
-//                    'js' => [
-//                        YII_ENV_DEV ? 'js/bootstrap.js' : 'js/bootstrap.min.js',
-//                    ]
-//                ],
-//            ],
-//        ],
         'user' => [
-            'identityClass' => 'modules\users\models\User',
+            'class' => 'luya\admin\components\AdminUser',
+//            'identityClass' => 'modules\users\models\User',
             'enableAutoLogin' => true,
             'identityCookie' => ['name' => '_identity-backend', 'httpOnly' => true],
             'loginUrl' => ['/users/default/login'],
         ],
         'session' => [
             // this is the name of the session cookie used for login on the backend
-            'name' => 'advanced-backend',
+            'name' => '_ss_admin',
         ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
@@ -105,6 +99,32 @@ $config = [
                 'email-confirm' => 'users/default/email-confirm'
             ],
         ],
+        'cache' => [
+            'class' => 'yii\caching\FileCache',
+        ],
+        'formatter' => [
+            'locale' => 'vi-VN',
+            // format theo Format ICU
+            // dieu chinh FormatDate sẽ anh huong den tim kiem kieu du lieu date
+            'dateFormat' => 'dd/MM/yyyy',
+            'datetimeFormat' => 'dd/MM/yy, HH:mm',
+        ],
+        // luya components
+        'adminLanguage' => [
+            'class' => 'luya\admin\components\AdminLanguage',
+        ],
+        'composition' => [
+            'class' => 'luya\web\Composition',
+            'default' => [
+                'langShortCode' => 'vi',
+                'countryShortCode' => 'vn'
+            ], // the default language for the composition should match your default language shortCode in the language table.
+        ],
+        'adminuser' => [
+            'class' => 'luya\admin\components\AdminUser',
+            'defaultLanguage' => 'en',
+            'enableAutoLogin' => true
+        ],
 //        'i18n' => [
 //            'translations' => [
 //                'yii2mod.rbac' => [
@@ -114,44 +134,24 @@ $config = [
 //            // ...
 //            ],
 //        ],
-        'cache' => [
-            'class' => 'yii\caching\FileCache',
-        ],
-        'adminLanguage' => [
-            'class' => 'luya\admin\components\AdminLanguage',
-        ],
-        'composition' => [
-            'class' => 'luya\web\Composition',
-            'hidden' => true, // no languages in your url (most case for pages which are not multi lingual)
-            'default' => [
-                'langShortCode' => 'vi',
-                'countryShortCode' => 'vn'
-            ], // the default language for the composition should match your default language shortCode in the language table.
-        ],
-        'formatter' => [
-            'locale' => 'vi-VN',
-            // format theo Format ICU
-            // dieu chinh FormatDate sẽ anh huong den tim kiem kieu du lieu date
-            'dateFormat' => 'dd/MM/yyyy',
-            'datetimeFormat' => 'dd/MM/yy, HH:mm',
-        ],
     ],
-    'as access' => [
-        'class' => '\mdm\admin\components\AccessControl',
-        'allowActions' => [
-            'users/*',
-            'rbac/*',
-            '/*'
-        // The actions listed here will be allowed to everyone including guests.
-        // So, 'admin/*' should not appear here in the production, of course.
-        // But in the earlier stages of your development, you may probably want to
-        // add a lot of actions here until you finally completed setting up rbac,
-        // otherwise you may not even take a first step.
-        ]
-    ],
-    'as afterAction' => [
-        'class' => 'modules\users\behavior\LastVisitBehavior'
-    ],
+//    'as access' => [
+//        'class' => '\mdm\admin\components\AccessControl',
+//        'allowActions' => [
+//            'users/*',
+//            'rbac/*',
+//            'gii/*',
+//            '/*'
+//        // The actions listed here will be allowed to everyone including guests.
+//        // So, 'admin/*' should not appear here in the production, of course.
+//        // But in the earlier stages of your development, you may probably want to
+//        // add a lot of actions here until you finally completed setting up rbac,
+//        // otherwise you may not even take a first step.
+//        ]
+//    ],
+//    'as afterAction' => [
+//        'class' => 'modules\users\behavior\LastVisitBehavior'
+//    ],
     'params' => $params,
 ];
 

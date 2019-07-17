@@ -1,6 +1,6 @@
 <?php
 /* @var $this yii\web\View */
-/* @var $model hp\models\NavItem */
+/* @var $model hpmain\models\NavItem */
 
 $this->title = 'Update Nav Item: ' . $model->title;
 $this->params['breadcrumbs'][] = ['label' => 'Nav Items', 'url' => ['index']];

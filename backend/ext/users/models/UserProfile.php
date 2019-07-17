@@ -32,7 +32,7 @@ class UserProfile extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return '{{%auth_user_profile}}';
+        return 'auth_user_profile';
     }
 
     public function behaviors()

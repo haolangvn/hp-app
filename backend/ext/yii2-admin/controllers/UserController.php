@@ -46,29 +46,29 @@ class UserController extends Controller
     /**
      * @inheritdoc
      */
-    public function beforeAction($action)
-    {
-        if (parent::beforeAction($action)) {
-            if (Yii::$app->has('mailer') && ($mailer = Yii::$app->getMailer()) instanceof BaseMailer) {
-                /* @var $mailer BaseMailer */
-                $this->_oldMailPath = $mailer->getViewPath();
-                $mailer->setViewPath('@mdm/admin/mail');
-            }
-            return true;
-        }
-        return false;
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function afterAction($action, $result)
-    {
-        if ($this->_oldMailPath !== null) {
-            Yii::$app->getMailer()->setViewPath($this->_oldMailPath);
-        }
-        return parent::afterAction($action, $result);
-    }
+//    public function beforeAction($action)
+//    {
+//        if (parent::beforeAction($action)) {
+//            if (Yii::$app->has('mailer') && ($mailer = Yii::$app->getMailer()) instanceof BaseMailer) {
+//                /* @var $mailer BaseMailer */
+//                $this->_oldMailPath = $mailer->getViewPath();
+//                $mailer->setViewPath('@mdm/admin/mail');
+//            }
+//            return true;
+//        }
+//        return false;
+//    }
+//
+//    /**
+//     * @inheritdoc
+//     */
+//    public function afterAction($action, $result)
+//    {
+//        if ($this->_oldMailPath !== null) {
+//            Yii::$app->getMailer()->setViewPath($this->_oldMailPath);
+//        }
+//        return parent::afterAction($action, $result);
+//    }
 
     /**
      * Lists all User models.

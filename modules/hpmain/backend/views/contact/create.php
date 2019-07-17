@@ -1,7 +1,7 @@
 <?php
 
 /* @var $this yii\web\View */
-/* @var $model hp\models\Contact */
+/* @var $model hpmain\models\Contact */
 
 $this->title = Yii::t('app', 'Create Contact');
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Contacts'), 'url' => ['index']];

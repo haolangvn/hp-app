@@ -2,55 +2,63 @@
 
 use yii\helpers\Url;
 ?>
-<footer class="footer">
+<footer>
     <div class="container">
-        <div class="footer_block">
-            <ul class="footer_nav">
-                <?php
-                foreach (Yii::$app->menu->find()->container('footer')->root()->all() as $item) {
-                    echo '<li><a href="' . $item->link . '">' . $item->title . '</a></li>';
-                }
-                ?>
-            </ul>
-            <div class="copyright">
-                <p>CÔNG TY CỔ PHẦN THƯƠNG MẠI THẾ GIỚI NƯỚC HOA CHUYÊN CUNG CẤP MỸ PHẨM CAO CẤP -417 CHỨA KHOÁNG CHẤT QUÝ KẾT HỢP CÁC THÀNH PHẦN HOÀN TOÀN TỰ NHIÊN NHƯ KHOÁNG CHẤT CÂN BẰNG DƯỠNG CHẤT TỪ BIỂN CHẾT, VITAMIN GIÀU NĂNG LƯỢNG VÀ CHIẾT XUẤT TỪ CÁC LOÀI THỰC VẬT ĐỘC ĐÁO CÓ TÁC DỤNG TÁI TẠO TẾ BÀO DA VÀ NGĂN CHẶN DẤU HIỆU LÃO HÓA.<br/>
-                    <u style="text-decoration:underline">
-                        <strong>TẤT CẢ SẢN PHẨM TỪ -417 KHÔNG CHỨA PARABEN VÀ DẦU KHOÁNG.</strong>
-                    </u>
-                </p>
-
-                <p>&nbsp;</p>
-
-                <p>WE ARE CRUELTY FREE –  CHÚNG TÔI TUYỆT ĐỐI KHÔNG THỬ NGHIỆM SẢN PHẨM TRÊN ĐỘNG VẬT</p>
-
-                <div class="text-center"><img src="<?= Url::to('@web/images/veganfr.png') ?>" alt="vegan friendly logo" width="82">
-
-                </div>
-                <div class="social">
-                    <ul>
-                        <li><a href="https://www.linkedin.com/company/minus-417" target="_blank"><i class="fa fa-linkedin"></i></a></li>
-                        <li><a href="https://instagram.com/minus417official" target="_blank"><i class="fa fa-instagram"></i></a></li>
-                        <li><a href="https://www.facebook.com/minus417" target="_blank"><i class="fa fa-facebook"></i></a></li>
-                        <li><a href="https://twitter.com/minus417" target="_blank"><i class="fa fa-twitter"></i></a></li>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="text-center">
+                    <ul class="list-unstyled list-inline social-links">
+                        <li>
+                            <a class="item" href="https://www.facebook.com/perfumeworld.com.vn" target="_blank">
+                                <i class="fa fa-facebook" aria-hidden="true"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="item" href="https://www.instagram.com/perfume.world.2017" target="_blank">
+                                <i class="fa fa-instagram" aria-hidden="true"></i>
+                            </a>
+                        </li>
+                        <li class="li-last">
+                            <a class="item" href="https://www.youtube.com/channel/UCdXZs7AJo8Ie5sH4nND32Lg" target="_blank">
+                                <i class="fa fa-youtube" aria-hidden="true"></i>
+                            </a>
+                        </li>
                     </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 col-sm-3 col-xs-12 footer-block">
+                <form class="subscribe__form form-inline" action="/subscribe/pos/" method="post">
+                    <div class="form-group subscribe">
+                        <input name="Subscribe[email]" type="email" class="form-control" required="" placeholder="Your Email ...">
+                        <input class="btn-default btn" type="submit" value="SUBSCRIBE">
+                    </div>
+                </form>
+<!--                <div class="footer-contacts">
+                    <address>
+                        <i class="icon icon-pointer"></i>Tầng 4A, Vincom Center, 72 Lê Thánh Tôn, P. Bến Nghé, Quận 1, TP HCM
+                    </address>
+                </div>
+                <div class="footer-contacts"><i class="icon icon-call-end"></i>Hotline: 1800 6047 (8h30 - 21h30)</div>-->
+            </div>
+
+            <?= $html; ?>
+
+        </div>
+        <!-- end footer-top -->
+        <div class="row footer-bottom clearfix">
+            <div class="col-md-12">
+                <div class="pull-left info">
+                    <?= $footer_info ?>
+                </div>
+                <div class="pull-right">
+                    <div class="certify">
+                        <a href="http://online.gov.vn/HomePage/CustomWebsiteDisplay.aspx?DocId=43800" target="_blank">
+                            <img src="<?= Url::to('@web/images/certify_bo_cong_thuong.png') ?>" height="50" alt="Perfume World"></a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </footer>
-
-<?php
-$urlCart = Url::to(['cart/showcart']);
-$js = <<< JS
-window.onload = function () {
-    $.getJSON('{$urlCart}', function( rs ) {
-        $("#floatCatItems").html(rs.data);
-        $("#floatTotal").html(rs.cost);
-        $("#cartcounter").html('('+rs.quantity+')');
-    });
-    
-    
-};
-JS;
-//$this->registerJs($js, yii\web\View::POS_END);
-?>

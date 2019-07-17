@@ -86,7 +86,7 @@ class AvatarWidget extends Widget
     public function getGravatarEmail()
     {
         /** @var User $user */
-        $user = Yii::$app->user->identity;
-        return (!Yii::$app->user->isGuest) ? $user->profile->email_gravatar : $this->email;
+//        $user = Yii::$app->user->identity;
+//        return (!Yii::$app->user->isGuest) ? $user->profile->email_gravatar : $this->email;
     }
 }

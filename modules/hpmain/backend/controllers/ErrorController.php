@@ -1,6 +1,6 @@
 <?php
 
-namespace hp\backend\controllers;
+namespace hpmain\backend\controllers;
 
 /**
  * Description of Error

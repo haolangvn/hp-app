@@ -4,7 +4,7 @@ use yii\grid\GridView;
 use yii\widgets\Pjax;
 
 /* @var $this yii\web\View */
-/* @var $searchModel hp\models\Search\NavItemSearch */
+/* @var $searchModel hpmain\models\Search\NavItemSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = 'Nav Items';
@@ -41,7 +41,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 // 'title_tag',
                 [
                     'class' => 'yii\grid\ActionColumn',
-                    'template' => mdm\admin\components\Helper::filterActionColumn(['content', 'update']),
+                    'template' => mdm\admin\components\Helper::filterActionColumn(['update']),
                     'buttons' => [
                         'content' => function($url, $model, $key) {
                             return yii\helpers\Html::a('<i class="fa fa-newspaper-o" aria-hidden="true"></i> ', ['/main/nav/update-content', 'id' => $model->id, 'page' => $model->nav_item_type_id], ['target' => '_blank', 'data-pjax' => 0]);

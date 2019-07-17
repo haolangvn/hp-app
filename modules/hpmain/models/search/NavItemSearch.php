@@ -1,16 +1,16 @@
 <?php
 
-namespace hp\models\Search;
+namespace hpmain\models\Search;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use luya\cms\models\NavContainer;
 use luya\cms\models\Nav;
-use hp\models\NavItem;
+use hpmain\models\NavItem;
 use hp\utils\TreeDataBuilder;
 
 /**
- * NavItemSearch represents the model behind the search form of `hp\models\NavItem`.
+ * NavItemSearch represents the model behind the search form of `hpmain\models\NavItem`.
  */
 class NavItemSearch extends \yii\db\ActiveRecord {
 
@@ -28,7 +28,7 @@ class NavItemSearch extends \yii\db\ActiveRecord {
     public function rules() {
         return [
             [['id', 'build_tree'], 'integer'],
-            [['title', 'alias', 'container'], 'string', 'max' => 255],
+            [['title', 'alias', 'container', 'lang_id'], 'string', 'max' => 255],
             [['description', 'keywords', 'title_tag'], 'safe'],
         ];
     }
@@ -63,9 +63,9 @@ class NavItemSearch extends \yii\db\ActiveRecord {
         // grid filtering conditions
         $query->andFilterWhere([
             'item.id' => $this->id,
-            'nav_container_id' => $this->container
+            'nav_container_id' => $this->container,
+            'lang_id' => $this->lang_id,
 //            'nav_id' => $this->nav_id,
-//            'lang_id' => $this->lang_id,
 //            'nav_item_type' => $this->nav_item_type,
 //            'nav_item_type_id' => $this->nav_item_type_id,
 //            'create_user_id' => $this->create_user_id,

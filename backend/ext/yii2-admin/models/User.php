@@ -31,6 +31,8 @@ class User extends ActiveRecord implements IdentityInterface
     const STATUS_INACTIVE = 0;
     const STATUS_ACTIVE = 10;
 
+    public $username;
+    public $status;
     /**
      * @inheritdoc
      */
@@ -64,7 +66,7 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public static function findIdentity($id)
     {
-        return static::findOne(['id' => $id, 'status' => UserStatus::ACTIVE]);
+        return static::findOne(['id' => $id, 'is_deleted' => false]);
     }
 
     /**
@@ -83,7 +85,7 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public static function findByUsername($username)
     {
-        return static::findOne(['username' => $username, 'status' => UserStatus::ACTIVE]);
+        return static::findOne(['username' => $username, 'is_deleted' => false]);
     }
 
     /**
@@ -100,7 +102,7 @@ class User extends ActiveRecord implements IdentityInterface
 
         return static::findOne([
                 'password_reset_token' => $token,
-                'status' => UserStatus::ACTIVE,
+                'is_deleted' => false
         ]);
     }
 

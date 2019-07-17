@@ -44,11 +44,9 @@ class User extends ActiveRecord implements IdentityInterface
     const STATUS_ACTIVE = 1;
     const STATUS_WAIT = 2;
     const STATUS_DELETED = 3;
-
     // Length password
     const LENGTH_STRING_PASSWORD_MIN = 2;
     const LENGTH_STRING_PASSWORD_MAX = 32;
-
     const SCENARIO_ADMIN_CREATE = 'adminCreate';
 
     /**
@@ -62,7 +60,7 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public static function tableName()
     {
-        return '{{%auth_user}}';
+        return 'auth_user';
     }
 
     /**
@@ -246,8 +244,8 @@ class User extends ActiveRecord implements IdentityInterface
             return null;
         }
         return static::findOne([
-            'password_reset_token' => $token,
-            'status' => self::STATUS_ACTIVE,
+                    'password_reset_token' => $token,
+                    'status' => self::STATUS_ACTIVE,
         ]);
     }
 
@@ -309,9 +307,9 @@ class User extends ActiveRecord implements IdentityInterface
     public static function findByUsernameOrEmail($string)
     {
         return static::find()
-            ->where(['or', ['username' => $string], ['email' => $string]])
+                        ->where(['or', ['username' => $string], ['email' => $string]])
             ->andWhere(['status' => self::STATUS_ACTIVE])
-            ->one();
+                        ->one();
     }
 
     /**
@@ -321,7 +319,7 @@ class User extends ActiveRecord implements IdentityInterface
     public static function findByEmailConfirmToken($email_confirm_token)
     {
         return static::findOne([
-            'email_confirm_token' => $email_confirm_token,
+                    'email_confirm_token' => $email_confirm_token,
             'status' => self::STATUS_WAIT
         ]);
     }
@@ -386,8 +384,8 @@ class User extends ActiveRecord implements IdentityInterface
     {
         if ($this->status === self::STATUS_WAIT) {
             return Html::tag('span', Html::tag('span', '', [
-                'class' => 'glyphicon glyphicon-envelope',
-            ]), ['class' => 'label label-' . $name]);
+                                'class' => 'glyphicon glyphicon-envelope',
+                            ]), ['class' => 'label label-' . $name]);
         }
         return '';
     }
@@ -398,13 +396,13 @@ class User extends ActiveRecord implements IdentityInterface
     public function sendConfirmEmail()
     {
         return Yii::$app->mailer->compose([
-            'html' => '@modules/users/mail/emailConfirm-html',
-            'text' => '@modules/users/mail/emailConfirm-text'
-        ], ['user' => $this])
-            ->setFrom([Yii::$app->params['supportEmail'] => Yii::$app->name])
-            ->setTo($this->email)
-            ->setSubject(Module::t('module', 'Account activation!') . ' ' . Yii::$app->name)
-            ->send();
+                            'html' => '@modules/users/mail/emailConfirm-html',
+                            'text' => '@modules/users/mail/emailConfirm-text'
+                                ], ['user' => $this])
+                        ->setFrom([Yii::$app->params['supportEmail'] => Yii::$app->name])
+                        ->setTo($this->email)
+                        ->setSubject(Module::t('module', 'Account activation!') . ' ' . Yii::$app->name)
+                        ->send();
     }
 
     /**

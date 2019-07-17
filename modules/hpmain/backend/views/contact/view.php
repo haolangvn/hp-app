@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model hp\models\Contact */
+/* @var $model hpmain\models\Contact */
 
 $this->title = $model->id;
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Contacts'), 'url' => ['index']];
@@ -29,6 +29,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'phone',
                 'email:email',
                 'address',
+                'subject',
                 'content:ntext',
             ],
         ]) ?>

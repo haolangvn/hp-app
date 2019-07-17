@@ -14,6 +14,11 @@ use luya\helpers\Json;
         $content = '';
         $tabs = '';
         $i = 0;
+
+//        $options = [['value' => 1, 'label' => 'test']];
+//
+//        $test = new luya\admin\ngrest\plugins\Text(['alias' => 'name', 'name' => 'name', 'i18n' => 'vi']);
+//        echo $test->createFormTag('name', '12345', 123);
         foreach ($blocks as $key => $node) {
 
             $json_values = [];
@@ -21,6 +26,11 @@ use luya\helpers\Json;
 
             if ($node->block_class) {
                 $object = Yii::createObject($node->block_class, []);
+
+                if ($object instanceof luya\cms\frontend\blocks\ModuleBlock) {
+                    continue;
+                }
+                
                 $config = $object->getConfigVarsExport();
             }
 
@@ -72,6 +82,7 @@ use luya\helpers\Json;
                                     'value' => $value,
                         ]);
                     } else if ($item['type'] === 'zaa-select') {
+
                         $options = ArrayHelper::map($item['options'], 'value', 'label');
                         $content .= Html::dropDownList($name, $value, $options, ['class' => 'form-control', 'prompt' => '=== Chọn ===']);
                     } else if ($item['type'] === 'zaa-checkbox-array') {

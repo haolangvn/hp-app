@@ -1,78 +1,131 @@
 <?php
 
-namespace hp\models;
+namespace hpmain\models;
 
 use Yii;
+use hp\base\NgRestModel;
 
 /**
- * This is the model class for table "{{%hp_store}}".
+ * Store.
+ * 
+ * File has been created with `crud/create` command. 
  *
- * @property int $id
+ * @property integer $id
  * @property string $name
  * @property string $alias
  * @property string $phone
- * @property string $email
  * @property string $address
+ * @property string $email
  * @property string $image
- * @property string $system
+ * @property string $coordinates
  * @property string $province
  * @property string $region
- * @property string $content
- * @property int $status
- * @property int $weight
- * @property int $created_at
- * @property int $updated_at
- * @property int $created_by
- * @property int $updated_by
+ * @property string $system
+ * @property text $content
+ * @property integer $sort_order
+ * @property tinyint $is_hidden
+ * @property tinyint $is_deleted
+ * @property integer $created_at
+ * @property integer $updated_at
+ * @property integer $created_by
+ * @property integer $updated_by
  */
-class Store extends \hp\base\ActiveRecord
-{
+class Store extends NgRestModel {
+
+    use \luya\admin\traits\SoftDeleteTrait,
+        \hp\traits\SortOrderTrait;
+
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
-    public static function tableName()
-    {
-        return '{{%hp_store}}';
+    public static function tableName() {
+        return 'hp_store';
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
-    public function rules()
-    {
-        return [
-            [['name', 'system', 'province', 'content'], 'required'],
-            [['content'], 'string'],
-            [['status', 'weight', 'created_at', 'updated_at', 'created_by', 'updated_by'], 'integer'],
-            [['name', 'alias', 'phone', 'email', 'address', 'image'], 'string', 'max' => 255],
-            [['system'], 'string', 'max' => 100],
-            [['province', 'region'], 'string', 'max' => 25],
-        ];
+    public static function ngRestApiEndpoint() {
+        return 'api-main-store';
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
-    public function attributeLabels()
-    {
+    public function attributeLabels() {
         return [
             'id' => Yii::t('app', 'ID'),
             'name' => Yii::t('app', 'Name'),
             'alias' => Yii::t('app', 'Alias'),
             'phone' => Yii::t('app', 'Phone'),
-            'email' => Yii::t('app', 'Email'),
             'address' => Yii::t('app', 'Address'),
+            'email' => Yii::t('app', 'Email'),
             'image' => Yii::t('app', 'Image'),
-            'system' => Yii::t('app', 'System'),
+            'coordinates' => Yii::t('app', 'Coordinates'),
             'province' => Yii::t('app', 'Province'),
             'region' => Yii::t('app', 'Region'),
+            'system' => Yii::t('app', 'System'),
             'content' => Yii::t('app', 'Content'),
-            'status' => Yii::t('app', 'Status'),
-            'weight' => Yii::t('app', 'Weight'),
+            'sort_order' => Yii::t('app', 'Sort Order'),
+            'is_hidden' => Yii::t('app', 'Is Hidden'),
+            'is_deleted' => Yii::t('app', 'Is Deleted'),
             'created_at' => Yii::t('app', 'Created At'),
             'updated_at' => Yii::t('app', 'Updated At'),
             'created_by' => Yii::t('app', 'Created By'),
             'updated_by' => Yii::t('app', 'Updated By'),
         ];
     }
+
+    /**
+     * @inheritdoc
+     */
+    public function rules() {
+        return [
+            [['name', 'province', 'system'], 'required'],
+            [['content'], 'string'],
+            [['sort_order', 'is_hidden', 'is_deleted', 'created_at', 'updated_at', 'created_by', 'updated_by'], 'integer'],
+            [['name', 'alias', 'address', 'image', 'coordinates'], 'string', 'max' => 255],
+            [['phone', 'email', 'province'], 'string', 'max' => 50],
+            [['region'], 'string', 'max' => 25],
+            [['system'], 'string', 'max' => 100],
+        ];
+    }
+
+    /**
+     * @inheritdoc
+     */
+//    public function ngRestAttributeTypes() {
+//        return [
+//            'name' => 'text',
+//            'alias' => 'text',
+//            'phone' => 'text',
+//            'address' => 'text',
+//            'email' => 'text',
+//            'image' => 'text',
+//            'coordinates' => 'text',
+//            'province' => 'text',
+//            'region' => 'text',
+//            'system' => 'text',
+//            'content' => 'textarea',
+//            'sort_order' => 'number',
+//            'is_hidden' => 'number',
+//            'is_deleted' => 'number',
+//            'created_at' => 'number',
+//            'updated_at' => 'number',
+//            'created_by' => 'number',
+//            'updated_by' => 'number',
+//        ];
+//    }
+//
+//    /**
+//     * @inheritdoc
+//     */
+//    public function ngRestScopes() {
+//        return [
+//            ['list', ['name', 'alias', 'phone', 'address', 'email', 'image', 'coordinates', 'province', 'region', 'system', 'content', 'sort_order', 'is_hidden', 'is_deleted', 'created_at', 'updated_at', 'created_by', 'updated_by']],
+//            [['create', 'update'], ['name', 'alias', 'phone', 'address', 'email', 'image', 'coordinates', 'province', 'region', 'system', 'content', 'sort_order', 'is_hidden', 'is_deleted', 'created_at', 'updated_at', 'created_by', 'updated_by']],
+//            ['delete', false],
+//        ];
+//    }
+
 }

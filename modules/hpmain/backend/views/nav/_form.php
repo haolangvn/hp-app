@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model hp\models\NavItem */
+/* @var $model hpmain\models\NavItem */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 

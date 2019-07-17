@@ -21,18 +21,18 @@ $this->params['breadcrumbs'][] = $this->title;
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-            'username',
+//            'username',
             'email:email',
-            [
-                'attribute' => 'status',
-                'value' => function($model) {
-                    return $model->status == 0 ? 'Inactive' : 'Active';
-                },
-                'filter' => [
-                    0 => 'Inactive',
-                    10 => 'Active'
-                ]
-            ],
+//            [
+//                'attribute' => 'status',
+//                'value' => function($model) {
+//                    return $model->status == 0 ? 'Inactive' : 'Active';
+//                },
+//                'filter' => [
+//                    0 => 'Inactive',
+//                    10 => 'Active'
+//                ]
+//            ],
             [
                 'class' => 'yii\grid\ActionColumn',
                 'template' => Helper::filterActionColumn(['view', 'activate', 'delete']),

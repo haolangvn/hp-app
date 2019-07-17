@@ -1,12 +1,12 @@
-<?php
+<?php 
 
-namespace hp\backend\controllers;
+namespace hpmain\backend\controllers;
 
 use Yii;
-use hp\models\Store;
-use hp\models\search\Store as StoreSearch;
-use hp\base\Controller;
+use hpmain\models\Store;
+use hpmain\models\search\StoreSearch;
 use yii\web\NotFoundHttpException;
+use hp\base\Controller;
 
 /**
  * StoreController implements the CRUD actions for Store model.

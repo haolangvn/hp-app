@@ -1,9 +1,9 @@
 <?php
 
 use yii\helpers\ArrayHelper;
-use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use luya\cms\models\NavContainer;
+use hpmain\models\base\Translate;
 
 $container = ArrayHelper::map(NavContainer::find()->select('id, name')->asArray()->all(), 'id', 'name');
 ?>
@@ -33,6 +33,13 @@ $container = ArrayHelper::map(NavContainer::find()->select('id, name')->asArray(
             <?=
             $form->field($model, 'container')->label(false)->dropDownList($container, [
                 'prompt' => '=== Group ===',
+                'onchange' => '$("#search-form").submit()'
+            ])
+            ?>
+            
+            <?=
+            $form->field($model, 'lang_id')->label(false)->dropDownList(Translate::getLangDropList('id', 'name', null), [
+                'prompt' => '=== Language ===',
                 'onchange' => '$("#search-form").submit()'
             ])
             ?>

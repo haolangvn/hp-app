@@ -1,14 +1,12 @@
 <?php
 
-namespace hp\backend\controllers;
+namespace hpmain\backend\controllers;
 
 use Yii;
-use hp\models\Translate;
-use hp\models\search\Translate as TranslateSearch;
-use hp\base\Controller;
-use hp\models\Language;
+use hpmain\models\base\Translate;
+use hpmain\models\search\TranslateSearch;
 use yii\web\NotFoundHttpException;
-use yii\helpers\ArrayHelper;
+use hp\base\Controller;
 
 /**
  * TranslateController implements the CRUD actions for Translate model.
@@ -19,13 +17,14 @@ class TranslateController extends Controller {
      * Lists all Translate models.
      * @return mixed
      */
-    public function actionIndex() {
+    public function actionIndex()
+    {
         $searchModel = new TranslateSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
-                    'searchModel' => $searchModel,
-                    'dataProvider' => $dataProvider,
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
         ]);
     }
 
@@ -34,9 +33,10 @@ class TranslateController extends Controller {
      * @param integer $id
      * @return mixed
      */
-    public function actionView($id) {
+    public function actionView($id)
+    {
         return $this->render('view', [
-                    'model' => $this->findModel($id),
+            'model' => $this->findModel($id),
         ]);
     }
 
@@ -45,15 +45,16 @@ class TranslateController extends Controller {
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    public function actionCreate() {
+    public function actionCreate()
+    {
         $model = new Translate();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         }
-        
+
         return $this->render('create', [
-                    'model' => $model
+            'model' => $model,
         ]);
     }
 
@@ -63,14 +64,16 @@ class TranslateController extends Controller {
      * @param integer $id
      * @return mixed
      */
-    public function actionUpdate($id) {
+    public function actionUpdate($id)
+    {
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         }
+
         return $this->render('update', [
-                    'model' => $model,
+            'model' => $model,
         ]);
     }
 
@@ -80,7 +83,8 @@ class TranslateController extends Controller {
      * @param integer $id
      * @return mixed
      */
-    public function actionDelete($id) {
+    public function actionDelete($id)
+    {
         $this->findModel($id)->delete();
         return $this->redirect(['index']);
     }
@@ -92,12 +96,12 @@ class TranslateController extends Controller {
      * @return Translate the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($id) {
+    protected function findModel($id)
+    {
         if (($model = Translate::findOne($id)) !== null) {
             return $model;
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
     }
-
 }

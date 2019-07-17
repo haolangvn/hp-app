@@ -1,6 +1,6 @@
 <?php
 
-namespace hp\admin\controllers;
+namespace hpmain\admin\controllers;
 
 /**
  * Ng Rest Log Controller.
@@ -12,5 +12,5 @@ class NgRestLogController extends \luya\admin\ngrest\base\Controller
     /**
      * @var string The path to the model which is the provider for the rules and fields.
      */
-    public $modelClass = 'hp\ngrest\NgRestLog';
+    public $modelClass = 'hp\base\NgRestLog';
 }

@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model hp\models\Article */
+/* @var $model hpmain\models\base\Article */
 
 $this->title = $model->name;
 $this->params['breadcrumbs'][] = ['label' => 'Articles', 'url' => ['index']];
@@ -12,6 +12,7 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="article-view box box-primary">
     <div class="box-header">
+        <?= Html::a('Create', ['create'], ['class' => 'btn btn-success']) ?>
         <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary btn-flat']) ?>
         <?= Html::a('Delete', ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger btn-flat',
@@ -26,9 +27,9 @@ $this->params['breadcrumbs'][] = $this->title;
             'model' => $model,
             'attributes' => [
                 'id',
-                'group',
                 'name',
-                'content:ntext',
+                'group',
+                'content:html',
                 'created_at:datetime',
                 'updated_at:datetime',
             ],

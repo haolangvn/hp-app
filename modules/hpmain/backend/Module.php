@@ -1,6 +1,6 @@
 <?php
 
-namespace hp\backend;
+namespace hpmain\backend;
 
 /**
  * Description of Module

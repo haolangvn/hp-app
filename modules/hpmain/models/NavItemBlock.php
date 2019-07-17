@@ -1,6 +1,6 @@
 <?php
 
-namespace hp\models;
+namespace hpmain\models;
 
 /**
  * Description of NavItemBlock

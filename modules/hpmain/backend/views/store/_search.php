@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model hp\models\search\Store */
+/* @var $model hpmain\models\search\StoreSearch */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
@@ -13,6 +13,9 @@ use yii\widgets\ActiveForm;
     <?php $form = ActiveForm::begin([
         'action' => ['index'],
         'method' => 'get',
+        'options' => [
+            'data-pjax' => 1
+        ],
     ]); ?>
 
     <?= $form->field($model, 'id') ?>
@@ -23,23 +26,27 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'phone') ?>
 
-    <?= $form->field($model, 'email') ?>
+    <?= $form->field($model, 'address') ?>
 
-    <?php // echo $form->field($model, 'address') ?>
+    <?php // echo $form->field($model, 'email') ?>
 
     <?php // echo $form->field($model, 'image') ?>
 
-    <?php // echo $form->field($model, 'system') ?>
+    <?php // echo $form->field($model, 'coordinates') ?>
 
     <?php // echo $form->field($model, 'province') ?>
 
     <?php // echo $form->field($model, 'region') ?>
 
+    <?php // echo $form->field($model, 'system') ?>
+
     <?php // echo $form->field($model, 'content') ?>
 
-    <?php // echo $form->field($model, 'status') ?>
+    <?php // echo $form->field($model, 'sort_order') ?>
 
-    <?php // echo $form->field($model, 'weight') ?>
+    <?php // echo $form->field($model, 'is_hidden') ?>
+
+    <?php // echo $form->field($model, 'is_deleted') ?>
 
     <?php // echo $form->field($model, 'created_at') ?>
 
@@ -50,8 +57,8 @@ use yii\widgets\ActiveForm;
     <?php // echo $form->field($model, 'updated_by') ?>
 
     <div class="form-group">
-        <?= Html::submitButton(Yii::t('app', 'Search'), ['class' => 'btn btn-primary']) ?>
-        <?= Html::resetButton(Yii::t('app', 'Reset'), ['class' => 'btn btn-default']) ?>
+        <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
+        <?= Html::resetButton('Reset', ['class' => 'btn btn-default']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>
